@@ -11,6 +11,7 @@ public:
 	Node* next;
 	
 	std::string Name;
+	char NameAbr;
 
 	int HorizontalMeasure = 5;
 

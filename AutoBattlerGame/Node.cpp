@@ -13,6 +13,7 @@ Node::Node(int HP, int Att, std::string NM)
 	this->Health = HP;
 	this->Attack = Att;
 	this->Name = NM;
+	this->NameAbr = NM[0];
 	SetupCardLayout();
 	next = NULL;
 }
@@ -27,15 +28,15 @@ void Node::SetupCardLayout()
 			{
 				CardLayout[i][j] = 205;
 			}
-			else if (j == 0)
+			else if (j == 2)
 			{
 				CardLayout[i][j] = 186;
 			}
 		}
 	}
-	//CardLayout[0][0] = Health;
-	CardLayout[0][4] = Attack;
+	//CardLayout[2][1] = 186;
 	CardLayout[6][0] = 200;
+	//CardLayout[6][0] = NameAbr;
 	CardLayout[6][4] = 188;
 
 }

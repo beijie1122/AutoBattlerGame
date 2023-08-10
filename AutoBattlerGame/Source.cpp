@@ -4,6 +4,13 @@
 #include "Node.h"
 #include "LLNodeOperations.h"
 #include "Renderer.h"
+#include <Windows.h>
+#include "CombatLoop.h"
+
+bool IsVirtualKeyPressed(int VirtKey)
+{
+	return GetAsyncKeyState(VirtKey) != 0;
+}
 
 int main()
 {
@@ -13,15 +20,23 @@ int main()
 	std::vector<int> CardAttack{ 2, 1, 1, 2 };
 	std::vector<std::string> CardName{ "Guard", "Trooper", "Attacker", "Backup" };
 
-	std::vector<int> XCoordVec{ 5, 12, 18, 24 };
+	std::vector<int> XCoordVec{ 5, 12, 18, 24};
 
-	int YCoord = 5;
+	std::vector<int> P2XCoordVec{50, 57, 64, 71};
+
+	int YCoord = 7;
 
 	Node* Player1CardCatalog = new Node();
 
+	Node* Player2Board = new Node();
+
 	LLNodeOperations PerformOperationsObject;
 
+	CombatLoop PerformCombatObject;
+
 	Player1CardCatalog = PerformOperationsObject.TakeInputFromVector(CardHealth, CardAttack, CardName);
+
+	Player2Board = PerformOperationsObject.TakeInputFromVector(CardHealth, CardAttack, CardName);
 
 
 	while (true)
@@ -30,6 +45,12 @@ int main()
 
 		PerformOperationsObject.print(Player1CardCatalog, RenderingObjects, XCoordVec, YCoord);
 
+		PerformOperationsObject.print(Player2Board, RenderingObjects, P2XCoordVec, YCoord);
+
+		if (IsVirtualKeyPressed(VK_NUMPAD1))
+		{
+			PerformCombatObject.BasicLoop(Player1CardCatalog, Player2Board);
+		}
 
 		//PerformOperationsObject.print(Player1CardCatalog, RenderingObjects);
 	}
