@@ -26,6 +26,8 @@ int main()
 
 	int YCoord = 7;
 
+	bool IsCombatSetup = false;
+
 	Node* Player1CardCatalog = new Node();
 
 	Node* Player2Board = new Node();
@@ -49,7 +51,7 @@ int main()
 
 		if (IsVirtualKeyPressed(VK_NUMPAD1))
 		{
-			PerformCombatObject.BasicLoop(Player1CardCatalog, Player2Board);
+			PerformCombatObject.BasicCombatSetup(Player1CardCatalog, Player2Board, IsCombatSetup, RenderingObjects);
 		}
 
 		//PerformOperationsObject.print(Player1CardCatalog, RenderingObjects);

@@ -9,6 +9,7 @@ public:
 	int Health;
 	int Attack;
 	Node* next;
+	Node* prev;
 	
 	std::string Name;
 	char NameAbr;

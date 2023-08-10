@@ -22,9 +22,11 @@ Node* LLNodeOperations::TakeInputFromVector(std::vector<int> HPVec, std::vector<
 		{
 			head = n;
 			tail = n;
+			n->prev = NULL;
 		}
 		else
 		{
+			n->prev = tail;
 			tail->next = n;
 			tail = n;
 		}
