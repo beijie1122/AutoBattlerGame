@@ -44,7 +44,7 @@ void LLNodeOperations::print(Node* head, Renderer& RenderQuad, std::vector<int> 
 		for (size_t i = 0; i < XCOORDVec.size(); i++)
 		{
 			temp->RenderNode(RenderQuad, XCOORDVec.at(i), YCOORD);
-			temp = temp->next;
+			temp = temp->next; 
 		}
 	}
 }
