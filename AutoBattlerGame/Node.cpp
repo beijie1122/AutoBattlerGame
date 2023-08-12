@@ -24,20 +24,22 @@ void Node::SetupCardLayout()
 	{
 		for (size_t j = 0; j < HorizontalMeasure; j++)
 		{
-			if (i == 0 || i == 6)
+			CardLayout[i][j] = ' ';
+
+			if (i == 0 || i == VerticleMeasure - 1)
 			{
 				CardLayout[i][j] = 205;
 			}
-			else if (j == 2)
+			else if (j == 0 || j == HorizontalMeasure - 1)
 			{
 				CardLayout[i][j] = 186;
 			}
 		}
 	}
 	//CardLayout[2][1] = 186;
-	CardLayout[6][0] = 200;
+	CardLayout[VerticleMeasure - 1][0] = 200;
 	//CardLayout[6][0] = NameAbr;
-	CardLayout[6][4] = 188;
+	CardLayout[VerticleMeasure - 1][HorizontalMeasure - 1] = 188;
 
 }
 

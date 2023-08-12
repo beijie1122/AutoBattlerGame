@@ -5,7 +5,6 @@
 #include <conio.h>
 #include <thread>
 #include <vector>
-#include <string>
 
 Renderer::Renderer()
 {
@@ -49,6 +48,13 @@ void Renderer::DrawCardIntValue(const int& Value, const Point& position)
 	SetCursorToPosition(position.x, position.y);
 	std::cout << Value;
 }
+
+void Renderer::DrawStringValue(const std::string& Value, const Point& position)
+{
+	SetCursorToPosition(position.x, position.y);
+	std::cout << Value;
+}
+
 
 void InitializeRenderer()
 {

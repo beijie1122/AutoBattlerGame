@@ -6,6 +6,7 @@
 #include "Renderer.h"
 #include <Windows.h>
 #include "CombatLoop.h"
+#include "Menus.h"
 
 bool IsVirtualKeyPressed(int VirtKey)
 {
@@ -16,11 +17,45 @@ int main()
 {
 	InitializeRenderer();
 
+	Menus TestMenu;
+
+	int SelctionToBePassed = 0;
+
+	/*
+	while (true)
+	{
+		
+		Renderer RenderingObjects;
+		TestMenu.MainGameMenu(RenderingObjects, SelctionToBePassed);
+
+		if (IsVirtualKeyPressed(0x57))
+		{
+			if (SelctionToBePassed != 0)
+			{
+				SelctionToBePassed--;
+			}
+			
+		}
+		if (IsVirtualKeyPressed(0x53))
+		{
+			if (SelctionToBePassed < 2)
+			{
+				SelctionToBePassed++;
+			}
+		}
+	}
+	*/
+	Renderer RenderingObjects;
+
 	std::vector<int> CardHealth{ 1, 2, 5, 4};
 	std::vector<int> CardAttack{ 2, 1, 1, 2 };
 	std::vector<std::string> CardName{ "Guard", "Trooper", "Attacker", "Backup" };
 
-	std::vector<int> XCoordVec{ 5, 12, 18, 24};
+	std::vector<int> P2CardHealth{1, 1, 1, 1};
+	std::vector<int> P2CardAttack{1, 2, 1, 1};
+	std::vector<std::string> P2CardName{ "Guard", "Trooper", "Attacker", "Backup" };
+
+	std::vector<int> XCoordVec{ 5, 12, 19, 26};
 
 	std::vector<int> P2XCoordVec{50, 57, 64, 71};
 
@@ -38,7 +73,7 @@ int main()
 
 	Player1CardCatalog = PerformOperationsObject.TakeInputFromVector(CardHealth, CardAttack, CardName);
 
-	Player2Board = PerformOperationsObject.TakeInputFromVector(CardHealth, CardAttack, CardName);
+	Player2Board = PerformOperationsObject.TakeInputFromVector(P2CardHealth, P2CardAttack, P2CardName);
 
 
 	while (true)

@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="CombatLoop.cpp" />
     <ClCompile Include="LLNodeOperations.cpp" />
+    <ClCompile Include="Menus.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -148,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="CombatLoop.h" />
     <ClInclude Include="LLNodeOperations.h" />
+    <ClInclude Include="Menus.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Renderer.h" />
   </ItemGroup>

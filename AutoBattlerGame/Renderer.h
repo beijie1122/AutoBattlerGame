@@ -1,5 +1,6 @@
 #pragma once
-#include<vector>
+#include <vector>
+#include <string>
 
 struct Point
 {
@@ -18,6 +19,8 @@ public:
 	void DrawCardVector(const std::vector<std::vector<char>>& vec, const Point& position, int VerticleMeasure, int HorizontalMeasure);
 
 	void DrawCardIntValue(const int& Value, const Point& position);
+
+	void DrawStringValue(const std::string& Value, const Point& position);
 
 
 };
