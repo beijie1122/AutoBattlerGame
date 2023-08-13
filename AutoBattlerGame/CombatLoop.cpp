@@ -8,25 +8,32 @@ CombatLoop::CombatLoop()
 
 }
 
-void CombatLoop::BasicCombatSetup(Node* Player1, Node* Player2, bool& IsCombatSetup, Renderer RenderAttack)
+void CombatLoop::BasicCombatSetup(Node* Player1, Node* Player2, bool& IsCombatSetup, Renderer RenderAttack, bool& IsCombatFinished)
 {
-	if (IsCombatSetup == false)
+
+	if (IsCombatFinished == false)
 	{
-		P1Copy = Player1;
-		P2Copy = Player2;
-		P1Current = P1Copy->next->next->next;
-		P2Current = P2Copy;
-		IsCombatSetup = true;
-		BasicLoop(P1Copy, P2Copy, RenderAttack);
+		if (IsCombatSetup == false)
+		{
+			P1Current = Player1->next->next->next;
+			P2Current = Player2;
+			IsCombatSetup = true; //WATCH THIS BOOL!!! 
+			BasicLoop(Player1, Player2, RenderAttack, IsCombatFinished);
+		}
+		else
+		{
+			BasicLoop(Player1, Player2, RenderAttack, IsCombatFinished);
+		}
 	}
 	else
 	{
-		BasicLoop(P1Copy, P2Copy, RenderAttack);
+		return;
 	}
+
 
 }
 
-void CombatLoop::BasicLoop(Node* Player1, Node* Player2, Renderer RenderAttack)
+void CombatLoop::BasicLoop(Node* Player1, Node* Player2, Renderer RenderAttack, bool& IsCombatFinished)
 {
 	
 	//For attempting a auto battle 
@@ -55,12 +62,14 @@ void CombatLoop::BasicLoop(Node* Player1, Node* Player2, Renderer RenderAttack)
 
 	if (P1Current->Health <= 0 && P1Current->prev == NULL)
 	{
-		RenderAttack.DrawCardIntValue(10, { 20, 25 });
+		//Function going to Player 2 Wins Screen
+		IsCombatFinished = true;
 		return;
 	}
 	else if (P2Current->Health <= 0 && P2Current->next == NULL)
 	{
-		RenderAttack.DrawCardIntValue(11, { 35, 25 });
+		//Function going to Player 1 Wins Screen 
+		IsCombatFinished = true;
 		return;
 	}
 	

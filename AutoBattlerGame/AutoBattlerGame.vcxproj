@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseGameMode.cpp" />
     <ClCompile Include="CombatLoop.cpp" />
     <ClCompile Include="LLNodeOperations.cpp" />
     <ClCompile Include="Menus.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseGameMode.h" />
     <ClInclude Include="CombatLoop.h" />
     <ClInclude Include="LLNodeOperations.h" />
     <ClInclude Include="Menus.h" />

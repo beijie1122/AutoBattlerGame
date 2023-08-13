@@ -1,8 +1,10 @@
 #pragma once
 #include "Renderer.h"
 #include "Node.h"
+#include"LLNodeOperations.h"
 #include <vector>
 #include <string>
+#include <Windows.h>
 
 class Menus
 {
@@ -24,7 +26,9 @@ public:
 
 	std::vector<int> MenuRenderYCoords{ 5, 11, 17 };
 
-	int MenuRenderXCoord = 5;
+	std::vector<int> TESTXCoordVec{ 5, 12, 19, 26 };
+
+	int MenuRenderXCoord = 30;
 
 	Menus();
 

@@ -11,13 +11,13 @@ void Menus::MainGameMenu(Renderer MenuRender, int SelectionVariable) //Think abo
 	//Must Put Overlay after the initial border object to Work
 	MenuRender.DrawCardVector(ChoiceOutlineLayout, { MenuRenderXCoord - 2, MenuRenderYCoords.at(SelectionVariable) -1 }, ChoiceOutlineVerticleMeasure, ChoiceOutlineHorizontalMeasure);
 	MenuRender.DrawCardVector(BigButttonLayout, { MenuRenderXCoord, MenuRenderYCoords.at(0) }, BigButtonVerticleMeasure, BigButtonHorizontalMeasure);
-	MenuRender.DrawStringValue(MenuButtonText.at(0), { 8, MenuRenderYCoords.at(0) + 2 });
+	MenuRender.DrawStringValue(MenuButtonText.at(0), { MenuRenderXCoord + 3, MenuRenderYCoords.at(0) + 2 });
 
 	MenuRender.DrawCardVector(BigButttonLayout, { MenuRenderXCoord, MenuRenderYCoords.at(1) }, BigButtonVerticleMeasure, BigButtonHorizontalMeasure);
-	MenuRender.DrawStringValue(MenuButtonText.at(1), { 8, MenuRenderYCoords.at(1) + 2 });
+	MenuRender.DrawStringValue(MenuButtonText.at(1), { MenuRenderXCoord + 3, MenuRenderYCoords.at(1) + 2 });
 
 	MenuRender.DrawCardVector(BigButttonLayout, { MenuRenderXCoord, MenuRenderYCoords.at(2) }, BigButtonVerticleMeasure, BigButtonHorizontalMeasure);
-	MenuRender.DrawStringValue(MenuButtonText.at(2), { 8, MenuRenderYCoords.at(2) + 2 });
+	MenuRender.DrawStringValue(MenuButtonText.at(2), { MenuRenderXCoord + 3, MenuRenderYCoords.at(2) + 2 });
 
 }
 

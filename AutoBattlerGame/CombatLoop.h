@@ -7,9 +7,7 @@ class CombatLoop
 {
 public:
 
-	Node* P1Copy = new Node();
 
-	Node* P2Copy = new Node();
 
 	Node* P1Current = new Node();
 
@@ -17,9 +15,9 @@ public:
 
 	CombatLoop();
 
-	void BasicLoop(Node* Player1, Node* Player2, Renderer RenderAttack);
+	void BasicLoop(Node* Player1, Node* Player2, Renderer RenderAttack, bool &IsCombatFinished);
 
-	void BasicCombatSetup(Node* Player1, Node* Player2, bool& IsCombatSetup, Renderer RenderAttack);
+	void BasicCombatSetup(Node* Player1, Node* Player2, bool& IsCombatSetup, Renderer RenderAttack, bool& IsCombatFinished);
 
 	~CombatLoop();
 };

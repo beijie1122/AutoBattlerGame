@@ -22,6 +22,8 @@ public:
 
 	void FrontBackSplit(Node* Source, Node** FrontRef, Node** BackRef);
 
+	Node* CopyDataValueofLinkedList(Node* Source);
+
 
 	~LLNodeOperations();
 };

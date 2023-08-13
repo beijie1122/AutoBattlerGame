@@ -92,6 +92,34 @@ void LLNodeOperations::FrontBackSplit(Node* Source, Node** FrontRef, Node** Back
 
 }
 
+Node* LLNodeOperations::CopyDataValueofLinkedList(Node* Source)
+{
+	Node* head = NULL;
+	Node* tail = NULL;
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		Node* n = new Node(Source->Health, Source->Attack, Source->Name);
+		Source = Source->next;
+
+		if (head == NULL)
+		{
+			head = n;
+			tail = n;
+			n->prev = NULL;
+		}
+		else
+		{
+			n->prev = tail;
+			tail->next = n;
+			tail = n;
+		}
+	}
+
+	return head;
+
+}
+
 LLNodeOperations::~LLNodeOperations()
 {
 
