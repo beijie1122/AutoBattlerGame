@@ -105,7 +105,20 @@ void BaseGameMode::InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LL
 		}
 		else
 		{
+
+			//while (true)
+			//{
+
+				//CombatObject.WinOrLoseState();
+				//if (IsVirtualKeyPressed(VK_NUMPAD4))
+				//{
+				//	IsCombatSetup = false;
+				//	IsCombatFinished = false;
+				//	return;
+				//}
+			//}
 			IsCombatSetup = false;
+			//IsCombatFinished = false;
 			return;
 		}
 

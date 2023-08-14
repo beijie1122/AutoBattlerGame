@@ -38,6 +38,10 @@ public:
 
 	void PopulateChoiceOutlineBox();
 
+	void Player1WinsMenu();
+
+	void Player2WinsMenu();
+
 	~Menus();
 
 

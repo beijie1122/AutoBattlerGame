@@ -78,6 +78,19 @@ void Menus::PopulateChoiceOutlineBox()
 
 }
 
+void Menus::Player1WinsMenu()
+{
+	Renderer PlayerWinsMenuRenderer;
+
+	PlayerWinsMenuRenderer.DrawCardVector(BigButttonLayout, { MenuRenderXCoord, MenuRenderYCoords.at(1) }, BigButtonVerticleMeasure, BigButtonHorizontalMeasure);
+	PlayerWinsMenuRenderer.DrawStringValue("VICTORY!!", { MenuRenderXCoord + 3, MenuRenderYCoords.at(1) + 2 });
+}
+
+void Menus::Player2WinsMenu()
+{
+
+}
+
 Menus::~Menus()
 {
 

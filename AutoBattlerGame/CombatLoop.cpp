@@ -10,6 +10,8 @@ CombatLoop::CombatLoop()
 
 void CombatLoop::BasicCombatSetup(Node* Player1, Node* Player2, bool& IsCombatSetup, Renderer RenderAttack, bool& IsCombatFinished)
 {
+	Player1Wins = false;
+	Player2Wins = false;
 
 	if (IsCombatFinished == false)
 	{
@@ -62,13 +64,13 @@ void CombatLoop::BasicLoop(Node* Player1, Node* Player2, Renderer RenderAttack, 
 
 	if (P1Current->Health <= 0 && P1Current->prev == NULL)
 	{
-		//Function going to Player 2 Wins Screen
+		Player2Wins = true;
 		IsCombatFinished = true;
 		return;
 	}
 	else if (P2Current->Health <= 0 && P2Current->next == NULL)
 	{
-		//Function going to Player 1 Wins Screen 
+		Player1Wins = true;
 		IsCombatFinished = true;
 		return;
 	}
@@ -87,6 +89,21 @@ void CombatLoop::BasicLoop(Node* Player1, Node* Player2, Renderer RenderAttack, 
 	P1Current->Health = P1Current->Health - P2Current->Attack;
 	P2Current->Health = P2Current->Health - P1Current->Attack;
 	
+}
+
+void CombatLoop::WinOrLoseState()
+{
+	Menus WinOrLoseMenu;
+
+	if (Player1Wins == true)
+	{
+		WinOrLoseMenu.Player1WinsMenu();
+	}
+	else
+	{
+
+	}
+
 }
 
 CombatLoop::~CombatLoop()
