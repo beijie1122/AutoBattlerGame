@@ -24,7 +24,12 @@ public:
 
 	std::vector<std::string> MenuButtonText = { "Start Battle", "View Cards", "View Bestiary" };
 	
+
+	//Put into a vector to read out of in the future
+
 	std::string FunctionalText = "Press W to move up, Press S to move down";
+
+	std::string SelectionText = "Press 2 to make a selection";
 
 	std::vector<int> MenuRenderYCoords{ 5, 11, 17 };
 

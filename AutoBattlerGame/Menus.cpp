@@ -21,6 +21,9 @@ void Menus::MainGameMenu(Renderer MenuRender, int SelectionVariable) //Think abo
 
 	MenuRender.DrawStringValue(FunctionalText, { MenuRenderXCoord, MenuRenderYCoords.at(2) + 8 });
 
+	MenuRender.DrawStringValue(SelectionText, { MenuRenderXCoord, MenuRenderYCoords.at(2) + 10 });
+
+
 }
 
 void Menus::PopulateBigButton()
