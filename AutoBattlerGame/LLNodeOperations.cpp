@@ -16,7 +16,7 @@ Node* LLNodeOperations::TakeInputFromVector(std::vector<int> HPVec, std::vector<
 	{
 		Node* n = new Node(HPVec.at(i), ATTVec.at(i), NameVec.at(i));
 
-		std::cout << n->Name << n->Health << n->Attack << "\n";
+		//std::cout << n->Name << n->Health << n->Attack << "\n";
 
 		if (head == NULL)
 		{

@@ -15,6 +15,8 @@ int main()
 {
 	InitializeRenderer();
 
+	Renderer MainRender;
+
 	std::unique_ptr<BaseGameMode> BaseGame = std::make_unique<BaseGameMode>();
 
 	BaseGame->MainMenuMode();

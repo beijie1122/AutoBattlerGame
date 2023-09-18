@@ -19,6 +19,8 @@ void Menus::MainGameMenu(Renderer MenuRender, int SelectionVariable) //Think abo
 	MenuRender.DrawCardVector(BigButttonLayout, { MenuRenderXCoord, MenuRenderYCoords.at(2) }, BigButtonVerticleMeasure, BigButtonHorizontalMeasure);
 	MenuRender.DrawStringValue(MenuButtonText.at(2), { MenuRenderXCoord + 3, MenuRenderYCoords.at(2) + 2 });
 
+	MenuRender.DrawStringValue(FunctionalText, { MenuRenderXCoord, MenuRenderYCoords.at(2) + 8 });
+
 }
 
 void Menus::PopulateBigButton()
@@ -84,6 +86,7 @@ void Menus::Player1WinsMenu()
 
 	PlayerWinsMenuRenderer.DrawCardVector(BigButttonLayout, { MenuRenderXCoord, MenuRenderYCoords.at(1) }, BigButtonVerticleMeasure, BigButtonHorizontalMeasure);
 	PlayerWinsMenuRenderer.DrawStringValue("VICTORY!!", { MenuRenderXCoord + 3, MenuRenderYCoords.at(1) + 2 });
+
 }
 
 void Menus::Player2WinsMenu()

@@ -16,7 +16,7 @@ public:
 
 	int HorizontalMeasure = 6;
 
-	int VerticleMeasure = 6;
+	unsigned int VerticleMeasure = 6;
 
 	std::vector<std::vector<char>> CardLayout { VerticleMeasure, std::vector<char>(HorizontalMeasure) };
 

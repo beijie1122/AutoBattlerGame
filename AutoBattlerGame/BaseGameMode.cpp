@@ -47,7 +47,7 @@ void BaseGameMode::MainMenuMode()
 			}
 		}
 
-		if (IsVirtualKeyPressed(VK_NUMPAD2))
+		if (IsVirtualKeyPressed(0x32)) //2 Key
 		{
 			StartCombatMenu(Player1CardCatalog, Player2Board, IsCombatFinished);
 
@@ -73,7 +73,7 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 			Renderer RenderStartBattle;
 			PerformOperationsObject.print(P1Copy, RenderStartBattle, XCoordVec, YCoord);
 
-			if (IsVirtualKeyPressed(VK_NUMPAD0))
+			if (IsVirtualKeyPressed(0x33)) //3 key
 			{
 				InitiateCombatMenu(P1Copy, P2Copy, PerformOperationsObject, PerformCombatObject, IsCombatFinished);
 			}
@@ -98,7 +98,7 @@ void BaseGameMode::InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LL
 			NodeOperations.print(Player1Board, RenderThiscombat, XCoordVec, YCoord);
 			NodeOperations.print(Player2Board, RenderThiscombat, P2XCoordVec, YCoord);
 
-			if (IsVirtualKeyPressed(VK_NUMPAD3))
+			if (IsVirtualKeyPressed(0x34)) //4 Key
 			{
 				CombatObject.BasicCombatSetup(Player1Board, Player2Board, IsCombatSetup, RenderThiscombat, IsCombatFinished);
 			}
