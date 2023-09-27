@@ -2,7 +2,9 @@
 
 BaseGameMode::BaseGameMode()
 {
+	FStreamExtractor GameSetupDataExtraction;
 
+	GameSetupDataExtraction.FStreamCardDataExtraction(GameSetupDataExtraction.FStreamFileCardInfo, FStreamCardNameVec, FStreamCardHPVec, FStreamCardATTVec);
 }
 
 bool IsVirtualKeyPressed(int VirtKey)
@@ -22,7 +24,9 @@ void BaseGameMode::MainMenuMode()
 
 	CombatLoop PerformCombatObject;
 
-	Player1CardCatalog = PerformOperationsObject.TakeInputFromVector(CardHealth, CardAttack, CardName);
+	Player1CardCatalog = PerformOperationsObject.TakeInputFromVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
+
+	//Player1CardCatalog = PerformOperationsObject.TakeInputFromVector(CardHealth, CardAttack, CardName);
 
 	Player2Board = PerformOperationsObject.TakeInputFromVector(P2CardHealth, P2CardAttack, P2CardName);
 
@@ -49,7 +53,22 @@ void BaseGameMode::MainMenuMode()
 
 		if (IsVirtualKeyPressed(0x32)) //2 Key
 		{
-			StartCombatMenu(Player1CardCatalog, Player2Board, IsCombatFinished);
+			if (SelctionToBePassed == 0)
+			{
+				StartCombatMenu(Player1CardCatalog, Player2Board, IsCombatFinished);
+			}
+			else if (SelctionToBePassed == 1)
+			{
+				//View Cards Menu
+			}
+			else
+			{
+				//Bestiary Menu
+			}
+
+
+
+			
 
 		}
 

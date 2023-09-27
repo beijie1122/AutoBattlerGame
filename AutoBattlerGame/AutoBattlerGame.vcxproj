@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="BaseGameMode.cpp" />
     <ClCompile Include="CombatLoop.cpp" />
+    <ClCompile Include="FStreamExtractor.cpp" />
     <ClCompile Include="LLNodeOperations.cpp" />
     <ClCompile Include="Menus.cpp" />
     <ClCompile Include="Node.cpp" />
@@ -150,10 +151,14 @@
   <ItemGroup>
     <ClInclude Include="BaseGameMode.h" />
     <ClInclude Include="CombatLoop.h" />
+    <ClInclude Include="FStreamExtractor.h" />
     <ClInclude Include="LLNodeOperations.h" />
     <ClInclude Include="Menus.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Renderer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CardInfo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,6 +4,7 @@
 #include "Menus.h"
 #include "Renderer.h"
 #include "CombatLoop.h"
+#include "FStreamExtractor.h"
 
 class BaseGameMode
 {
@@ -20,6 +21,10 @@ public:
 	std::vector<int> P2CardHealth{ 1, 1, 1, 1 };
 	std::vector<int> P2CardAttack{ 1, 2, 1, 1 };
 	std::vector<std::string> P2CardName{ "Guard", "Trooper", "Attacker", "Backup" };
+
+	std::vector<int> FStreamCardHPVec{};
+	std::vector<int> FStreamCardATTVec{};
+	std::vector<std::string> FStreamCardNameVec{};
 
 	std::vector<int> XCoordVec{ 5, 12, 19, 26 };
 

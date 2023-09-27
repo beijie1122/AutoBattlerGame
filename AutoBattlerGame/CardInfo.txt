@@ -1,0 +1,4 @@
+Guard 1 2 
+Trooper 2 1 
+Attacker 5 1 
+Backup 4 2 

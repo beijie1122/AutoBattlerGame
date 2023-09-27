@@ -22,10 +22,10 @@ public:
 
 	std::vector<std::vector<char>> ChoiceOutlineLayout{ ChoiceOutlineVerticleMeasure, std::vector<char>(ChoiceOutlineHorizontalMeasure) };
 
-	std::vector<std::string> MenuButtonText = { "Start Battle", "View Cards", "View Bestiary" };
+	std::vector<std::string> MenuButtonText = { "Start Battle", "View Owned Cards", "View Bestiary" };
 	
 
-	//Put into a vector to read out of in the future
+	//Put into a vector to read out of in the futures22s222ww2344444
 
 	std::string FunctionalText = "Press W to move up, Press S to move down";
 
