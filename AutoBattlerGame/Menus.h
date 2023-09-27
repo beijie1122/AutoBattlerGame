@@ -31,6 +31,10 @@ public:
 
 	std::string SelectionText = "Press 2 to make a selection";
 
+	std::string CombatSelectionText = "Press 3 to start combat";
+
+	std::string InitiateCombatText = "Press 4 to move along combat";
+
 	std::vector<int> MenuRenderYCoords{ 5, 11, 17 };
 
 	std::vector<int> TESTXCoordVec{ 5, 12, 19, 26 };
@@ -48,6 +52,10 @@ public:
 	void Player1WinsMenu();
 
 	void Player2WinsMenu();
+
+	void StartCombatMenu(Renderer CombatMenuRender);
+
+	void InitiateCombatMenu(Renderer InitiateCombatMenuRenderer);
 
 	~Menus();
 

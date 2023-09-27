@@ -71,6 +71,10 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 		if (IsCombatFinished == false)
 		{
 			Renderer RenderStartBattle;
+			Menus CombatMenu;
+
+			CombatMenu.StartCombatMenu(RenderStartBattle);
+
 			PerformOperationsObject.print(P1Copy, RenderStartBattle, XCoordVec, YCoord);
 
 			if (IsVirtualKeyPressed(0x33)) //3 key
@@ -95,6 +99,11 @@ void BaseGameMode::InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LL
 		if (IsCombatFinished == false)
 		{
 			Renderer RenderThiscombat;
+
+			Menus InitiateCombatMenu;
+
+			InitiateCombatMenu.InitiateCombatMenu(RenderThiscombat);
+
 			NodeOperations.print(Player1Board, RenderThiscombat, XCoordVec, YCoord);
 			NodeOperations.print(Player2Board, RenderThiscombat, P2XCoordVec, YCoord);
 

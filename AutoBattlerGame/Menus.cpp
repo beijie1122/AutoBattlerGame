@@ -92,6 +92,18 @@ void Menus::Player1WinsMenu()
 
 }
 
+void Menus::StartCombatMenu(Renderer CombatMenuRender)
+{
+	CombatMenuRender.DrawStringValue(CombatSelectionText, { MenuRenderXCoord, MenuRenderYCoords.at(2) + 10 });
+}
+
+void Menus::InitiateCombatMenu(Renderer InitiateCombatMenuRenderer)
+{
+	InitiateCombatMenuRenderer.DrawStringValue(InitiateCombatText, { MenuRenderXCoord, MenuRenderYCoords.at(2) + 10 });
+}
+
+
+
 void Menus::Player2WinsMenu()
 {
 
