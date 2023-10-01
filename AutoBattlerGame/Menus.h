@@ -25,7 +25,7 @@ public:
 	std::vector<std::string> MenuButtonText = { "Start Battle", "View Owned Cards", "View Bestiary" };
 	
 
-	//Put into a vector to read out of in the futures22s222ww2344444
+	//Put into a vector to read out of in the futures
 
 	std::string FunctionalText = "Press W to move up, Press S to move down";
 
@@ -34,6 +34,8 @@ public:
 	std::string CombatSelectionText = "Press 3 to start combat";
 
 	std::string InitiateCombatText = "Press 4 to move along combat";
+
+	std::string InitiateBestiaryText = "Bestiary";
 
 	std::vector<int> MenuRenderYCoords{ 5, 11, 17 };
 
@@ -56,6 +58,8 @@ public:
 	void StartCombatMenu(Renderer CombatMenuRender);
 
 	void InitiateCombatMenu(Renderer InitiateCombatMenuRenderer);
+
+	void InitiateBestiaryMenu(Renderer InitiateRendererMenu);
 
 	~Menus();
 

@@ -20,6 +20,8 @@ void BaseGameMode::MainMenuMode()
 
 	Node* Player2Board = new Node();
 
+	Node* Bestiary = new Node();
+
 	LLNodeOperations PerformOperationsObject;
 
 	CombatLoop PerformCombatObject;
@@ -29,6 +31,8 @@ void BaseGameMode::MainMenuMode()
 	//Player1CardCatalog = PerformOperationsObject.TakeInputFromVector(CardHealth, CardAttack, CardName);
 
 	Player2Board = PerformOperationsObject.TakeInputFromVector(P2CardHealth, P2CardAttack, P2CardName);
+
+	Bestiary = PerformOperationsObject.SetupBestiary();
 
 	while (true)
 	{
@@ -61,17 +65,12 @@ void BaseGameMode::MainMenuMode()
 			{
 				//View Cards Menu
 			}
-			else
+			else if (SelctionToBePassed == 2)
 			{
-				//Bestiary Menu
+				//Bestiary
+				BestiaryMenu(PerformOperationsObject, Bestiary, RenderingObjects);
 			}
-
-
-
-			
-
 		}
-
 	}
 }
 
@@ -151,6 +150,27 @@ void BaseGameMode::InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LL
 		}
 
 	}
+}
+
+void BaseGameMode::BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary, Renderer BestiaryRender)
+{
+	while (true)
+	{
+
+		Renderer BestiaryRender2;
+
+		Menus BestiaryMenuItem;
+		BestiaryMenuItem.InitiateBestiaryMenu(BestiaryRender2);
+
+		BestiaryHandler.PrintBestiary(Bestiary, BestiaryRender2);
+
+		if (IsVirtualKeyPressed(0x33)) // 3 key
+		{
+			break;
+		}
+
+	}
+	
 }
 
 BaseGameMode::~BaseGameMode()

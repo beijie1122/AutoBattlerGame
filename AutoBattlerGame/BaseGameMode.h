@@ -5,6 +5,7 @@
 #include "Renderer.h"
 #include "CombatLoop.h"
 #include "FStreamExtractor.h"
+#include "LLNodeOperations.h"
 
 class BaseGameMode
 {
@@ -52,6 +53,8 @@ public:
 	void StartCombatMenu(Node* Player1Board, Node* Player2Board, bool &IsCombatFinished);
 
 	void InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LLNodeOperations NodeOperations, CombatLoop CombatObject, bool &IsCombatFinished);
+
+	void BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary, Renderer BestiaryRender);
 
 	~BaseGameMode();
 

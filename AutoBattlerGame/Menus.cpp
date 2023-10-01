@@ -102,6 +102,11 @@ void Menus::InitiateCombatMenu(Renderer InitiateCombatMenuRenderer)
 	InitiateCombatMenuRenderer.DrawStringValue(InitiateCombatText, { MenuRenderXCoord, MenuRenderYCoords.at(2) + 10 });
 }
 
+void Menus::InitiateBestiaryMenu(Renderer InitiateRendererMenu)
+{
+	InitiateRendererMenu.DrawStringValue(InitiateBestiaryText, { 5, 2 });
+}
+
 
 
 void Menus::Player2WinsMenu()

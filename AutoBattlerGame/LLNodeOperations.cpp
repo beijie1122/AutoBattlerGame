@@ -16,8 +16,6 @@ Node* LLNodeOperations::TakeInputFromVector(std::vector<int> HPVec, std::vector<
 	{
 		Node* n = new Node(HPVec.at(i), ATTVec.at(i), NameVec.at(i));
 
-		//std::cout << n->Name << n->Health << n->Attack << "\n";
-
 		if (head == NULL)
 		{
 			head = n;
@@ -37,6 +35,32 @@ Node* LLNodeOperations::TakeInputFromVector(std::vector<int> HPVec, std::vector<
 
 }
 
+Node* LLNodeOperations::SetupBestiary()
+{
+	Node* head = NULL;
+	Node* tail = NULL;
+
+	for (size_t i = 0; i < 16; i++)
+	{
+		Node* n = new Node(BestiaryBaseHP, BestiaryBaseATT, BestiaryBaseName);
+
+		if (head == NULL)
+		{
+			head = n;
+			tail = n; 
+			n->prev = NULL;
+		}
+		else
+		{
+			n->prev = tail;
+			tail->next = n;
+			tail = n;
+		}
+	}
+	
+	return head;
+}
+
 void LLNodeOperations::print(Node* head, Renderer& RenderQuad, std::vector<int> XCOORDVec, int YCOORD)
 {
 	Node* temp = head;
@@ -49,6 +73,44 @@ void LLNodeOperations::print(Node* head, Renderer& RenderQuad, std::vector<int> 
 			temp = temp->next; 
 		}
 	}
+}
+
+//ERROR - Vector subscript is out of memory range
+void LLNodeOperations::PrintBestiary(Node* head, Renderer& RenderBestiary)
+{
+	Node* temp = head;
+
+	int YCOORDLocation = 0;
+
+	int XCOORDLocation = 0;
+
+
+	for (size_t i = 0; i < 15; i++)
+	{
+		temp->RenderNode(RenderBestiary, BestiaryXCOORD.at(XCOORDLocation), BestiaryYCOORD.at(YCOORDLocation));
+		temp = temp->next;
+		XCOORDLocation++;
+			
+		
+		if (XCOORDLocation == 5)
+		{
+			XCOORDLocation = 0;
+			YCOORDLocation++;
+		
+			if (YCOORDLocation == 3)
+			{
+				YCOORDLocation = 0;
+				i = 0;
+				temp = head;
+			}
+		}
+		
+	}
+	//XCOORDLocation = 0;
+	//temp = head;
+
+
+
 }
 
 void LLNodeOperations::SortLL(Node** headRef)

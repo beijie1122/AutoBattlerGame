@@ -10,9 +10,21 @@ class LLNodeOperations
 {
 public:
 
+	std::vector<int> BestiaryXCOORD{ 5, 12, 19, 26, 33 };
+
+	std::vector<int> BestiaryYCOORD{7, 14, 21};
+
+	int BestiaryBaseHP;
+
+	int BestiaryBaseATT;
+
+	std::string BestiaryBaseName;
+
 	LLNodeOperations();
 
 	Node* TakeInputFromVector(std::vector<int> HPVec, std::vector<int> ATTVec, std::vector<std::string> NameVec);
+
+	Node* SetupBestiary();
 
 	void print(Node* head, Renderer &RenderQuad, std::vector<int> XCOORDVec, int YCOORD);
 
@@ -23,6 +35,8 @@ public:
 	void FrontBackSplit(Node* Source, Node** FrontRef, Node** BackRef);
 
 	Node* CopyDataValueofLinkedList(Node* Source);
+
+	void PrintBestiary(Node* head, Renderer& RenderBestiary);
 
 
 	~LLNodeOperations();
