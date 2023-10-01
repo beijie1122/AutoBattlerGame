@@ -92,6 +92,7 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 			Menus CombatMenu;
 
 			CombatMenu.StartCombatMenu(RenderStartBattle);
+			CombatMenu.CombatMenuFirstAndLastPreview(RenderStartBattle, XCoordVec, YCoord);
 
 			PerformOperationsObject.print(P1Copy, RenderStartBattle, XCoordVec, YCoord);
 
@@ -121,13 +122,14 @@ void BaseGameMode::InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LL
 			Menus InitiateCombatMenu;
 
 			InitiateCombatMenu.InitiateCombatMenu(RenderThiscombat);
+			InitiateCombatMenu.CombatInitiatedMenu(RenderThiscombat, XCoordVec, P2XCoordVec, YCoord, TargetingP1VecLocation, TargetingP2VecLocation);
 
 			NodeOperations.print(Player1Board, RenderThiscombat, XCoordVec, YCoord);
 			NodeOperations.print(Player2Board, RenderThiscombat, P2XCoordVec, YCoord);
 
 			if (IsVirtualKeyPressed(0x34)) //4 Key
 			{
-				CombatObject.BasicCombatSetup(Player1Board, Player2Board, IsCombatSetup, RenderThiscombat, IsCombatFinished);
+				CombatObject.BasicCombatSetup(Player1Board, Player2Board, IsCombatSetup, RenderThiscombat, IsCombatFinished, TargetingP1VecLocation, TargetingP2VecLocation);
 			}
 		}
 		else
@@ -144,6 +146,8 @@ void BaseGameMode::InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LL
 				//	return;
 				//}
 			//}
+			TargetingP1VecLocation = 3;
+			TargetingP2VecLocation = 0;
 			IsCombatSetup = false;
 			//IsCombatFinished = false;
 			return;
@@ -161,6 +165,7 @@ void BaseGameMode::BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary
 
 		Menus BestiaryMenuItem;
 		BestiaryMenuItem.InitiateBestiaryMenu(BestiaryRender2);
+		BestiaryMenuItem.PrintBestiarySelection(BestiaryRender2);
 
 		BestiaryHandler.PrintBestiary(Bestiary, BestiaryRender2);
 

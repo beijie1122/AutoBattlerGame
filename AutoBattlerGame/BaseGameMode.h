@@ -27,9 +27,13 @@ public:
 	std::vector<int> FStreamCardATTVec{};
 	std::vector<std::string> FStreamCardNameVec{};
 
-	std::vector<int> XCoordVec{ 5, 12, 19, 26 };
+	std::vector<int> XCoordVec{ 5, 14, 23, 31 };
 
-	std::vector<int> P2XCoordVec{ 50, 57, 64, 71 };
+	std::vector<int> P2XCoordVec{ 50, 59, 68, 77 };
+
+	int TargetingP1VecLocation = 3;
+
+	int TargetingP2VecLocation = 0;
 
 	//Node* P1Copy = new Node();
 

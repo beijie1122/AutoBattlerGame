@@ -4,6 +4,7 @@ Menus::Menus()
 {
 	this->PopulateBigButton();
 	this->PopulateChoiceOutlineBox();
+	this->PopulateCardChoiceOutlineBox();
 }
 
 void Menus::MainGameMenu(Renderer MenuRender, int SelectionVariable) //Think about optimization via loops 
@@ -65,6 +66,7 @@ void Menus::PopulateChoiceOutlineBox()
 	}
 
 	//Fill in for borders
+	//Consider making this into a function to pass the 2D vector, verticle and horizontal measurements, used twice 
 	ChoiceOutlineLayout[0][0] = 201;
 	ChoiceOutlineLayout[0][1] = 205;
 	ChoiceOutlineLayout[1][0] = 186;
@@ -80,6 +82,35 @@ void Menus::PopulateChoiceOutlineBox()
 	ChoiceOutlineLayout[ChoiceOutlineVerticleMeasure - 1][ChoiceOutlineHorizontalMeasure - 1] = 188;
 	ChoiceOutlineLayout[ChoiceOutlineVerticleMeasure - 2][ChoiceOutlineHorizontalMeasure - 1] = 186;
 	ChoiceOutlineLayout[ChoiceOutlineVerticleMeasure - 1][ChoiceOutlineHorizontalMeasure - 2] = 205;
+
+}
+
+void Menus::PopulateCardChoiceOutlineBox()
+{
+	for (size_t i = 0; i < CardChoiceOutlineVerticleMeasure; i++)
+	{
+		for (size_t j = 0; j < CardChoiceOutlineHorizontalMeasure; j++)
+		{
+			CardChoiceOutlineLayout[i][j] = ' ';
+		}
+	}
+
+	//Consider making this into a function to pass the 2D vector, verticle and horizontal measurements, used twice 
+	CardChoiceOutlineLayout[0][0] = 201;
+	CardChoiceOutlineLayout[0][1] = 205;
+	CardChoiceOutlineLayout[1][0] = 186;
+
+	CardChoiceOutlineLayout[CardChoiceOutlineVerticleMeasure - 1][0] = 200;
+	CardChoiceOutlineLayout[CardChoiceOutlineVerticleMeasure - 2][0] = 186;
+	CardChoiceOutlineLayout[CardChoiceOutlineVerticleMeasure - 1][1] = 205;
+
+	CardChoiceOutlineLayout[0][CardChoiceOutlineHorizontalMeasure - 1] = 187;
+	CardChoiceOutlineLayout[0][CardChoiceOutlineHorizontalMeasure - 2] = 205;
+	CardChoiceOutlineLayout[1][CardChoiceOutlineHorizontalMeasure - 1] = 186;
+
+	CardChoiceOutlineLayout[CardChoiceOutlineVerticleMeasure - 1][CardChoiceOutlineHorizontalMeasure - 1] = 188;
+	CardChoiceOutlineLayout[CardChoiceOutlineVerticleMeasure - 2][CardChoiceOutlineHorizontalMeasure - 1] = 186;
+	CardChoiceOutlineLayout[CardChoiceOutlineVerticleMeasure - 1][CardChoiceOutlineHorizontalMeasure - 2] = 205;
 
 }
 
@@ -105,6 +136,50 @@ void Menus::InitiateCombatMenu(Renderer InitiateCombatMenuRenderer)
 void Menus::InitiateBestiaryMenu(Renderer InitiateRendererMenu)
 {
 	InitiateRendererMenu.DrawStringValue(InitiateBestiaryText, { 5, 2 });
+}
+
+void Menus::PrintBestiarySelection(Renderer PrintBestiarySelection)
+{
+	PrintBestiarySelection.DrawCardVector(CardChoiceOutlineLayout, { 4, 6, }, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
+}
+
+void Menus::GenerateVectorForBestiaryCoords(std::vector<int> XCOORDS, std::vector<int> YCOORDS)
+{
+	for (size_t i = 0; i < XCOORDS.size(); i++)
+	{
+		BestiaryXCOORDSVec.at(i) = XCOORDS.at(i) - 2;
+	}
+	for (size_t i = 0; i < YCOORDS.size(); i++)
+	{
+		BestiaryYCOORDSVec.at(i) = YCOORDS.at(i) - 1;
+	}
+
+}
+
+void Menus::CombatMenuFirstAndLastPreview(Renderer MenuRender, std::vector<int> XCOORDS, int YCOORDS)
+{
+	MenuRender.DrawStringValue(PreCombatMenuText, { 1, 1 });
+
+	//Renders the first box with the "Front" text
+	MenuRender.DrawCardVector(CardChoiceOutlineLayout, { XCOORDS.at(3) - 1, YCOORDS - 1 }, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
+	MenuRender.DrawStringValue(CombatMenuFrontText, { XCOORDS.at(3) - 1, YCOORDS + 7 });
+
+	MenuRender.DrawCardVector(CardChoiceOutlineLayout, { XCOORDS.at(0) - 1, YCOORDS - 1 }, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
+	MenuRender.DrawStringValue(CombatMenuBackText, { XCOORDS.at(0) - 1, YCOORDS + 7 });
+
+}
+
+void Menus::CombatInitiatedMenu(Renderer MenuRender, std::vector<int> P1XCOORDS, std::vector<int> P2XCOORDS, int YCOORDS, int P1TargetVecLocation, int P2TargetVecLocation)
+{
+	MenuRender.DrawStringValue(CombatInitializedText, { 1, 1 });
+
+	//Draws P1 Card Target
+	MenuRender.DrawCardVector(CardChoiceOutlineLayout, { P1XCOORDS.at(P1TargetVecLocation) - 1, YCOORDS - 1 }, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
+	MenuRender.DrawStringValue(CombatMenuTargetText, { P1XCOORDS.at(P1TargetVecLocation) - 1, YCOORDS + 7 });
+
+	MenuRender.DrawCardVector(CardChoiceOutlineLayout, { P2XCOORDS.at(P2TargetVecLocation) - 1, YCOORDS - 1 }, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
+	MenuRender.DrawStringValue(CombatMenuTargetText, { P2XCOORDS.at(P2TargetVecLocation) - 1, YCOORDS + 7 });
+
 }
 
 

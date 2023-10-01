@@ -20,9 +20,9 @@ public:
 
 	CombatLoop();
 
-	void BasicLoop(Node* Player1, Node* Player2, Renderer RenderAttack, bool &IsCombatFinished);
+	void BasicLoop(Node* Player1, Node* Player2, Renderer RenderAttack, bool &IsCombatFinished, int &P1TargetVar, int & P2TargetVar);
 
-	void BasicCombatSetup(Node* Player1, Node* Player2, bool& IsCombatSetup, Renderer RenderAttack, bool& IsCombatFinished);
+	void BasicCombatSetup(Node* Player1, Node* Player2, bool& IsCombatSetup, Renderer RenderAttack, bool& IsCombatFinished, int& P1TargetVar, int& P2TargetVar);
 
 	void WinOrLoseState();
 

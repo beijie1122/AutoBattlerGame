@@ -10,7 +10,7 @@ class LLNodeOperations
 {
 public:
 
-	std::vector<int> BestiaryXCOORD{ 5, 12, 19, 26, 33 };
+	std::vector<int> BestiaryXCOORD{ 5, 14, 23, 31, 40 };
 
 	std::vector<int> BestiaryYCOORD{7, 14, 21};
 
