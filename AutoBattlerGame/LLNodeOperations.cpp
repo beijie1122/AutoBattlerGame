@@ -186,3 +186,36 @@ LLNodeOperations::~LLNodeOperations()
 {
 
 }
+
+
+void LLNodeOperations::PrintPlayerCatalog(Node* head,Node* PlayerDeck, Renderer& RenderCatalog)
+{
+	Node* temp = head;
+
+	int YCOORDLocation = 0;
+
+	int XCOORDLocation = 0;
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		temp->RenderNode(RenderCatalog, BestiaryXCOORD.at(XCOORDLocation), BestiaryYCOORD.at(YCOORDLocation));
+		temp = temp->next;
+		XCOORDLocation++;
+
+
+		if (XCOORDLocation == 5)
+		{
+			XCOORDLocation = 0;
+			YCOORDLocation++;
+
+			if (YCOORDLocation == 3)
+			{
+				YCOORDLocation = 0;
+				i = 0;
+				temp = head;
+			}
+		}
+
+	}
+}
+

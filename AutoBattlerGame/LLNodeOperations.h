@@ -38,6 +38,8 @@ public:
 
 	void PrintBestiary(Node* head, Renderer& RenderBestiary);
 
+	void PrintPlayerCatalog(Node* head, Node* PlayerDeck, Renderer& RenderCatalog);
+
 
 	~LLNodeOperations();
 };

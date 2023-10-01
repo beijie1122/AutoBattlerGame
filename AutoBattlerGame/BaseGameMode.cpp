@@ -22,6 +22,8 @@ void BaseGameMode::MainMenuMode()
 
 	Node* Bestiary = new Node();
 
+	Node* PlayerCatalog = new Node();
+
 	LLNodeOperations PerformOperationsObject;
 
 	CombatLoop PerformCombatObject;
@@ -29,6 +31,10 @@ void BaseGameMode::MainMenuMode()
 	Player1CardCatalog = PerformOperationsObject.TakeInputFromVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
 
 	//Player1CardCatalog = PerformOperationsObject.TakeInputFromVector(CardHealth, CardAttack, CardName);
+
+	PlayerCatalog = PerformOperationsObject.SetupBestiary();
+
+	PlayerCatalog = PerformOperationsObject.TakeInputFromVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
 
 	Player2Board = PerformOperationsObject.TakeInputFromVector(P2CardHealth, P2CardAttack, P2CardName);
 
@@ -63,7 +69,7 @@ void BaseGameMode::MainMenuMode()
 			}
 			else if (SelctionToBePassed == 1)
 			{
-				//View Cards Menu
+				PlayerCatalogAndDeckBuilderMenu(Player1CardCatalog, PlayerCatalog, PerformOperationsObject);
 			}
 			else if (SelctionToBePassed == 2)
 			{
@@ -176,6 +182,23 @@ void BaseGameMode::BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary
 
 	}
 	
+}
+
+void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(Node* PlayerCatalog, Node* PlayerDeck, LLNodeOperations CatalogHandler)
+{
+
+	while (true)
+	{
+		Renderer CatalogRenderer;
+		CatalogHandler.PrintPlayerCatalog(PlayerCatalog, PlayerDeck, CatalogRenderer);
+
+		if (IsVirtualKeyPressed(0x33)) // 3 key
+		{
+			break;
+		}
+
+	}
+
 }
 
 BaseGameMode::~BaseGameMode()

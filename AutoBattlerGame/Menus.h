@@ -28,7 +28,7 @@ public:
 
 	std::vector < std::vector<char>> CardChoiceOutlineLayout{ CardChoiceOutlineVerticleMeasure, std::vector<char>(CardChoiceOutlineHorizontalMeasure) };
 
-	std::vector<std::string> MenuButtonText = { "Start Battle", "View Owned Cards", "View Bestiary" };
+	std::vector<std::string> MenuButtonText = { "Battle", "Owned Cards & Build Deck", "Bestiary" };
 
 	std::vector<int> BestiaryXCOORDSVec{};
 
