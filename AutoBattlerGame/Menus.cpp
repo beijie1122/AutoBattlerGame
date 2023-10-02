@@ -182,6 +182,19 @@ void Menus::CombatInitiatedMenu(Renderer MenuRender, std::vector<int> P1XCOORDS,
 
 }
 
+void Menus::CardCatalogAndDeckBuilderMenu(Renderer CatalogRender)
+{
+	CatalogRender.DrawStringValue(CatalogMenuTextVec.at(0), { 1,1 });
+	CatalogRender.DrawStringValue(CatalogMenuTextVec.at(1), { 57, 1 });
+
+}
+
+void Menus::PlayerIsViewingCardCatalogMenu(Renderer CatalogRender, std::vector<int> CatalogXCOORDS, std::vector<int> CatalogYCOORDS, int TargetXCOORDVecLocation, int TARGETYCOORDVecLocation)
+{
+	CatalogRender.DrawCardVector(CardChoiceOutlineLayout, { CatalogXCOORDS.at(TargetXCOORDVecLocation) - 1, CatalogYCOORDS.at(TARGETYCOORDVecLocation) - 1 }, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
+
+}
+
 
 
 void Menus::Player2WinsMenu()

@@ -189,8 +189,34 @@ void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(Node* PlayerCatalog, Node* Pl
 
 	while (true)
 	{
+		Menus CatalogMenuItem;
 		Renderer CatalogRenderer;
-		CatalogHandler.PrintPlayerCatalog(PlayerCatalog, PlayerDeck, CatalogRenderer);
+
+
+
+		if (IsPlayerViewingCatalog == true)
+		{
+			//code for viewing catalog
+			CatalogMenuItem.PlayerIsViewingCardCatalogMenu(CatalogRenderer, CatalogHandler.BestiaryXCOORD, CatalogHandler.BestiaryYCOORD, CardCatalogXCOORDTargetVec.at(CardCatalogXCOORDTarget), CardCatalogYCOORDTargetVec.at(CardCatalogYCoordTarget));
+			CatalogMenuItem.CardCatalogAndDeckBuilderMenu(CatalogRenderer);
+			CatalogHandler.PrintPlayerCatalog(PlayerCatalog, PlayerDeck, CatalogRenderer);
+
+			if (IsVirtualKeyPressed(0x31))
+			{
+				CardCatalogXCOORDTarget++;
+			}
+
+		}
+		else if (IsPlayerViewingDeck == true)
+		{
+			//code for Viewing Deck
+		}
+		else if (IsPlayerReplacingACard == true)
+		{
+			//replace Card Logic
+		}
+
+
 
 		if (IsVirtualKeyPressed(0x33)) // 3 key
 		{

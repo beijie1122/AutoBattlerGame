@@ -14,9 +14,12 @@ public:
 
 	std::vector<int> BestiaryYCOORD{7, 14, 21};
 
+	
+	//Deck Builder Menu Player Deck Locations
 	std::vector<int> PlayerDeckXCOORD {57, 66, 75, 84};
 
 	int PlayerDeckYCOORD = 7;
+
 
 	int BestiaryBaseHP;
 

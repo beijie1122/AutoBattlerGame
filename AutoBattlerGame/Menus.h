@@ -57,6 +57,8 @@ public:
 
 	std::string CombatInitializedText = "Combat Started";
 
+	std::vector<std::string> CatalogMenuTextVec{ "Your Card Collection", "Your Current Deck" };
+
 	std::vector<int> MenuRenderYCoords{ 5, 11, 17 };
 
 	std::vector<int> TESTXCoordVec{ 5, 12, 19, 26 };
@@ -90,6 +92,10 @@ public:
 	void CombatMenuFirstAndLastPreview(Renderer MenuRender, std::vector<int> XCOORDS, int YCOORDS);
 
 	void CombatInitiatedMenu(Renderer MenuRender, std::vector<int> P1XCOORDS, std::vector<int> P2XCOORDS, int YCOORDS, int P1TargetVecLocation, int P2TargetVecLocation);
+
+	void CardCatalogAndDeckBuilderMenu(Renderer CatalogRender);
+
+	void PlayerIsViewingCardCatalogMenu(Renderer CatalogRender, std::vector<int> CatalogXCOORDS, std::vector<int> CatalogYCOORDS, int TargetXCOORDVecLocation, int TARGETYCOORDVecLocation);
 
 	~Menus();
 

@@ -35,6 +35,10 @@ public:
 
 	int TargetingP2VecLocation = 0;
 
+	int PlayerCatalogMenuSelectedCard = 0;
+
+	int PlayerDeckSelectedCard = 0;
+
 	//Node* P1Copy = new Node();
 
 	//Node* P2Copy = new Node();
@@ -48,6 +52,20 @@ public:
 	bool Player1Wins = false;
 
 	bool Player2Wins = false;
+
+	bool IsPlayerViewingCatalog = true;
+
+	bool IsPlayerViewingDeck = false;
+
+	bool IsPlayerReplacingACard = false;
+
+	std::vector<int> CardCatalogXCOORDTargetVec = { 0, 1, 2, 3, 4 };
+
+	std::vector<int> CardCatalogYCOORDTargetVec = { 0, 1 ,2 };
+
+	int CardCatalogXCOORDTarget = 0;
+
+	int CardCatalogYCoordTarget = 0;
 
 
 	BaseGameMode();
