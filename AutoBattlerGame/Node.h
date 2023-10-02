@@ -13,6 +13,7 @@ public:
 	
 	std::string Name;
 	char NameAbr;
+	bool IsCardBlank = true;
 
 	int HorizontalMeasure = 6;
 

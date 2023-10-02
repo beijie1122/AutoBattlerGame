@@ -40,7 +40,7 @@ Node* LLNodeOperations::SetupBestiary()
 	Node* head = NULL;
 	Node* tail = NULL;
 
-	for (size_t i = 0; i < 16; i++)
+	for (size_t i = 0; i < 15; i++)
 	{
 		Node* n = new Node(BestiaryBaseHP, BestiaryBaseATT, BestiaryBaseName);
 
@@ -187,16 +187,49 @@ LLNodeOperations::~LLNodeOperations()
 
 }
 
+Node* LLNodeOperations::SetupPlayerCardCatalog(Node* head, Node* PlayerDeck)
+{
+	int MoveHeadBackTimes = 0;
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		head->Attack = PlayerDeck->Attack;
+		head->Health = PlayerDeck->Health;
+		head->IsCardBlank = false;
+		PlayerDeck = PlayerDeck->next;
+		head = head->next;
+		MoveHeadBackTimes++;
+	}
+
+	for (size_t j = 0; j < MoveHeadBackTimes; j++)
+	{
+		head = head->prev;
+	}
+	
+	return head;
+}
+
+Node* LLNodeOperations::CreateBlankCard(Node* head)
+{
+	head->Health = 0;
+	head->Attack = 0;
+	head->Name = "Blank";
+
+	return head;
+}
+
 
 void LLNodeOperations::PrintPlayerCatalog(Node* head,Node* PlayerDeck, Renderer& RenderCatalog)
 {
 	Node* temp = head;
 
+	Node* PlayerDeckTemp = PlayerDeck;
+
 	int YCOORDLocation = 0;
 
 	int XCOORDLocation = 0;
 
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < 15; i++)
 	{
 		temp->RenderNode(RenderCatalog, BestiaryXCOORD.at(XCOORDLocation), BestiaryYCOORD.at(YCOORDLocation));
 		temp = temp->next;
@@ -217,5 +250,12 @@ void LLNodeOperations::PrintPlayerCatalog(Node* head,Node* PlayerDeck, Renderer&
 		}
 
 	}
+
+	for (size_t j = 0; j < 4; j++)
+	{
+		PlayerDeckTemp->RenderNode(RenderCatalog, PlayerDeckXCOORD.at(j), PlayerDeckYCOORD);
+		PlayerDeckTemp = PlayerDeckTemp->next;
+	}
+
 }
 

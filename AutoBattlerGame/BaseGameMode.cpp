@@ -22,7 +22,7 @@ void BaseGameMode::MainMenuMode()
 
 	Node* Bestiary = new Node();
 
-	Node* PlayerCatalog = new Node();
+	Node* PlayerOwnedCards = new Node();
 
 	LLNodeOperations PerformOperationsObject;
 
@@ -30,11 +30,11 @@ void BaseGameMode::MainMenuMode()
 
 	Player1CardCatalog = PerformOperationsObject.TakeInputFromVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
 
-	//Player1CardCatalog = PerformOperationsObject.TakeInputFromVector(CardHealth, CardAttack, CardName);
+	PlayerOwnedCards = PerformOperationsObject.SetupBestiary();
 
-	PlayerCatalog = PerformOperationsObject.SetupBestiary();
+	PlayerOwnedCards = PerformOperationsObject.SetupPlayerCardCatalog(PlayerOwnedCards, Player1CardCatalog);
 
-	PlayerCatalog = PerformOperationsObject.TakeInputFromVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
+	//PlayerOwnedCards = PerformOperationsObject.TakeInputFromVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
 
 	Player2Board = PerformOperationsObject.TakeInputFromVector(P2CardHealth, P2CardAttack, P2CardName);
 
@@ -69,7 +69,7 @@ void BaseGameMode::MainMenuMode()
 			}
 			else if (SelctionToBePassed == 1)
 			{
-				PlayerCatalogAndDeckBuilderMenu(Player1CardCatalog, PlayerCatalog, PerformOperationsObject);
+				PlayerCatalogAndDeckBuilderMenu(PlayerOwnedCards, Player1CardCatalog, PerformOperationsObject);
 			}
 			else if (SelctionToBePassed == 2)
 			{

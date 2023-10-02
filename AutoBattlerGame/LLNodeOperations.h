@@ -14,6 +14,10 @@ public:
 
 	std::vector<int> BestiaryYCOORD{7, 14, 21};
 
+	std::vector<int> PlayerDeckXCOORD {57, 66, 75, 84};
+
+	int PlayerDeckYCOORD = 7;
+
 	int BestiaryBaseHP;
 
 	int BestiaryBaseATT;
@@ -39,6 +43,10 @@ public:
 	void PrintBestiary(Node* head, Renderer& RenderBestiary);
 
 	void PrintPlayerCatalog(Node* head, Node* PlayerDeck, Renderer& RenderCatalog);
+
+	Node* SetupPlayerCardCatalog(Node* head, Node* PlayerDeck);
+
+	Node* CreateBlankCard(Node* head);
 
 
 	~LLNodeOperations();
