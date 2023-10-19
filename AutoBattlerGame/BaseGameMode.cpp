@@ -1,4 +1,6 @@
 #include "BaseGameMode.h"
+#include <Windows.h>
+#include <mmsystem.h>
 
 BaseGameMode::BaseGameMode()
 {
@@ -40,10 +42,15 @@ void BaseGameMode::MainMenuMode()
 
 	Bestiary = PerformOperationsObject.SetupBestiary();
 
+	
+
 	while (true)
 	{
-		Renderer RenderingObjects;
-		TestMenu.MainGameMenu(RenderingObjects, SelctionToBePassed);
+		//Renderer RenderingObjects;
+
+		Renderer* RenderingObjects = new Renderer();
+
+		TestMenu.MainGameMenu(*RenderingObjects, SelctionToBePassed);
 
 		if (IsVirtualKeyPressed(0x57))
 		{
@@ -51,17 +58,18 @@ void BaseGameMode::MainMenuMode()
 			{
 				SelctionToBePassed--;
 			}
+			PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 
 		}
-		if (IsVirtualKeyPressed(0x53))
+		else if (IsVirtualKeyPressed(0x53))
 		{
 			if (SelctionToBePassed < 2)
 			{
 				SelctionToBePassed++;
 			}
+			PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 		}
-
-		if (IsVirtualKeyPressed(0x32)) //2 Key
+		else if (IsVirtualKeyPressed(0x32)) //2 Key
 		{
 			if (SelctionToBePassed == 0)
 			{
@@ -74,9 +82,11 @@ void BaseGameMode::MainMenuMode()
 			else if (SelctionToBePassed == 2)
 			{
 				//Bestiary
-				BestiaryMenu(PerformOperationsObject, Bestiary, RenderingObjects);
+				BestiaryMenu(PerformOperationsObject, Bestiary, *RenderingObjects);
 			}
 		}
+
+		delete RenderingObjects;
 	}
 }
 
@@ -192,8 +202,6 @@ void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(Node* PlayerCatalog, Node* Pl
 		Menus CatalogMenuItem;
 		Renderer CatalogRenderer;
 
-
-
 		if (IsPlayerViewingCatalog == true)
 		{
 			//code for viewing catalog
@@ -203,7 +211,20 @@ void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(Node* PlayerCatalog, Node* Pl
 
 			if (IsVirtualKeyPressed(0x31))
 			{
-				CardCatalogXCOORDTarget++;
+				if (CardCatalogXCOORDTarget == 4)
+				{
+					CardCatalogYCoordTarget = 1;
+					CardCatalogXCOORDTarget = 0;
+				}
+				else
+				{
+					CardCatalogXCOORDTarget++;
+				}
+
+			}
+			else if (IsVirtualKeyPressed(0x32))
+			{
+				CardCatalogXCOORDTarget--;
 			}
 
 		}
