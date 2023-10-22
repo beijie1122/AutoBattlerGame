@@ -187,6 +187,8 @@ void BaseGameMode::BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary
 
 		if (IsVirtualKeyPressed(0x33)) // 3 key
 		{
+			//Make sound for Exit Noise 
+			PlaySound(TEXT("ExitNoise.wav"), NULL, SND_ASYNC);
 			break;
 		}
 
