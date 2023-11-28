@@ -23,7 +23,9 @@ void BaseGameMode::MainMenuMode()
 
 	MainMenu *TestMainMenu = new MainMenu();
 
-	Menus *TestCombatMenu = new Menus("CombatMenu");
+	PreCombatMenu* PreCombatTest = new PreCombatMenu();
+
+	//Menus *TestCombatMenu = new Menus("CombatMenu");
 
 	//MainMenu TestMM;
 
@@ -89,8 +91,7 @@ void BaseGameMode::MainMenuMode()
 		{
 			if (SelctionToBePassed == 0)
 			{
-				//FIX THIS!!!!!
-				MenuStack.push(TestCombatMenu);
+				MenuStack.push(PreCombatTest);
 				StartCombatMenu(Player1CardCatalog, Player2Board, IsCombatFinished);
 			}
 			else if (SelctionToBePassed == 1)
@@ -127,7 +128,6 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 
 			//CombatMenu.StartCombatMenu(RenderStartBattle);
 
-			//FIX THIS!!!!!
 			MenuStack.top()->PrintMenu(RenderStartBattle, SelctionToBePassed);
 
 			CombatMenu.CombatMenuFirstAndLastPreview(RenderStartBattle, XCoordVec, YCoord);

@@ -75,8 +75,6 @@ public:
 
 	Menus();
 
-	Menus(std::string MenuSetupInput);
-
 	void MainGameMenu(Renderer MenuRender, int SelectionVariable);
 
 	void PopulateBigButton();

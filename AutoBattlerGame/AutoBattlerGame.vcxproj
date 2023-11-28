@@ -147,6 +147,7 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Menus.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="PreCombatMenu.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
@@ -158,10 +159,15 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Menus.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="PreCombatMenu.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CardInfo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AutoBattlerGame.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

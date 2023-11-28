@@ -2,9 +2,7 @@
 
 MainMenu::MainMenu()
 {
-	this->PopulateBigButton();
-	this->PopulateChoiceOutlineBox();
-	this->PopulateCardChoiceOutlineBox();
+
 }
 
 void MainMenu::PrintMenu(Renderer MenuRender, int SelectionVariable)

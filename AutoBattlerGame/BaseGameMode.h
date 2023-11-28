@@ -8,6 +8,7 @@
 #include "LLNodeOperations.h"
 #include <stack>
 #include "MainMenu.h"
+#include "PreCombatMenu.h"
 
 class BaseGameMode
 {
