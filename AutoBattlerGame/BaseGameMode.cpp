@@ -16,7 +16,18 @@ bool IsVirtualKeyPressed(int VirtKey)
 
 void BaseGameMode::MainMenuMode()
 {
-	Menus TestMenu; // Consider making a ptr in Int Main and passing it 
+	//REIMPLEMENT IF THE STACK PUSHING FUNCTIONS DO NOT WORK
+	//Menus TestMenu; // Consider making a ptr in Int Main and passing it 
+
+	//STACK PUSHING FUNCTIONS
+	Menus TestMainMenu("MainMenu");
+
+	Menus TestCombatMenu("CombatMenu");
+
+	//MainMenu TestMM;
+
+	//STACK FOR MENUS
+	MenuStack.push(TestMainMenu);
 
 	Node* Player1CardCatalog = new Node();
 
@@ -50,7 +61,11 @@ void BaseGameMode::MainMenuMode()
 
 		Renderer* RenderingObjects = new Renderer();
 
-		TestMenu.MainGameMenu(*RenderingObjects, SelctionToBePassed);
+		//TestMenu.MainGameMenu(*RenderingObjects, SelctionToBePassed);
+
+		MenuStack.top().PrintMenu(*RenderingObjects, SelctionToBePassed);
+
+		//MenuStack.top().PrintMenu(*RenderingObjects, SelctionToBePassed);
 
 		if (IsVirtualKeyPressed(0x57))
 		{
@@ -73,6 +88,7 @@ void BaseGameMode::MainMenuMode()
 		{
 			if (SelctionToBePassed == 0)
 			{
+				MenuStack.push(TestCombatMenu);
 				StartCombatMenu(Player1CardCatalog, Player2Board, IsCombatFinished);
 			}
 			else if (SelctionToBePassed == 1)
@@ -107,7 +123,10 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 			Renderer RenderStartBattle;
 			Menus CombatMenu;
 
-			CombatMenu.StartCombatMenu(RenderStartBattle);
+			//CombatMenu.StartCombatMenu(RenderStartBattle);
+
+			MenuStack.top().PrintMenu(RenderStartBattle, SelctionToBePassed);
+
 			CombatMenu.CombatMenuFirstAndLastPreview(RenderStartBattle, XCoordVec, YCoord);
 
 			PerformOperationsObject.print(P1Copy, RenderStartBattle, XCoordVec, YCoord);
@@ -119,9 +138,11 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 		}
 		else
 		{
+			MenuStack.pop();
 			return;
 			delete P1Copy;
 			delete P2Copy;
+			
 		}
 	}
 }
@@ -243,6 +264,7 @@ void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(Node* PlayerCatalog, Node* Pl
 
 		if (IsVirtualKeyPressed(0x33)) // 3 key
 		{
+			PlaySound(TEXT("ExitNoise.wav"), NULL, SND_ASYNC);
 			break;
 		}
 

@@ -144,6 +144,7 @@
     <ClCompile Include="CombatLoop.cpp" />
     <ClCompile Include="FStreamExtractor.cpp" />
     <ClCompile Include="LLNodeOperations.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Menus.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="CombatLoop.h" />
     <ClInclude Include="FStreamExtractor.h" />
     <ClInclude Include="LLNodeOperations.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Menus.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Renderer.h" />

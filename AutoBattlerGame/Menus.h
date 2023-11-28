@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <Windows.h>
+#include "MainMenu.h"
 
 class Menus
 {
@@ -65,7 +66,16 @@ public:
 
 	int MenuRenderXCoord = 30;
 
+	//Setup for Printing Different Menus with the PrintMenu Function
+
+	bool IsMainMenu = false;
+
+	bool IsCombatMenu = false;
+
+
 	Menus();
+
+	Menus(std::string MenuSetupInput);
 
 	void MainGameMenu(Renderer MenuRender, int SelectionVariable);
 
@@ -96,6 +106,8 @@ public:
 	void CardCatalogAndDeckBuilderMenu(Renderer CatalogRender);
 
 	void PlayerIsViewingCardCatalogMenu(Renderer CatalogRender, std::vector<int> CatalogXCOORDS, std::vector<int> CatalogYCOORDS, int TargetXCOORDVecLocation, int TARGETYCOORDVecLocation);
+
+	virtual void PrintMenu(Renderer MenuRender, int SelectionVariable);
 
 	~Menus();
 

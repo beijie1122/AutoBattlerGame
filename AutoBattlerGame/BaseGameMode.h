@@ -6,6 +6,7 @@
 #include "CombatLoop.h"
 #include "FStreamExtractor.h"
 #include "LLNodeOperations.h"
+#include <stack>
 
 class BaseGameMode
 {
@@ -66,6 +67,10 @@ public:
 	int CardCatalogXCOORDTarget = 0;
 
 	int CardCatalogYCoordTarget = 0;
+
+	//UI-Related Elements 
+
+	std::stack<Menus> MenuStack;
 
 
 	BaseGameMode();
