@@ -7,6 +7,7 @@
 #include "FStreamExtractor.h"
 #include "LLNodeOperations.h"
 #include <stack>
+#include "MainMenu.h"
 
 class BaseGameMode
 {
@@ -70,7 +71,7 @@ public:
 
 	//UI-Related Elements 
 
-	std::stack<Menus> MenuStack;
+	std::stack<Menus*> MenuStack;
 
 
 	BaseGameMode();

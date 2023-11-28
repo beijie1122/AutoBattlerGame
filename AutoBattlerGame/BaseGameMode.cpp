@@ -20,9 +20,10 @@ void BaseGameMode::MainMenuMode()
 	//Menus TestMenu; // Consider making a ptr in Int Main and passing it 
 
 	//STACK PUSHING FUNCTIONS
-	Menus TestMainMenu("MainMenu");
 
-	Menus TestCombatMenu("CombatMenu");
+	MainMenu *TestMainMenu = new MainMenu();
+
+	Menus *TestCombatMenu = new Menus("CombatMenu");
 
 	//MainMenu TestMM;
 
@@ -63,7 +64,7 @@ void BaseGameMode::MainMenuMode()
 
 		//TestMenu.MainGameMenu(*RenderingObjects, SelctionToBePassed);
 
-		MenuStack.top().PrintMenu(*RenderingObjects, SelctionToBePassed);
+		MenuStack.top()->PrintMenu(*RenderingObjects, SelctionToBePassed);
 
 		//MenuStack.top().PrintMenu(*RenderingObjects, SelctionToBePassed);
 
@@ -88,6 +89,7 @@ void BaseGameMode::MainMenuMode()
 		{
 			if (SelctionToBePassed == 0)
 			{
+				//FIX THIS!!!!!
 				MenuStack.push(TestCombatMenu);
 				StartCombatMenu(Player1CardCatalog, Player2Board, IsCombatFinished);
 			}
@@ -125,7 +127,8 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 
 			//CombatMenu.StartCombatMenu(RenderStartBattle);
 
-			MenuStack.top().PrintMenu(RenderStartBattle, SelctionToBePassed);
+			//FIX THIS!!!!!
+			MenuStack.top()->PrintMenu(RenderStartBattle, SelctionToBePassed);
 
 			CombatMenu.CombatMenuFirstAndLastPreview(RenderStartBattle, XCoordVec, YCoord);
 

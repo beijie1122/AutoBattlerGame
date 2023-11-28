@@ -1,14 +1,15 @@
 #pragma once
 #include "Menus.h"
 
-class MainMenu 
+
+class MainMenu : public Menus
 
 {
 public:
 
     MainMenu();
 
-    void PrintMenu(Renderer RenderObject, int SelectionVariable);
+    void PrintMenu(Renderer MenuRender, int SelectionVariable);
 
     ~MainMenu();
 
