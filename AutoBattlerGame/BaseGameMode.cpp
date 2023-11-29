@@ -25,6 +25,8 @@ void BaseGameMode::MainMenuMode()
 
 	PreCombatMenu* PreCombatTest = new PreCombatMenu();
 
+	CombatDataHandler DataHandler;
+
 	//Menus *TestCombatMenu = new Menus("CombatMenu");
 
 	//MainMenu TestMM;
@@ -60,30 +62,25 @@ void BaseGameMode::MainMenuMode()
 
 	while (true)
 	{
-		//Renderer RenderingObjects;
-
+		//Will be deleted
 		Renderer* RenderingObjects = new Renderer();
 
-		//TestMenu.MainGameMenu(*RenderingObjects, SelctionToBePassed);
-
-		MenuStack.top()->PrintMenu(*RenderingObjects, SelctionToBePassed);
-
-		//MenuStack.top().PrintMenu(*RenderingObjects, SelctionToBePassed);
+		MenuStack.top()->PrintMenu(DataHandler);
 
 		if (IsVirtualKeyPressed(0x57))
 		{
-			if (SelctionToBePassed != 0)
+			if (DataHandler.SelectionToBePassed != 0)
 			{
-				SelctionToBePassed--;
+				DataHandler.SelectionToBePassed--;
 			}
 			PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 
 		}
 		else if (IsVirtualKeyPressed(0x53))
 		{
-			if (SelctionToBePassed < 2)
+			if (DataHandler.SelectionToBePassed < 2)
 			{
-				SelctionToBePassed++;
+				DataHandler.SelectionToBePassed++;
 			}
 			PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 		}
@@ -92,7 +89,7 @@ void BaseGameMode::MainMenuMode()
 			if (SelctionToBePassed == 0)
 			{
 				MenuStack.push(PreCombatTest);
-				StartCombatMenu(Player1CardCatalog, Player2Board, IsCombatFinished);
+				StartCombatMenu(Player1CardCatalog, Player2Board, IsCombatFinished, DataHandler);
 			}
 			else if (SelctionToBePassed == 1)
 			{
@@ -109,7 +106,7 @@ void BaseGameMode::MainMenuMode()
 	}
 }
 
-void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool &IsCombatFinished)
+void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool &IsCombatFinished, CombatDataHandler& DataHandler)
 {
 	LLNodeOperations PerformOperationsObject;
 
@@ -124,13 +121,8 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 		if (IsCombatFinished == false)
 		{
 			Renderer RenderStartBattle;
-			Menus CombatMenu;
 
-			//CombatMenu.StartCombatMenu(RenderStartBattle);
-
-			MenuStack.top()->PrintMenu(RenderStartBattle, SelctionToBePassed);
-
-			CombatMenu.CombatMenuFirstAndLastPreview(RenderStartBattle, XCoordVec, YCoord);
+			MenuStack.top()->PrintMenu(DataHandler);
 
 			PerformOperationsObject.print(P1Copy, RenderStartBattle, XCoordVec, YCoord);
 

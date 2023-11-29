@@ -159,6 +159,7 @@ void Menus::GenerateVectorForBestiaryCoords(std::vector<int> XCOORDS, std::vecto
 
 void Menus::CombatMenuFirstAndLastPreview(Renderer MenuRender, std::vector<int> XCOORDS, int YCOORDS)
 {
+	//ARCHIEVED - MOVED TO PreCombatMenu SubClass
 	MenuRender.DrawStringValue(PreCombatMenuText, { 1, 1 });
 
 	//Renders the first box with the "Front" text
@@ -167,7 +168,7 @@ void Menus::CombatMenuFirstAndLastPreview(Renderer MenuRender, std::vector<int> 
 
 	MenuRender.DrawCardVector(CardChoiceOutlineLayout, { XCOORDS.at(0) - 1, YCOORDS - 1 }, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
 	MenuRender.DrawStringValue(CombatMenuBackText, { XCOORDS.at(0) - 1, YCOORDS + 7 });
-
+	//ARCHIEVED - MOVED TO PreCombatMenu SubClass
 }
 
 void Menus::CombatInitiatedMenu(Renderer MenuRender, std::vector<int> P1XCOORDS, std::vector<int> P2XCOORDS, int YCOORDS, int P1TargetVecLocation, int P2TargetVecLocation)
@@ -197,6 +198,11 @@ void Menus::PlayerIsViewingCardCatalogMenu(Renderer CatalogRender, std::vector<i
 }
 
 void Menus::PrintMenu(Renderer MenuRender, int SelectionVariable)
+{
+
+}
+
+void Menus::PrintMenu(CombatDataHandler& DataHandler)
 {
 
 }

@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <Windows.h>
+#include "CombatDataHandler.h"
 
 class Menus
 {
@@ -106,6 +107,8 @@ public:
 	void PlayerIsViewingCardCatalogMenu(Renderer CatalogRender, std::vector<int> CatalogXCOORDS, std::vector<int> CatalogYCOORDS, int TargetXCOORDVecLocation, int TARGETYCOORDVecLocation);
 
 	virtual void PrintMenu(Renderer MenuRender, int SelectionVariable);
+
+	virtual void PrintMenu(CombatDataHandler &DataHandler);
 
 	~Menus();
 

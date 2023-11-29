@@ -11,6 +11,8 @@ public:
 
     void PrintMenu(Renderer MenuRender, int SelectionVariable);
 
+    void PrintMenu(CombatDataHandler& DataHandler);
+
     ~MainMenu();
 
 };

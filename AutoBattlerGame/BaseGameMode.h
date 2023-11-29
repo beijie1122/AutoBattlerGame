@@ -9,6 +9,7 @@
 #include <stack>
 #include "MainMenu.h"
 #include "PreCombatMenu.h"
+#include "CombatDataHandler.h"
 
 class BaseGameMode
 {
@@ -30,6 +31,7 @@ public:
 	std::vector<int> FStreamCardATTVec{};
 	std::vector<std::string> FStreamCardNameVec{};
 
+	//Already migrated over to PreCombatMenu
 	std::vector<int> XCoordVec{ 5, 14, 23, 31 };
 
 	std::vector<int> P2XCoordVec{ 50, 59, 68, 77 };
@@ -79,7 +81,7 @@ public:
 
 	void MainMenuMode();
 
-	void StartCombatMenu(Node* Player1Board, Node* Player2Board, bool &IsCombatFinished);
+	void StartCombatMenu(Node* Player1Board, Node* Player2Board, bool &IsCombatFinished, CombatDataHandler &DataHandler);
 
 	void InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LLNodeOperations NodeOperations, CombatLoop CombatObject, bool &IsCombatFinished);
 
