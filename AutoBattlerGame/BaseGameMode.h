@@ -10,6 +10,9 @@
 #include "MainMenu.h"
 #include "PreCombatMenu.h"
 #include "CombatDataHandler.h"
+#include "CardHolder.h"
+#include "VanillaCards.h"
+#include "InitiateCombatMenu.h"
 
 class BaseGameMode
 {
@@ -83,7 +86,7 @@ public:
 
 	void StartCombatMenu(Node* Player1Board, Node* Player2Board, bool &IsCombatFinished, CombatDataHandler &DataHandler);
 
-	void InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LLNodeOperations NodeOperations, CombatLoop CombatObject, bool &IsCombatFinished);
+	void InitiateCombatMenu1(Node* Player1Board, Node* Player2Board, LLNodeOperations NodeOperations, CombatLoop CombatObject, bool &IsCombatFinished, CombatDataHandler& DataHandler);
 
 	void BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary, Renderer BestiaryRender);
 

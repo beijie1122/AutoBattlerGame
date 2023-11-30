@@ -16,10 +16,6 @@ bool IsVirtualKeyPressed(int VirtKey)
 
 void BaseGameMode::MainMenuMode()
 {
-	//REIMPLEMENT IF THE STACK PUSHING FUNCTIONS DO NOT WORK
-	//Menus TestMenu; // Consider making a ptr in Int Main and passing it 
-
-	//STACK PUSHING FUNCTIONS
 
 	MainMenu *TestMainMenu = new MainMenu();
 
@@ -27,12 +23,21 @@ void BaseGameMode::MainMenuMode()
 
 	CombatDataHandler DataHandler;
 
-	//Menus *TestCombatMenu = new Menus("CombatMenu");
-
-	//MainMenu TestMM;
-
 	//STACK FOR MENUS
 	MenuStack.push(TestMainMenu);
+
+	CardHolder P1Deck;
+
+	P1Deck.PopulateAllCardsVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
+
+	CardHolder P2Deck;
+
+	P2Deck.PopulateAllCardsVector(P2CardHealth, P2CardAttack, P2CardName);
+
+	DataHandler.P1Deck = P1Deck.Holder;
+
+	DataHandler.P2Deck = P2Deck.Holder;
+
 
 	Node* Player1CardCatalog = new Node();
 
@@ -86,16 +91,16 @@ void BaseGameMode::MainMenuMode()
 		}
 		else if (IsVirtualKeyPressed(0x32)) //2 Key
 		{
-			if (SelctionToBePassed == 0)
+			if (DataHandler.SelectionToBePassed == 0)
 			{
 				MenuStack.push(PreCombatTest);
 				StartCombatMenu(Player1CardCatalog, Player2Board, IsCombatFinished, DataHandler);
 			}
-			else if (SelctionToBePassed == 1)
+			else if (DataHandler.SelectionToBePassed == 1)
 			{
 				PlayerCatalogAndDeckBuilderMenu(PlayerOwnedCards, Player1CardCatalog, PerformOperationsObject);
 			}
-			else if (SelctionToBePassed == 2)
+			else if (DataHandler.SelectionToBePassed == 2)
 			{
 				//Bestiary
 				BestiaryMenu(PerformOperationsObject, Bestiary, *RenderingObjects);
@@ -114,21 +119,27 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 
 	Node* P1Copy = PerformOperationsObject.CopyDataValueofLinkedList(Player1Board);
 	Node* P2Copy = PerformOperationsObject.CopyDataValueofLinkedList(Player2Board);
+
 	IsCombatFinished = false;
 	
 	while (true)
 	{
 		if (IsCombatFinished == false)
 		{
+			//NOT SURE WHY DELETING THIS MESSES UP THE RENDERER
 			Renderer RenderStartBattle;
 
 			MenuStack.top()->PrintMenu(DataHandler);
 
-			PerformOperationsObject.print(P1Copy, RenderStartBattle, XCoordVec, YCoord);
+			//PerformOperationsObject.print(P1Copy, RenderStartBattle, XCoordVec, YCoord);
 
 			if (IsVirtualKeyPressed(0x33)) //3 key
 			{
-				InitiateCombatMenu(P1Copy, P2Copy, PerformOperationsObject, PerformCombatObject, IsCombatFinished);
+				InitiateCombatMenu* TestingThisCombatMenu = new InitiateCombatMenu();
+
+				MenuStack.push(TestingThisCombatMenu);
+
+				InitiateCombatMenu1(P1Copy, P2Copy, PerformOperationsObject, PerformCombatObject, IsCombatFinished, DataHandler);
 			}
 		}
 		else
@@ -142,7 +153,7 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 	}
 }
 
-void BaseGameMode::InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LLNodeOperations NodeOperations, CombatLoop CombatObject, bool &IsCombatFinished)
+void BaseGameMode::InitiateCombatMenu1(Node* Player1Board, Node* Player2Board, LLNodeOperations NodeOperations, CombatLoop CombatObject, bool &IsCombatFinished, CombatDataHandler& DataHandler)
 {
 
 	while (true)
@@ -151,13 +162,15 @@ void BaseGameMode::InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LL
 		{
 			Renderer RenderThiscombat;
 
-			Menus InitiateCombatMenu;
+			MenuStack.top()->PrintMenu(DataHandler);
 
-			InitiateCombatMenu.InitiateCombatMenu(RenderThiscombat);
-			InitiateCombatMenu.CombatInitiatedMenu(RenderThiscombat, XCoordVec, P2XCoordVec, YCoord, TargetingP1VecLocation, TargetingP2VecLocation);
+			//Menus InitiateCombatMenu;
 
-			NodeOperations.print(Player1Board, RenderThiscombat, XCoordVec, YCoord);
-			NodeOperations.print(Player2Board, RenderThiscombat, P2XCoordVec, YCoord);
+			//InitiateCombatMenu.InitiateCombatMenu(RenderThiscombat);
+			//InitiateCombatMenu.CombatInitiatedMenu(RenderThiscombat, XCoordVec, P2XCoordVec, YCoord, TargetingP1VecLocation, TargetingP2VecLocation);
+
+			//NodeOperations.print(Player1Board, RenderThiscombat, XCoordVec, YCoord);
+			//NodeOperations.print(Player2Board, RenderThiscombat, P2XCoordVec, YCoord);
 
 			if (IsVirtualKeyPressed(0x34)) //4 Key
 			{
@@ -178,9 +191,12 @@ void BaseGameMode::InitiateCombatMenu(Node* Player1Board, Node* Player2Board, LL
 				//	return;
 				//}
 			//}
+			
+			//ADJUST FOR THE HANDLER, NOT RAW VARS
 			TargetingP1VecLocation = 3;
 			TargetingP2VecLocation = 0;
 			IsCombatSetup = false;
+			MenuStack.pop();
 			//IsCombatFinished = false;
 			return;
 		}

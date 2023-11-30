@@ -51,6 +51,12 @@
     <ClCompile Include="InitiateCombatMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VanillaCards.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CardHolder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Node.h">
@@ -87,6 +93,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InitiateCombatMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VanillaCards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CardHolder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseGameMode.cpp" />
+    <ClCompile Include="CardHolder.cpp" />
     <ClCompile Include="CombatDataHandler.cpp" />
     <ClCompile Include="CombatLoop.cpp" />
     <ClCompile Include="FStreamExtractor.cpp" />
@@ -152,9 +153,11 @@
     <ClCompile Include="PreCombatMenu.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="VanillaCards.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseGameMode.h" />
+    <ClInclude Include="CardHolder.h" />
     <ClInclude Include="CombatDataHandler.h" />
     <ClInclude Include="CombatLoop.h" />
     <ClInclude Include="FStreamExtractor.h" />
@@ -166,6 +169,7 @@
     <ClInclude Include="PreCombatMenu.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="VanillaCards.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CardInfo.txt" />
