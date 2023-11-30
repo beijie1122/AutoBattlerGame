@@ -38,6 +38,8 @@ void BaseGameMode::MainMenuMode()
 
 	DataHandler.P2Deck = P2Deck.Holder;
 
+	DataHandler.EstablishStoredDecks();
+
 
 	Node* Player1CardCatalog = new Node();
 
@@ -124,7 +126,7 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 	
 	while (true)
 	{
-		if (IsCombatFinished == false)
+		if (DataHandler.IsCombatFinished == false)
 		{
 			//NOT SURE WHY DELETING THIS MESSES UP THE RENDERER
 			Renderer RenderStartBattle;
@@ -144,6 +146,11 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 		}
 		else
 		{
+			DataHandler.TargetingP1VecLocation = 3;
+			DataHandler.TargetingP2VecLocation = 0;
+			DataHandler.IsCombatFinished = false;
+			DataHandler.IsCombatSetup = false;
+			DataHandler.ResetDecks();
 			MenuStack.pop();
 			return;
 			delete P1Copy;
@@ -158,11 +165,13 @@ void BaseGameMode::InitiateCombatMenu1(Node* Player1Board, Node* Player2Board, L
 
 	while (true)
 	{
-		if (IsCombatFinished == false)
+		if (DataHandler.IsCombatFinished == false)
 		{
 			Renderer RenderThiscombat;
 
 			MenuStack.top()->PrintMenu(DataHandler);
+
+			CombatLoopUsingVector NewCombatLoop;
 
 			//Menus InitiateCombatMenu;
 
@@ -174,7 +183,8 @@ void BaseGameMode::InitiateCombatMenu1(Node* Player1Board, Node* Player2Board, L
 
 			if (IsVirtualKeyPressed(0x34)) //4 Key
 			{
-				CombatObject.BasicCombatSetup(Player1Board, Player2Board, IsCombatSetup, RenderThiscombat, IsCombatFinished, TargetingP1VecLocation, TargetingP2VecLocation);
+				NewCombatLoop.BasicCombatSetup(DataHandler);
+				//CombatObject.BasicCombatSetup(Player1Board, Player2Board, IsCombatSetup, RenderThiscombat, IsCombatFinished, TargetingP1VecLocation, TargetingP2VecLocation);
 			}
 		}
 		else
@@ -193,8 +203,7 @@ void BaseGameMode::InitiateCombatMenu1(Node* Player1Board, Node* Player2Board, L
 			//}
 			
 			//ADJUST FOR THE HANDLER, NOT RAW VARS
-			TargetingP1VecLocation = 3;
-			TargetingP2VecLocation = 0;
+
 			IsCombatSetup = false;
 			MenuStack.pop();
 			//IsCombatFinished = false;

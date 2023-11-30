@@ -13,6 +13,7 @@
 #include "CardHolder.h"
 #include "VanillaCards.h"
 #include "InitiateCombatMenu.h"
+#include "CombatLoopUsingVector.h"
 
 class BaseGameMode
 {

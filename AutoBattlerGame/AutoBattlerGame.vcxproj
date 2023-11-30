@@ -144,6 +144,7 @@
     <ClCompile Include="CardHolder.cpp" />
     <ClCompile Include="CombatDataHandler.cpp" />
     <ClCompile Include="CombatLoop.cpp" />
+    <ClCompile Include="CombatLoopUsingVector.cpp" />
     <ClCompile Include="FStreamExtractor.cpp" />
     <ClCompile Include="InitiateCombatMenu.cpp" />
     <ClCompile Include="LLNodeOperations.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="CardHolder.h" />
     <ClInclude Include="CombatDataHandler.h" />
     <ClInclude Include="CombatLoop.h" />
+    <ClInclude Include="CombatLoopUsingVector.h" />
     <ClInclude Include="FStreamExtractor.h" />
     <ClInclude Include="InitiateCombatMenu.h" />
     <ClInclude Include="LLNodeOperations.h" />

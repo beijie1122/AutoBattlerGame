@@ -6,6 +6,18 @@ CombatDataHandler::CombatDataHandler()
 	this->TargetingP2VecLocation = 0;
 }
 
+void CombatDataHandler::EstablishStoredDecks()
+{
+	P1StoredDeck = P1Deck;
+	P2StoredDeck = P2Deck;
+}
+
+void CombatDataHandler::ResetDecks()
+{
+	P1Deck = P1StoredDeck;
+	P2Deck = P2StoredDeck;
+}
+
 CombatDataHandler::~CombatDataHandler()
 {
 

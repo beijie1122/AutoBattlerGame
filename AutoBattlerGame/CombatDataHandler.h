@@ -17,6 +17,10 @@ public:
 
 	std::vector<VanillaCards> P2Deck;
 
+	std::vector<VanillaCards> P1StoredDeck;
+
+	std::vector<VanillaCards> P2StoredDeck;
+
 	int YCoord = 7;
 
 	int TargetingP1VecLocation = 3;
@@ -30,6 +34,10 @@ public:
 	bool IsCombatFinished = false;
 
 	CombatDataHandler();
+
+	void EstablishStoredDecks();
+
+	void ResetDecks();
 
 	~CombatDataHandler();
 
