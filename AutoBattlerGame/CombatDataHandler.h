@@ -39,6 +39,8 @@ public:
 
 	void ResetDecks();
 
+	void PostCombatValueReset();
+
 	~CombatDataHandler();
 
 };

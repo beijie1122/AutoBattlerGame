@@ -3,9 +3,7 @@
 #include "Node.h"
 #include "Menus.h"
 #include "Renderer.h"
-#include "CombatLoop.h"
 #include "FStreamExtractor.h"
-#include "LLNodeOperations.h"
 #include <stack>
 #include "MainMenu.h"
 #include "PreCombatMenu.h"
@@ -56,8 +54,6 @@ public:
 
 	bool IsCombatSetup = false;
 
-	bool IsCombatFinished = false;
-
 	bool Player1Wins = false;
 
 	bool Player2Wins = false;
@@ -85,9 +81,9 @@ public:
 
 	void MainMenuMode();
 
-	void StartCombatMenu(Node* Player1Board, Node* Player2Board, bool &IsCombatFinished, CombatDataHandler &DataHandler);
+	void StartCombatMenu(CombatDataHandler &DataHandler);
 
-	void InitiateCombatMenu1(Node* Player1Board, Node* Player2Board, LLNodeOperations NodeOperations, CombatLoop CombatObject, bool &IsCombatFinished, CombatDataHandler& DataHandler);
+	void InitiateCombatMenu1(CombatDataHandler& DataHandler);
 
 	void BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary, Renderer BestiaryRender);
 

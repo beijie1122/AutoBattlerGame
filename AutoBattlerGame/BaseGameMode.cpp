@@ -40,31 +40,6 @@ void BaseGameMode::MainMenuMode()
 
 	DataHandler.EstablishStoredDecks();
 
-
-	Node* Player1CardCatalog = new Node();
-
-	Node* Player2Board = new Node();
-
-	Node* Bestiary = new Node();
-
-	Node* PlayerOwnedCards = new Node();
-
-	LLNodeOperations PerformOperationsObject;
-
-	CombatLoop PerformCombatObject;
-
-	Player1CardCatalog = PerformOperationsObject.TakeInputFromVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
-
-	PlayerOwnedCards = PerformOperationsObject.SetupBestiary();
-
-	PlayerOwnedCards = PerformOperationsObject.SetupPlayerCardCatalog(PlayerOwnedCards, Player1CardCatalog);
-
-	//PlayerOwnedCards = PerformOperationsObject.TakeInputFromVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
-
-	Player2Board = PerformOperationsObject.TakeInputFromVector(P2CardHealth, P2CardAttack, P2CardName);
-
-	Bestiary = PerformOperationsObject.SetupBestiary();
-
 	
 
 	while (true)
@@ -96,16 +71,16 @@ void BaseGameMode::MainMenuMode()
 			if (DataHandler.SelectionToBePassed == 0)
 			{
 				MenuStack.push(PreCombatTest);
-				StartCombatMenu(Player1CardCatalog, Player2Board, IsCombatFinished, DataHandler);
+				StartCombatMenu(DataHandler);
 			}
 			else if (DataHandler.SelectionToBePassed == 1)
 			{
-				PlayerCatalogAndDeckBuilderMenu(PlayerOwnedCards, Player1CardCatalog, PerformOperationsObject);
+				//PlayerCatalogAndDeckBuilderMenu(PlayerOwnedCards, Player1CardCatalog, PerformOperationsObject);
 			}
 			else if (DataHandler.SelectionToBePassed == 2)
 			{
 				//Bestiary
-				BestiaryMenu(PerformOperationsObject, Bestiary, *RenderingObjects);
+				//BestiaryMenu(PerformOperationsObject, Bestiary, *RenderingObjects);
 			}
 		}
 
@@ -113,16 +88,8 @@ void BaseGameMode::MainMenuMode()
 	}
 }
 
-void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool &IsCombatFinished, CombatDataHandler& DataHandler)
+void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler)
 {
-	LLNodeOperations PerformOperationsObject;
-
-	CombatLoop PerformCombatObject;
-
-	Node* P1Copy = PerformOperationsObject.CopyDataValueofLinkedList(Player1Board);
-	Node* P2Copy = PerformOperationsObject.CopyDataValueofLinkedList(Player2Board);
-
-	IsCombatFinished = false;
 	
 	while (true)
 	{
@@ -133,34 +100,25 @@ void BaseGameMode::StartCombatMenu(Node* Player1Board, Node* Player2Board, bool 
 
 			MenuStack.top()->PrintMenu(DataHandler);
 
-			//PerformOperationsObject.print(P1Copy, RenderStartBattle, XCoordVec, YCoord);
-
 			if (IsVirtualKeyPressed(0x33)) //3 key
 			{
 				InitiateCombatMenu* TestingThisCombatMenu = new InitiateCombatMenu();
 
 				MenuStack.push(TestingThisCombatMenu);
 
-				InitiateCombatMenu1(P1Copy, P2Copy, PerformOperationsObject, PerformCombatObject, IsCombatFinished, DataHandler);
+				InitiateCombatMenu1(DataHandler);
 			}
 		}
 		else
 		{
-			DataHandler.TargetingP1VecLocation = 3;
-			DataHandler.TargetingP2VecLocation = 0;
-			DataHandler.IsCombatFinished = false;
-			DataHandler.IsCombatSetup = false;
-			DataHandler.ResetDecks();
+			DataHandler.PostCombatValueReset();
 			MenuStack.pop();
 			return;
-			delete P1Copy;
-			delete P2Copy;
-			
 		}
 	}
 }
 
-void BaseGameMode::InitiateCombatMenu1(Node* Player1Board, Node* Player2Board, LLNodeOperations NodeOperations, CombatLoop CombatObject, bool &IsCombatFinished, CombatDataHandler& DataHandler)
+void BaseGameMode::InitiateCombatMenu1(CombatDataHandler& DataHandler)
 {
 
 	while (true)
@@ -173,40 +131,14 @@ void BaseGameMode::InitiateCombatMenu1(Node* Player1Board, Node* Player2Board, L
 
 			CombatLoopUsingVector NewCombatLoop;
 
-			//Menus InitiateCombatMenu;
-
-			//InitiateCombatMenu.InitiateCombatMenu(RenderThiscombat);
-			//InitiateCombatMenu.CombatInitiatedMenu(RenderThiscombat, XCoordVec, P2XCoordVec, YCoord, TargetingP1VecLocation, TargetingP2VecLocation);
-
-			//NodeOperations.print(Player1Board, RenderThiscombat, XCoordVec, YCoord);
-			//NodeOperations.print(Player2Board, RenderThiscombat, P2XCoordVec, YCoord);
-
 			if (IsVirtualKeyPressed(0x34)) //4 Key
 			{
 				NewCombatLoop.BasicCombatSetup(DataHandler);
-				//CombatObject.BasicCombatSetup(Player1Board, Player2Board, IsCombatSetup, RenderThiscombat, IsCombatFinished, TargetingP1VecLocation, TargetingP2VecLocation);
 			}
 		}
 		else
 		{
-
-			//while (true)
-			//{
-
-				//CombatObject.WinOrLoseState();
-				//if (IsVirtualKeyPressed(VK_NUMPAD4))
-				//{
-				//	IsCombatSetup = false;
-				//	IsCombatFinished = false;
-				//	return;
-				//}
-			//}
-			
-			//ADJUST FOR THE HANDLER, NOT RAW VARS
-
-			IsCombatSetup = false;
 			MenuStack.pop();
-			//IsCombatFinished = false;
 			return;
 		}
 

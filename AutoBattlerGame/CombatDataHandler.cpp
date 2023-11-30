@@ -18,6 +18,15 @@ void CombatDataHandler::ResetDecks()
 	P2Deck = P2StoredDeck;
 }
 
+void CombatDataHandler::PostCombatValueReset()
+{
+	ResetDecks();
+	this->TargetingP1VecLocation = 3;
+	this->TargetingP2VecLocation = 0;
+	this->IsCombatFinished = false;
+	this->IsCombatSetup = false;
+}
+
 CombatDataHandler::~CombatDataHandler()
 {
 
