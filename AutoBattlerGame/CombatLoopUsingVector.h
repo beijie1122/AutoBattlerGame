@@ -21,6 +21,8 @@ public:
 
 	void BasicCombatSetup(CombatDataHandler &DataHandler);
 
+	void CheckIfHealthIsLessThanZero(CombatDataHandler& DataHandler);
+
 	~CombatLoopUsingVector();
 
 };

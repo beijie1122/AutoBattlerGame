@@ -46,10 +46,6 @@ public:
 
 	int PlayerDeckSelectedCard = 0;
 
-	//Node* P1Copy = new Node();
-
-	//Node* P2Copy = new Node();
-
 	int YCoord = 7;
 
 	bool IsCombatSetup = false;

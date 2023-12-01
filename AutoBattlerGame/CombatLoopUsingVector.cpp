@@ -33,10 +33,26 @@ void CombatLoopUsingVector::BasicCombatSetup(CombatDataHandler &DataHandler)
 
 }
 
+void CombatLoopUsingVector::CheckIfHealthIsLessThanZero(CombatDataHandler& DataHandler)
+{
+	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation).Health < 0)
+	{
+		DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation).Health = 0;
+	}
+
+	if (DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation).Health < 0)
+	{
+		DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation).Health = 0;
+	}
+}
+
 void CombatLoopUsingVector::BasicLoop(CombatDataHandler &DataHandler)
 {
 	DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation).Health = DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation).Health - DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation).Attack;
 	DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation).Health = DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation).Health - DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation).Attack;
+	
+	//If new cards are added, this can be turned off to check if values are subtracting correctly
+	CheckIfHealthIsLessThanZero(DataHandler);
 
 	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation).Health <= 0 && DataHandler.TargetingP1VecLocation == 0)
 	{

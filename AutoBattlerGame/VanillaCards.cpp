@@ -23,13 +23,13 @@ void VanillaCards::RenderNode(Renderer& RenderQuad, int XCOORD, int YCOORD)
 
 void VanillaCards::RenderHealth(Renderer& RenderQuad, int XCOORD, int YCOORD)
 {
-	RenderQuad.DrawCardIntValue(Health, { XCOORD, YCOORD });
+	RenderQuad.DrawCardIntValue(Health, { XCOORD, YCOORD + 1});
 }
 
 void VanillaCards::RenderAttack(Renderer& RenderQuad, int XCOORD, int YCOORD)
 {
 	XCOORD = XCOORD + HorizontalMeasure - 1;
-	RenderQuad.DrawCardIntValue(Attack, { XCOORD, YCOORD });
+	RenderQuad.DrawCardIntValue(Attack, { XCOORD, YCOORD + 1 });
 }
 
 void VanillaCards::SetupCardLayout()
@@ -54,6 +54,8 @@ void VanillaCards::SetupCardLayout()
 	CardLayout[VerticleMeasure - 1][0] = 200;
 	//CardLayout[6][0] = NameAbr;
 	CardLayout[VerticleMeasure - 1][HorizontalMeasure - 1] = 188;
+	CardLayout[0][0] = 'H';
+	CardLayout[0][HorizontalMeasure - 1] = 'A';
 }
 
 VanillaCards::~VanillaCards()
