@@ -26,9 +26,13 @@ void BaseGameMode::MainMenuMode()
 	//STACK FOR MENUS
 	MenuStack.push(TestMainMenu);
 
+	CardHolder AllCardsContainer;
+
 	CardHolder P1Deck;
 
-	P1Deck.PopulateAllCardsVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
+	AllCardsContainer.PopulateAllCardsVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
+
+	P1Deck.PopulatePlayer1BaseDeck(AllCardsContainer);
 
 	CardHolder P2Deck;
 
