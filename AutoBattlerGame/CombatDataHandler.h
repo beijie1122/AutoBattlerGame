@@ -33,7 +33,13 @@ public:
 
 	bool IsCombatFinished = false;
 
+	bool Player1Wins = false;
+
+	bool Player2Wins = false;
+
 	CombatDataHandler();
+
+	void GenerateNewP2Deck(CardHolder AllCards);
 
 	void EstablishStoredDecks();
 

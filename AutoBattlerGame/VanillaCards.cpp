@@ -10,7 +10,10 @@ VanillaCards::VanillaCards(int HP, int ATT, std::string NM)
 	this->Health = HP;
 	this->Attack = ATT;
 	this->Name = NM;
-	this->NameAbr = NM[0];
+	this->NameAbrFirstLetter = NM[0];
+	this->NameAbrSecondLetter = NM[1];
+	this->NameAbrThirdLetter = NM[2];
+	this->NameAbrFourthLetter = NM[4];
 	SetupCardLayout();
 }
 
@@ -56,6 +59,10 @@ void VanillaCards::SetupCardLayout()
 	CardLayout[VerticleMeasure - 1][HorizontalMeasure - 1] = 188;
 	CardLayout[0][0] = 'H';
 	CardLayout[0][HorizontalMeasure - 1] = 'A';
+	CardLayout[3][1] = NameAbrFirstLetter;
+	CardLayout[3][2] = NameAbrSecondLetter;
+	CardLayout[3][3] = NameAbrThirdLetter;
+	CardLayout[3][4] = NameAbrFourthLetter;
 }
 
 VanillaCards::~VanillaCards()

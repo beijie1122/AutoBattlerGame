@@ -151,6 +151,8 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Menus.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Player1WinsMenu.cpp" />
+    <ClCompile Include="Player2WinsMenu.cpp" />
     <ClCompile Include="PreCombatMenu.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -168,6 +170,8 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Menus.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Player1WinsMenu.h" />
+    <ClInclude Include="Player2WinsMenu.h" />
     <ClInclude Include="PreCombatMenu.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="resource.h" />

@@ -12,6 +12,8 @@
 #include "VanillaCards.h"
 #include "InitiateCombatMenu.h"
 #include "CombatLoopUsingVector.h"
+#include "Player1WinsMenu.h"
+#include "Player2WinsMenu.h"
 
 class BaseGameMode
 {
@@ -84,6 +86,10 @@ public:
 	void BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary, Renderer BestiaryRender);
 
 	void PlayerCatalogAndDeckBuilderMenu(Node* PlayerCatalog, Node* PlayerDeck, LLNodeOperations CatalogHandler);
+
+	void DisplayPlayer1WinsMenu(CombatDataHandler& DataHandler);
+
+	void DisplayPlayer2WinsMenu(CombatDataHandler& DataHandler);
 
 	~BaseGameMode();
 

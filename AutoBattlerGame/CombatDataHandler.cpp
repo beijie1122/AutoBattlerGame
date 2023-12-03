@@ -6,6 +6,11 @@ CombatDataHandler::CombatDataHandler()
 	this->TargetingP2VecLocation = 0;
 }
 
+void CombatDataHandler::GenerateNewP2Deck(CardHolder AllCards)
+{
+	CardHolder NewP2Deck("Player2Deck", AllCards);
+}
+
 void CombatDataHandler::EstablishStoredDecks()
 {
 	P1StoredDeck = P1Deck;
@@ -25,6 +30,8 @@ void CombatDataHandler::PostCombatValueReset()
 	this->TargetingP2VecLocation = 0;
 	this->IsCombatFinished = false;
 	this->IsCombatSetup = false;
+	this->Player1Wins = false;
+	this->Player2Wins = false;
 }
 
 CombatDataHandler::~CombatDataHandler()

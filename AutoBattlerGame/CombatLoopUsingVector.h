@@ -7,14 +7,6 @@ class CombatLoopUsingVector
 {
 public:
 
-	bool Player1Wins = false;
-
-	bool Player2Wins = false;
-
-	int P1Current = 3;
-
-	int P2Current = 0;
-
 	CombatLoopUsingVector();
 
 	void BasicLoop(CombatDataHandler &DataHandler);

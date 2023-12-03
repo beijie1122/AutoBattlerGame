@@ -34,17 +34,7 @@ void BaseGameMode::MainMenuMode()
 
 	P1Deck.PopulatePlayer1BaseDeck(AllCardsContainer);
 
-	CardHolder P2Deck;
-
-	P2Deck.PopulateAllCardsVector(P2CardHealth, P2CardAttack, P2CardName);
-
 	DataHandler.P1Deck = P1Deck.Holder;
-
-	DataHandler.P2Deck = P2Deck.Holder;
-
-	DataHandler.EstablishStoredDecks();
-
-	
 
 	while (true)
 	{
@@ -72,8 +62,14 @@ void BaseGameMode::MainMenuMode()
 		}
 		else if (IsVirtualKeyPressed(0x32)) //2 Key
 		{
+			PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 			if (DataHandler.SelectionToBePassed == 0)
 			{
+				//Make into it's own function 
+				CardHolder P2Deck("Player2Deck", AllCardsContainer);
+				DataHandler.P2Deck = P2Deck.Holder;
+				DataHandler.EstablishStoredDecks();
+
 				MenuStack.push(PreCombatTest);
 				StartCombatMenu(DataHandler);
 			}
@@ -94,7 +90,6 @@ void BaseGameMode::MainMenuMode()
 
 void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler)
 {
-	
 	while (true)
 	{
 		if (DataHandler.IsCombatFinished == false)
@@ -106,6 +101,8 @@ void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler)
 
 			if (IsVirtualKeyPressed(0x33)) //3 key
 			{
+				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+
 				InitiateCombatMenu* TestingThisCombatMenu = new InitiateCombatMenu();
 
 				MenuStack.push(TestingThisCombatMenu);
@@ -115,8 +112,12 @@ void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler)
 		}
 		else
 		{
+
 			DataHandler.PostCombatValueReset();
-			MenuStack.pop();
+			if (!MenuStack.empty())
+			{
+				MenuStack.pop();
+			}
 			return;
 		}
 	}
@@ -137,11 +138,22 @@ void BaseGameMode::InitiateCombatMenu1(CombatDataHandler& DataHandler)
 
 			if (IsVirtualKeyPressed(0x34)) //4 Key
 			{
+				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 				NewCombatLoop.BasicCombatSetup(DataHandler);
 			}
 		}
 		else
 		{
+			
+			if (DataHandler.Player1Wins == true)
+			{
+				DisplayPlayer1WinsMenu(DataHandler);
+			}
+			else if (DataHandler.Player2Wins == true)
+			{
+				DisplayPlayer2WinsMenu(DataHandler);
+			}
+			
 			MenuStack.pop();
 			return;
 		}
@@ -226,6 +238,51 @@ void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(Node* PlayerCatalog, Node* Pl
 
 	}
 
+}
+
+void BaseGameMode::DisplayPlayer1WinsMenu(CombatDataHandler& DataHandler)
+{
+	PlaySound(TEXT("Victory_Fanfare.wav"), NULL, SND_ASYNC);
+	Renderer NewRender;
+	Player1WinsMenu* Player1WinMenu = new Player1WinsMenu();
+	MenuStack.push(Player1WinMenu);
+	while (true)
+	{
+		MenuStack.top()->PrintMenu(DataHandler);
+		if (IsVirtualKeyPressed(0x35))
+		{
+			PlaySound(NULL, NULL, 0);
+			if (!MenuStack.empty())
+			{
+				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+				MenuStack.pop();
+				return;
+			}
+		}
+	}
+}
+
+void BaseGameMode::DisplayPlayer2WinsMenu(CombatDataHandler& DataHandler)
+{
+	//PlaySound(TEXT("Victory_Fanfare.wav"), NULL, SND_ASYNC);
+	Renderer NewRender;
+	Player2WinsMenu* Player2WinMenu = new Player2WinsMenu();
+	MenuStack.push(Player2WinMenu);
+	while (true)
+	{
+		MenuStack.top()->PrintMenu(DataHandler);
+		if (IsVirtualKeyPressed(0x35))
+		{
+			PlaySound(NULL, NULL, 0);
+			if (!MenuStack.empty())
+			{
+				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+				MenuStack.pop();
+				return;
+			}
+
+		}
+	}
 }
 
 BaseGameMode::~BaseGameMode()

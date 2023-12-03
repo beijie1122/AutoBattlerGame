@@ -12,7 +12,11 @@ public:
 	int Attack;
 
 	std::string Name;
-	std::string NameAbr;
+	char NameAbrFirstLetter;
+	char NameAbrSecondLetter;
+	char NameAbrThirdLetter;
+	char NameAbrFourthLetter;
+
 	bool IsCardBlank = false;
 
 	int HorizontalMeasure = 6;
