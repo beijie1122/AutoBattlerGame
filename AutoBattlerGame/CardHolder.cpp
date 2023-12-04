@@ -13,7 +13,8 @@ CardHolder::CardHolder(std::string PlayerInput, CardHolder AllCards)
 
 		for (size_t i = 0; i < 4; i++)
 		{
-			RandomNumber = RandomNumberGenerator(MinValueforNumGenerator, MaxValueforNumGenerator);
+			//Generating Sniper Card in opponent deck is bugged, thus adding -1 to size
+			RandomNumber = RandomNumberGenerator(MinValueforNumGenerator, AllCards.Holder.size() - 1);
 			VanillaCards* NewCard = new VanillaCards(AllCards.Holder.at(RandomNumber)->Health, AllCards.Holder.at(RandomNumber)->Attack, AllCards.Holder.at(RandomNumber)->Name);
 			this->Holder.push_back(NewCard);
 		}
@@ -28,6 +29,8 @@ void CardHolder::PopulateAllCardsVector(std::vector<int> HPVec, std::vector<int>
 		VanillaCards* NewCard = new VanillaCards(HPVec.at(i), ATTVec.at(i), NameVec.at(i));
 		Holder.push_back(NewCard);
 	}
+	SniperCard* NewSniper = new SniperCard();
+	Holder.push_back(NewSniper);
 }
 
 void CardHolder::PopulatePlayer1BaseDeck(CardHolder AllCards)
@@ -37,6 +40,9 @@ void CardHolder::PopulatePlayer1BaseDeck(CardHolder AllCards)
 		VanillaCards* NewCard = new VanillaCards(AllCards.Holder.at(i)->Health, AllCards.Holder.at(i)->Attack, AllCards.Holder.at(i)->Name);
 		this->Holder.push_back(NewCard);
 	}
+
+	SniperCard* NewSniper = new SniperCard();
+	this->Holder[0] = NewSniper;
 }
 
 int CardHolder::RandomNumberGenerator(int Min, int Max)

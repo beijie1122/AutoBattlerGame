@@ -2,6 +2,13 @@
 #include "Renderer.h"
 #include "CardHolder.h"
 #include "VanillaCards.h"
+#include "SniperCard.h"
+
+class CardHolder;
+
+class VanillaCards;
+
+class SniperCard;
 
 class CombatDataHandler
 {
@@ -40,6 +47,10 @@ public:
 	CombatDataHandler();
 
 	void GenerateNewP2Deck(CardHolder AllCards);
+
+	void PushbackCardsforStoredDecks(std::vector<VanillaCards*> &StorageVec, VanillaCards* CardToBeStored, int i);
+
+	void ResetDecksAssistingFunctinon(std::vector<VanillaCards*>& StorageVec, VanillaCards* CardToBeStored, int j);
 
 	void EstablishStoredDecks();
 

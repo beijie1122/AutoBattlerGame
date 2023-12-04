@@ -14,7 +14,7 @@ void CombatLoopUsingVector::BasicCombatSetup(CombatDataHandler &DataHandler)
 			DataHandler.TargetingP1VecLocation = 3;
 			DataHandler.TargetingP2VecLocation = 0;
 			DataHandler.IsCombatSetup = true;
-			BasicLoop(DataHandler);
+			PreCombatAbilityLoop(DataHandler);
 		}
 		else
 		{
@@ -26,6 +26,26 @@ void CombatLoopUsingVector::BasicCombatSetup(CombatDataHandler &DataHandler)
 		return;
 	}
 
+}
+
+void CombatLoopUsingVector::PreCombatAbilityLoop(CombatDataHandler& DataHandler)
+{
+	for (size_t i = 0; i < DataHandler.P1Deck.size(); i++)
+	{
+		if (DataHandler.P1Deck.at(i)->DoesCardHavePreCombatAbility == true)
+		{
+			DataHandler.P1Deck.at(i)->PreCombatAbility(DataHandler, "P1");
+		}
+	}
+
+	for (size_t j = 0; j < DataHandler.P2Deck.size(); j++)
+	{
+		if (DataHandler.P2Deck.at(j)->DoesCardHavePreCombatAbility == true)
+		{
+			DataHandler.P2Deck.at(j)->PreCombatAbility(DataHandler, "P2");
+		}
+	}
+	BasicLoop(DataHandler); 
 }
 
 void CombatLoopUsingVector::CheckIfHealthIsLessThanZero(CombatDataHandler& DataHandler)

@@ -3,6 +3,7 @@
 #include<string>
 #include"VanillaCards.h"
 #include <random>
+#include "SniperCard.h"
 
 class CardHolder
 {

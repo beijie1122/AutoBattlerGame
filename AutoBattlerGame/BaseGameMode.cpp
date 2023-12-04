@@ -16,7 +16,6 @@ bool IsVirtualKeyPressed(int VirtKey)
 
 void BaseGameMode::MainMenuMode()
 {
-
 	MainMenu *TestMainMenu = new MainMenu();
 
 	PreCombatMenu* PreCombatTest = new PreCombatMenu();
@@ -90,6 +89,7 @@ void BaseGameMode::MainMenuMode()
 
 void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler)
 {
+	InitiateCombatMenu* TestingThisCombatMenu = new InitiateCombatMenu();
 	while (true)
 	{
 		if (DataHandler.IsCombatFinished == false)
@@ -103,8 +103,6 @@ void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler)
 			{
 				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 
-				InitiateCombatMenu* TestingThisCombatMenu = new InitiateCombatMenu();
-
 				MenuStack.push(TestingThisCombatMenu);
 
 				InitiateCombatMenu1(DataHandler);
@@ -117,6 +115,8 @@ void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler)
 			if (!MenuStack.empty())
 			{
 				MenuStack.pop();
+				delete TestingThisCombatMenu;
+				
 			}
 			return;
 		}
@@ -257,6 +257,7 @@ void BaseGameMode::DisplayPlayer1WinsMenu(CombatDataHandler& DataHandler)
 			{
 				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 				MenuStack.pop();
+				delete Player1WinMenu;
 				return;
 			}
 		}
@@ -279,6 +280,7 @@ void BaseGameMode::DisplayPlayer2WinsMenu(CombatDataHandler& DataHandler)
 			{
 				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 				MenuStack.pop();
+				delete Player2WinMenu;
 				return;
 			}
 

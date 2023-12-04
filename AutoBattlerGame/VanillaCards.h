@@ -3,6 +3,8 @@
 #include <vector>
 #include "Renderer.h"
 
+class CombatDataHandler;
+
 class VanillaCards
 {
 public:
@@ -11,6 +13,10 @@ public:
 
 	int Attack;
 
+	std::string CardType;
+
+	std::string VanillaType = "Vanilla";
+
 	std::string Name;
 	char NameAbrFirstLetter;
 	char NameAbrSecondLetter;
@@ -18,6 +24,8 @@ public:
 	char NameAbrFourthLetter;
 
 	bool IsCardBlank = false;
+
+	bool DoesCardHavePreCombatAbility = false;
 
 	int HorizontalMeasure = 6;
 
@@ -36,6 +44,8 @@ public:
 	void RenderAttack(Renderer& RenderQuad, int XCOORD, int YCOORD);
 
 	void SetupCardLayout();
+
+	virtual void PreCombatAbility(CombatDataHandler& DataHandler, std::string Owner);
 
 	~VanillaCards();
 };

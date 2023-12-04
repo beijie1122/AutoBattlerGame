@@ -14,6 +14,7 @@
 #include "CombatLoopUsingVector.h"
 #include "Player1WinsMenu.h"
 #include "Player2WinsMenu.h"
+#include "SniperCard.h"
 
 class BaseGameMode
 {

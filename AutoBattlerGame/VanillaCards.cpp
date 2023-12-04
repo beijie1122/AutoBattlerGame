@@ -1,4 +1,5 @@
 #include "VanillaCards.h"
+#include "CombatDataHandler.h"
 
 VanillaCards::VanillaCards()
 {
@@ -13,7 +14,8 @@ VanillaCards::VanillaCards(int HP, int ATT, std::string NM)
 	this->NameAbrFirstLetter = NM[0];
 	this->NameAbrSecondLetter = NM[1];
 	this->NameAbrThirdLetter = NM[2];
-	this->NameAbrFourthLetter = NM[4];
+	this->NameAbrFourthLetter = NM[3];
+	this->CardType = VanillaType;
 	SetupCardLayout();
 }
 
@@ -63,6 +65,11 @@ void VanillaCards::SetupCardLayout()
 	CardLayout[3][2] = NameAbrSecondLetter;
 	CardLayout[3][3] = NameAbrThirdLetter;
 	CardLayout[3][4] = NameAbrFourthLetter;
+}
+
+void VanillaCards::PreCombatAbility(CombatDataHandler& DataHandler, std::string Owner)
+{
+
 }
 
 VanillaCards::~VanillaCards()
