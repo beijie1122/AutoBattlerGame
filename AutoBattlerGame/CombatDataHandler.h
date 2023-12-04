@@ -13,13 +13,13 @@ public:
 
 	std::vector<int> P2XCoordVec{ 50, 59, 68, 77 };
 
-	std::vector<VanillaCards> P1Deck;
+	std::vector<VanillaCards*> P1Deck;
 
-	std::vector<VanillaCards> P2Deck;
+	std::vector<VanillaCards*> P2Deck;
 
-	std::vector<VanillaCards> P1StoredDeck;
+	std::vector<VanillaCards*> P1StoredDeck;
 
-	std::vector<VanillaCards> P2StoredDeck;
+	std::vector<VanillaCards*> P2StoredDeck;
 
 	int YCoord = 7;
 

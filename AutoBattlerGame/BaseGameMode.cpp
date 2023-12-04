@@ -251,6 +251,7 @@ void BaseGameMode::DisplayPlayer1WinsMenu(CombatDataHandler& DataHandler)
 		MenuStack.top()->PrintMenu(DataHandler);
 		if (IsVirtualKeyPressed(0x35))
 		{
+			//Stops playing the victory fanfare
 			PlaySound(NULL, NULL, 0);
 			if (!MenuStack.empty())
 			{

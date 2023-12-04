@@ -22,7 +22,7 @@ void PreCombatMenu::PrintMenu(CombatDataHandler& DataHandler)
 
 	for (size_t i = 0; i < DataHandler.P1Deck.size(); i++)
 	{
-		DataHandler.P1Deck.at(i).RenderNode(DataHandler.RenderObject, XCoordVec.at(i), YCoord);
+		DataHandler.P1Deck.at(i)->RenderNode(DataHandler.RenderObject, XCoordVec.at(i), YCoord);
 	}
 
 }

@@ -20,8 +20,8 @@ void InitiateCombatMenu::PrintMenu(CombatDataHandler& DataHandler)
 
 	for (size_t i = 0; i < DataHandler.P1Deck.size(); i++)
 	{
-		DataHandler.P1Deck.at(i).RenderNode(DataHandler.RenderObject, DataHandler.XCoordVec.at(i), DataHandler.YCoord);
-		DataHandler.P2Deck.at(i).RenderNode(DataHandler.RenderObject, DataHandler.P2XCoordVec.at(i), DataHandler.YCoord);
+		DataHandler.P1Deck.at(i)->RenderNode(DataHandler.RenderObject, DataHandler.XCoordVec.at(i), DataHandler.YCoord);
+		DataHandler.P2Deck.at(i)->RenderNode(DataHandler.RenderObject, DataHandler.P2XCoordVec.at(i), DataHandler.YCoord);
 	}
 
 

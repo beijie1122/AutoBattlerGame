@@ -9,7 +9,7 @@ class CardHolder
 
 public:
 
-	std::vector<VanillaCards> Holder;
+	std::vector<VanillaCards*> Holder;
 
 	int MinValueforNumGenerator = 0;
 
