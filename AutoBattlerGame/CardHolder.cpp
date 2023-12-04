@@ -14,7 +14,7 @@ CardHolder::CardHolder(std::string PlayerInput, CardHolder AllCards)
 		for (size_t i = 0; i < 4; i++)
 		{
 			//Generating Sniper Card in opponent deck is bugged, thus adding -1 to size
-			RandomNumber = RandomNumberGenerator(MinValueforNumGenerator, AllCards.Holder.size() - 1);
+			RandomNumber = RandomNumberGenerator(MinValueforNumGenerator, MaxValueforNumGenerator);
 			VanillaCards* NewCard = new VanillaCards(AllCards.Holder.at(RandomNumber)->Health, AllCards.Holder.at(RandomNumber)->Attack, AllCards.Holder.at(RandomNumber)->Name);
 			this->Holder.push_back(NewCard);
 		}
