@@ -153,6 +153,10 @@ void BaseGameMode::InitiateCombatMenu1(CombatDataHandler& DataHandler)
 			{
 				DisplayPlayer2WinsMenu(DataHandler);
 			}
+			else if (DataHandler.CombatResultsInADraw == true)
+			{
+				DisplayCombatDrawMenu(DataHandler);
+			}
 			
 			MenuStack.pop();
 			return;
@@ -266,7 +270,6 @@ void BaseGameMode::DisplayPlayer1WinsMenu(CombatDataHandler& DataHandler)
 
 void BaseGameMode::DisplayPlayer2WinsMenu(CombatDataHandler& DataHandler)
 {
-	//PlaySound(TEXT("Victory_Fanfare.wav"), NULL, SND_ASYNC);
 	Renderer NewRender;
 	Player2WinsMenu* Player2WinMenu = new Player2WinsMenu();
 	MenuStack.push(Player2WinMenu);
@@ -284,6 +287,28 @@ void BaseGameMode::DisplayPlayer2WinsMenu(CombatDataHandler& DataHandler)
 				return;
 			}
 
+		}
+	}
+}
+
+void BaseGameMode::DisplayCombatDrawMenu(CombatDataHandler& DataHandler)
+{
+	Renderer AnotherRender;
+	CombatDrawMenu* DrawMenuObject = new CombatDrawMenu();
+	MenuStack.push(DrawMenuObject);
+	while (true)
+	{
+		MenuStack.top()->PrintMenu(DataHandler);
+		if (IsVirtualKeyPressed(0x35))
+		{
+			PlaySound(NULL, NULL, 0);
+			if (!MenuStack.empty())
+			{
+				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+				MenuStack.pop();
+				delete DrawMenuObject;
+				return;
+			}
 		}
 	}
 }

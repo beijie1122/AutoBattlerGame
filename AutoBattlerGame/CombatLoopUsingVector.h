@@ -17,6 +17,10 @@ public:
 
 	void CheckIfHealthIsLessThanZero(CombatDataHandler& DataHandler);
 
+	void CheckForWinCondition(CombatDataHandler& DataHandler);
+
+	void CheckIfEntireBoardHealthIsLessThanZero(CombatDataHandler DataHandler);
+
 	~CombatLoopUsingVector();
 
 };

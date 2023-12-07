@@ -128,6 +128,7 @@ void CombatDataHandler::PostCombatValueReset()
 	this->IsCombatSetup = false;
 	this->Player1Wins = false;
 	this->Player2Wins = false;
+	this->CombatResultsInADraw = false;
 }
 
 void CombatDataHandler::Player2WinsCombat()
@@ -139,6 +140,12 @@ void CombatDataHandler::Player2WinsCombat()
 void CombatDataHandler::Player1WinsCombat()
 {
 	this->Player1Wins = true;
+	this->IsCombatFinished = true;
+}
+
+void CombatDataHandler::CombatIsADraw()
+{
+	this->CombatResultsInADraw = true;
 	this->IsCombatFinished = true;
 }
 

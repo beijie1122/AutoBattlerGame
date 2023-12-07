@@ -44,6 +44,8 @@ public:
 
 	bool Player2Wins = false;
 
+	bool CombatResultsInADraw = false;
+
 	CombatDataHandler();
 
 	void GenerateNewP2Deck(CardHolder AllCards);
@@ -61,6 +63,8 @@ public:
 	void Player2WinsCombat();
 
 	void Player1WinsCombat();
+
+	void CombatIsADraw();
 
 	void AdvanceP1TargetVecLocation();
 

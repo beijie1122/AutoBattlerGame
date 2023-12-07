@@ -143,6 +143,7 @@
     <ClCompile Include="BaseGameMode.cpp" />
     <ClCompile Include="CardHolder.cpp" />
     <ClCompile Include="CombatDataHandler.cpp" />
+    <ClCompile Include="CombatDrawMenu.cpp" />
     <ClCompile Include="CombatLoop.cpp" />
     <ClCompile Include="CombatLoopUsingVector.cpp" />
     <ClCompile Include="FStreamExtractor.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="BaseGameMode.h" />
     <ClInclude Include="CardHolder.h" />
     <ClInclude Include="CombatDataHandler.h" />
+    <ClInclude Include="CombatDrawMenu.h" />
     <ClInclude Include="CombatLoop.h" />
     <ClInclude Include="CombatLoopUsingVector.h" />
     <ClInclude Include="FStreamExtractor.h" />

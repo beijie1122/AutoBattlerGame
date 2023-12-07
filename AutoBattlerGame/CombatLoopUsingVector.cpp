@@ -33,6 +33,7 @@ void CombatLoopUsingVector::PreCombatAbilityLoop(CombatDataHandler& DataHandler)
 		if (DataHandler.P1Deck.at(i)->DoesCardHavePreCombatAbility == true)
 		{
 			DataHandler.P1Deck.at(i)->PreCombatAbility(DataHandler, "P1");
+			CheckIfHealthIsLessThanZero(DataHandler);
 		}
 	}
 
@@ -41,8 +42,12 @@ void CombatLoopUsingVector::PreCombatAbilityLoop(CombatDataHandler& DataHandler)
 		if (DataHandler.P2Deck.at(j)->DoesCardHavePreCombatAbility == true)
 		{
 			DataHandler.P2Deck.at(j)->PreCombatAbility(DataHandler, "P2");
+			CheckIfHealthIsLessThanZero(DataHandler);
 		}
 	}
+
+	CheckIfEntireBoardHealthIsLessThanZero(DataHandler);
+
 	BasicLoop(DataHandler); 
 }
 
@@ -59,15 +64,15 @@ void CombatLoopUsingVector::CheckIfHealthIsLessThanZero(CombatDataHandler& DataH
 	}
 }
 
-void CombatLoopUsingVector::BasicLoop(CombatDataHandler &DataHandler)
+void CombatLoopUsingVector::CheckForWinCondition(CombatDataHandler& DataHandler)
 {
-	DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->ReduceHP(DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Attack);
-	DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->ReduceHP(DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Attack);
-
-	//If new cards are added, this can be turned off to check if values are subtracting correctly
-	CheckIfHealthIsLessThanZero(DataHandler);
-
-	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health <= 0 && DataHandler.TargetingP1VecLocation == 0)
+	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health <= 0 && DataHandler.TargetingP1VecLocation == 0 
+		&& DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health <= 0 && DataHandler.TargetingP2VecLocation == 3)
+	{
+		DataHandler.CombatIsADraw();
+		return;
+	}
+	else if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health <= 0 && DataHandler.TargetingP1VecLocation == 0)
 	{
 		DataHandler.Player2WinsCombat();
 		return;
@@ -77,7 +82,32 @@ void CombatLoopUsingVector::BasicLoop(CombatDataHandler &DataHandler)
 		DataHandler.Player1WinsCombat();
 		return;
 	}
+}
 
+void CombatLoopUsingVector::CheckIfEntireBoardHealthIsLessThanZero(CombatDataHandler DataHandler)
+{
+	for (size_t i = 0; i < DataHandler.P1Deck.size(); i++)
+	{
+		if (DataHandler.P1Deck.at(i)->Health < 0)
+		{
+			DataHandler.P1Deck.at(i)->RoundHealthtoZero();
+		}
+		if (DataHandler.P2Deck.at(i)->Health < 0)
+		{
+			DataHandler.P2Deck.at(i)->RoundHealthtoZero();
+		}
+	}
+}
+
+void CombatLoopUsingVector::BasicLoop(CombatDataHandler &DataHandler)
+{
+	DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->ReduceHP(DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Attack);
+	DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->ReduceHP(DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Attack);
+
+	//If new cards are added, this can be turned off to check if values are subtracting correctly
+	CheckIfHealthIsLessThanZero(DataHandler);
+
+	CheckForWinCondition(DataHandler);
 
 	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health <= 0)
 	{

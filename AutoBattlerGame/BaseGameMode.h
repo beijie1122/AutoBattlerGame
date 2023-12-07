@@ -15,6 +15,7 @@
 #include "Player1WinsMenu.h"
 #include "Player2WinsMenu.h"
 #include "SniperCard.h"
+#include "CombatDrawMenu.h"
 
 class BaseGameMode
 {
@@ -91,6 +92,8 @@ public:
 	void DisplayPlayer1WinsMenu(CombatDataHandler& DataHandler);
 
 	void DisplayPlayer2WinsMenu(CombatDataHandler& DataHandler);
+
+	void DisplayCombatDrawMenu(CombatDataHandler& DataHandler);
 
 	~BaseGameMode();
 
