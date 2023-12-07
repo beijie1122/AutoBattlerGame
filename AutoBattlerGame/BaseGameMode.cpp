@@ -6,7 +6,7 @@ BaseGameMode::BaseGameMode()
 {
 	FStreamExtractor GameSetupDataExtraction;
 
-	GameSetupDataExtraction.FStreamCardDataExtraction(GameSetupDataExtraction.FStreamFileCardInfo, FStreamCardNameVec, FStreamCardHPVec, FStreamCardATTVec);
+	GameSetupDataExtraction.FStreamCardDataExtraction(GameSetupDataExtraction.FStreamFileCardInfo, FStreamCardNameVec, FStreamCardHPVec, FStreamCardATTVec, FStreamCardTypeVec);
 }
 
 bool IsVirtualKeyPressed(int VirtKey)
@@ -29,7 +29,7 @@ void BaseGameMode::MainMenuMode()
 
 	CardHolder P1Deck;
 
-	AllCardsContainer.PopulateAllCardsVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec);
+	AllCardsContainer.PopulateAllCardsVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec, FStreamCardTypeVec);
 
 	P1Deck.PopulatePlayer1BaseDeck(AllCardsContainer);
 

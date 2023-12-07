@@ -20,7 +20,7 @@ public:
 
 	CardHolder(std::string PlayerInput, CardHolder AllCards);
 
-	void PopulateAllCardsVector(std::vector<int> HPVec, std::vector<int> ATTVec, std::vector<std::string> NameVec);
+	void PopulateAllCardsVector(std::vector<int> HPVec, std::vector<int> ATTVec, std::vector<std::string> NameVec, std::vector<std::string> CardTypeVec);
 
 	void PopulatePlayer1BaseDeck(CardHolder AllCards);
 

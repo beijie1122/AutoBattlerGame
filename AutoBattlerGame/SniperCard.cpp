@@ -17,17 +17,17 @@ SniperCard::SniperCard()
 
 }
 
-SniperCard::SniperCard(int HP, int ATT, std::string NamePassed)
+SniperCard::SniperCard(int HP, int ATT, std::string NamePassed, std::string Type)
 {
 	this->Health = HP;
 	this->Attack = ATT;
 	this->Name = NamePassed;
+	this->CardType = Type;
 	this->DoesCardHavePreCombatAbility = true;
 	this->NameAbrFirstLetter = Name[0];
 	this->NameAbrSecondLetter = Name[1];
 	this->NameAbrThirdLetter = Name[2];
 	this->NameAbrFourthLetter = Name[3];
-	this->CardType = SniperType;
 	this->SetupCardLayout();
 }
 

@@ -10,7 +10,7 @@ public:
 
     SniperCard();
 
-    SniperCard(int HP, int ATT, std::string NamePassed);
+    SniperCard(int HP, int ATT, std::string NamePassed, std::string Type);
 
     void PreCombatAbility(CombatDataHandler& DataHandler, std::string Owner);
 

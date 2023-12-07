@@ -29,24 +29,14 @@ void CombatDataHandler::EstablishStoredDecks()
 	{
 		if (P1Deck.at(i)->CardType == "Vanilla")
 		{
-			VanillaCards* NewCard = new VanillaCards(P1Deck.at(i)->Health, P1Deck.at(i)->Attack, P1Deck.at(i)->Name);
+			VanillaCards* NewCard = new VanillaCards(P1Deck.at(i)->Health, P1Deck.at(i)->Attack, P1Deck.at(i)->Name, P1Deck.at(i)->CardType);
 			PushbackCardsforStoredDecks(P1StoredDeck, NewCard, i);
 		}
 		else
 		{
-			SniperCard* NewCard = new SniperCard(P1Deck.at(i)->Health, P1Deck.at(i)->Attack, P1Deck.at(i)->Name);
+			SniperCard* NewCard = new SniperCard(P1Deck.at(i)->Health, P1Deck.at(i)->Attack, P1Deck.at(i)->Name, P1Deck.at(i)->CardType);
 			PushbackCardsforStoredDecks(P1StoredDeck, NewCard, i);
 		}
-		/*
-		if (P1StoredDeck.size() < 4)
-		{
-			P1StoredDeck.push_back(NewCard);
-		}
-		else
-		{
-			P1StoredDeck.at(i) = NewCard;
-		}
-		*/
 	}
 
 	for (size_t i = 0; i < P2Deck.size(); i++)
@@ -55,24 +45,14 @@ void CombatDataHandler::EstablishStoredDecks()
 
 		if (P2Deck.at(i)->CardType == "Vanilla")
 		{
-			VanillaCards* NewCard = new VanillaCards(P2Deck.at(i)->Health, P2Deck.at(i)->Attack, P2Deck.at(i)->Name);
+			VanillaCards* NewCard = new VanillaCards(P2Deck.at(i)->Health, P2Deck.at(i)->Attack, P2Deck.at(i)->Name, P2Deck.at(i)->CardType);
 			PushbackCardsforStoredDecks(P2StoredDeck, NewCard, i);
 		}
 		else
 		{
-			SniperCard* NewCard = new SniperCard(P2Deck.at(i)->Health, P2Deck.at(i)->Attack, P2Deck.at(i)->Name);
+			SniperCard* NewCard = new SniperCard(P2Deck.at(i)->Health, P2Deck.at(i)->Attack, P2Deck.at(i)->Name, P2Deck.at(i)->CardType);
 			PushbackCardsforStoredDecks(P2StoredDeck, NewCard, i);
 		}
-		/*
-		if (P2StoredDeck.size() < 4)
-		{
-			P2StoredDeck.push_back(NewCard2);
-		}
-		else
-		{
-			P2StoredDeck.at(i) = NewCard2;
-		}
-		*/
 	}
 }
 
@@ -87,12 +67,14 @@ void CombatDataHandler::ResetDecks()
 	{
 		if (P1StoredDeck.at(j)->CardType == "Vanilla")
 		{
-			VanillaCards* NewCard = new VanillaCards(P1StoredDeck.at(j)->Health, P1StoredDeck.at(j)->Attack, P1StoredDeck.at(j)->Name);
+			VanillaCards* NewCard = new VanillaCards(P1StoredDeck.at(j)->Health, P1StoredDeck.at(j)->Attack, 
+				P1StoredDeck.at(j)->Name, P1StoredDeck.at(j)->CardType);
 			ResetDecksAssistingFunctinon(P1Deck, NewCard, j);
 		}
 		else if (P1StoredDeck.at(j)->CardType == "Sniper")
 		{
-			SniperCard* NewCard = new SniperCard(P1StoredDeck.at(j)->Health, P1StoredDeck.at(j)->Attack, P1StoredDeck.at(j)->Name);
+			SniperCard* NewCard = new SniperCard(P1StoredDeck.at(j)->Health, P1StoredDeck.at(j)->Attack, 
+				P1StoredDeck.at(j)->Name, P1StoredDeck.at(j)->CardType);
 			ResetDecksAssistingFunctinon(P1Deck, NewCard, j);
 		}
 		delete P1StoredDeck[j];
@@ -100,12 +82,14 @@ void CombatDataHandler::ResetDecks()
 
 		if (P2StoredDeck.at(j)->CardType == "Vanilla")
 		{
-			VanillaCards* NewCard2 = new VanillaCards(P2StoredDeck.at(j)->Health, P2StoredDeck.at(j)->Attack, P2StoredDeck.at(j)->Name);
+			VanillaCards* NewCard2 = new VanillaCards(P2StoredDeck.at(j)->Health, P2StoredDeck.at(j)->Attack, 
+				P2StoredDeck.at(j)->Name, P2StoredDeck.at(j)->CardType);
 			ResetDecksAssistingFunctinon(P2Deck, NewCard2, j);
 		}
 		else if (P2StoredDeck.at(j)->CardType == "Sniper")
 		{
-			SniperCard* NewCard2 = new SniperCard(P2StoredDeck.at(j)->Health, P2StoredDeck.at(j)->Attack, P2StoredDeck.at(j)->Name);
+			SniperCard* NewCard2 = new SniperCard(P2StoredDeck.at(j)->Health, P2StoredDeck.at(j)->Attack, 
+				P2StoredDeck.at(j)->Name, P2StoredDeck.at(j)->CardType);
 			ResetDecksAssistingFunctinon(P2Deck, NewCard2, j);
 		}
 		delete P2StoredDeck[j];

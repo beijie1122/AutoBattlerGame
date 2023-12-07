@@ -35,7 +35,7 @@ public:
 
 	VanillaCards();
 
-	VanillaCards(int HP, int ATT, std::string NM);
+	VanillaCards(int HP, int ATT, std::string NM, std::string Type);
 
 	void RenderNode(Renderer& RenderQuad, int XCOORD, int YCOORD);
 

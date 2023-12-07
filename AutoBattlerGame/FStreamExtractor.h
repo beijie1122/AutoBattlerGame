@@ -13,7 +13,7 @@ public:
 
 	~FStreamExtractor();
 
-	void FStreamCardDataExtraction(std::string FStreamInput, std::vector<std::string>& CardNameVec, std::vector<int>& CardHPVec, std::vector<int>& CardATTVec);
+	void FStreamCardDataExtraction(std::string FStreamInput, std::vector<std::string>& CardNameVec, std::vector<int>& CardHPVec, std::vector<int>& CardATTVec, std::vector<std::string>& CardTypeVec);
 
 
 };

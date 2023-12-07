@@ -36,6 +36,7 @@ public:
 	std::vector<int> FStreamCardHPVec{};
 	std::vector<int> FStreamCardATTVec{};
 	std::vector<std::string> FStreamCardNameVec{};
+	std::vector<std::string> FStreamCardTypeVec{};
 
 	//Already migrated over to PreCombatMenu
 	std::vector<int> XCoordVec{ 5, 14, 23, 31 };

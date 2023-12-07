@@ -6,11 +6,12 @@ VanillaCards::VanillaCards()
 
 }
 
-VanillaCards::VanillaCards(int HP, int ATT, std::string NM)
+VanillaCards::VanillaCards(int HP, int ATT, std::string NM, std::string Type)
 {
 	this->Health = HP;
 	this->Attack = ATT;
 	this->Name = NM;
+	this->CardType = Type;
 	this->NameAbrFirstLetter = NM[0];
 	this->NameAbrSecondLetter = NM[1];
 	this->NameAbrThirdLetter = NM[2];
