@@ -43,6 +43,16 @@ public:
 
 	void RenderAttack(Renderer& RenderQuad, int XCOORD, int YCOORD);
 
+	void ReduceHP(int& EnemyATT);
+
+	void IncreaseHP(int& GrantedHP);
+
+	void IncreaseATT(int& GrantedATT);
+
+	void ReduceATT(int& ReduceAmount);
+
+	void RoundHealthtoZero();
+
 	void SetupCardLayout();
 
 	virtual void PreCombatAbility(CombatDataHandler& DataHandler, std::string Owner);

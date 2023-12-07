@@ -37,6 +37,16 @@ void VanillaCards::RenderAttack(Renderer& RenderQuad, int XCOORD, int YCOORD)
 	RenderQuad.DrawCardIntValue(Attack, { XCOORD, YCOORD + 1 });
 }
 
+void VanillaCards::ReduceHP(int& EnemyATT)
+{
+	this->Health -= EnemyATT;
+}
+
+void VanillaCards::RoundHealthtoZero()
+{
+	this->Health = 0;
+}
+
 void VanillaCards::SetupCardLayout()
 {
 	for (size_t i = 0; i < VerticleMeasure; i++)

@@ -11,9 +11,7 @@ void CombatLoopUsingVector::BasicCombatSetup(CombatDataHandler &DataHandler)
 	{
 		if (DataHandler.IsCombatSetup == false)
 		{
-			DataHandler.TargetingP1VecLocation = 3;
-			DataHandler.TargetingP2VecLocation = 0;
-			DataHandler.IsCombatSetup = true;
+			DataHandler.CombatAlreadySetup();
 			PreCombatAbilityLoop(DataHandler);
 		}
 		else
@@ -52,47 +50,43 @@ void CombatLoopUsingVector::CheckIfHealthIsLessThanZero(CombatDataHandler& DataH
 {
 	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health < 0)
 	{
-		DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health = 0;
+		DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->RoundHealthtoZero();
 	}
 
 	if (DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health < 0)
 	{
-		DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health = 0;
+		DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->RoundHealthtoZero();
 	}
 }
 
 void CombatLoopUsingVector::BasicLoop(CombatDataHandler &DataHandler)
 {
-	DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health = DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health - DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Attack;
-	DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health = DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health - DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Attack;
-	
+	DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->ReduceHP(DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Attack);
+	DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->ReduceHP(DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Attack);
+
 	//If new cards are added, this can be turned off to check if values are subtracting correctly
 	CheckIfHealthIsLessThanZero(DataHandler);
 
 	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health <= 0 && DataHandler.TargetingP1VecLocation == 0)
 	{
-		DataHandler.Player2Wins = true;
-		DataHandler.IsCombatFinished = true;
+		DataHandler.Player2WinsCombat();
 		return;
 	}
 	else if (DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health <= 0 && DataHandler.TargetingP2VecLocation == 3)
 	{
-		DataHandler.Player1Wins = true;
-		DataHandler.IsCombatFinished = true;
+		DataHandler.Player1WinsCombat();
 		return;
 	}
 
 
 	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health <= 0)
 	{
-		//P1Current--;
-		DataHandler.TargetingP1VecLocation--;
+		DataHandler.AdvanceP1TargetVecLocation();
 	}
 
 	if (DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health <= 0)
 	{
-		//P2Current++;
-		DataHandler.TargetingP2VecLocation++;
+		DataHandler.AdvanceP2TargetVecLocation();
 	}
 
 }

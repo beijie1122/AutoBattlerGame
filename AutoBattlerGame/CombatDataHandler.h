@@ -58,6 +58,16 @@ public:
 
 	void PostCombatValueReset();
 
+	void Player2WinsCombat();
+
+	void Player1WinsCombat();
+
+	void AdvanceP1TargetVecLocation();
+
+	void AdvanceP2TargetVecLocation();
+
+	void CombatAlreadySetup();
+
 	~CombatDataHandler();
 
 };

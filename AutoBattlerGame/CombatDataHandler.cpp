@@ -130,6 +130,36 @@ void CombatDataHandler::PostCombatValueReset()
 	this->Player2Wins = false;
 }
 
+void CombatDataHandler::Player2WinsCombat()
+{
+	this->Player2Wins = true;
+	this->IsCombatFinished = true;
+}
+
+void CombatDataHandler::Player1WinsCombat()
+{
+	this->Player1Wins = true;
+	this->IsCombatFinished = true;
+}
+
+void CombatDataHandler::AdvanceP1TargetVecLocation()
+{
+	this->TargetingP1VecLocation--;
+}
+
+void CombatDataHandler::AdvanceP2TargetVecLocation()
+{
+	this->TargetingP2VecLocation++;
+}
+
+void CombatDataHandler::CombatAlreadySetup()
+{
+	this->TargetingP1VecLocation = 3;
+	this->TargetingP2VecLocation = 0;
+	this->IsCombatSetup = true;
+}
+
+
 CombatDataHandler::~CombatDataHandler()
 {
 
