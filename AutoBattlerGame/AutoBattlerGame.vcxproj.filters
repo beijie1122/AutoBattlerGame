@@ -13,45 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Menus">
+      <UniqueIdentifier>{9a392880-dd2b-477c-9523-14b0537b050d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Archieved">
+      <UniqueIdentifier>{061f7761-f270-4703-b988-bdd1bbfcbe14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cards">
+      <UniqueIdentifier>{63d7b92b-432f-4d46-89f1-74806629a36e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SingleUse">
+      <UniqueIdentifier>{9fe22e6a-d726-4d80-b4ee-0aa32d4113cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Node.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LLNodeOperations.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CombatLoop.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Menus.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BaseGameMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FStreamExtractor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PreCombatMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CombatDataHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InitiateCombatMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VanillaCards.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CardHolder.cpp">
@@ -60,16 +39,61 @@
     <ClCompile Include="CombatLoopUsingVector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player1WinsMenu.cpp">
+    <ClCompile Include="Broadcaster.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Menus.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Player1WinsMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
     </ClCompile>
     <ClCompile Include="Player2WinsMenu.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="SniperCard.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="PreCombatMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="InitiateCombatMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
     </ClCompile>
     <ClCompile Include="CombatDrawMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatLoop.cpp">
+      <Filter>Source Files\Archieved</Filter>
+    </ClCompile>
+    <ClCompile Include="LLNodeOperations.cpp">
+      <Filter>Source Files\Archieved</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Source Files\Archieved</Filter>
+    </ClCompile>
+    <ClCompile Include="VanillaCards.cpp">
+      <Filter>Source Files\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="SniperCard.cpp">
+      <Filter>Source Files\Cards</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files\SingleUse</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\SingleUse</Filter>
+    </ClCompile>
+    <ClCompile Include="FStreamExtractor.cpp">
+      <Filter>Source Files\SingleUse</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestsBaseClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DefeatCardsQuest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -129,6 +153,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CombatDrawMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Broadcaster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestsBaseClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DefeatCardsQuest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

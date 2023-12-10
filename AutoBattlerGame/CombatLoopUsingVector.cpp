@@ -5,18 +5,18 @@ CombatLoopUsingVector::CombatLoopUsingVector()
 
 }
 
-void CombatLoopUsingVector::BasicCombatSetup(CombatDataHandler &DataHandler)
+void CombatLoopUsingVector::BasicCombatSetup(CombatDataHandler &DataHandler, Broadcaster* BroadcasterObj)
 {
 	if (DataHandler.IsCombatFinished == false)
 	{
 		if (DataHandler.IsCombatSetup == false)
 		{
 			DataHandler.CombatAlreadySetup();
-			PreCombatAbilityLoop(DataHandler);
+			PreCombatAbilityLoop(DataHandler, BroadcasterObj);
 		}
 		else
 		{
-			BasicLoop(DataHandler);
+			BasicLoop(DataHandler, BroadcasterObj);
 		}
 	}
 	else
@@ -26,14 +26,14 @@ void CombatLoopUsingVector::BasicCombatSetup(CombatDataHandler &DataHandler)
 
 }
 
-void CombatLoopUsingVector::PreCombatAbilityLoop(CombatDataHandler& DataHandler)
+void CombatLoopUsingVector::PreCombatAbilityLoop(CombatDataHandler& DataHandler, Broadcaster* BroadcasterObj)
 {
 	for (size_t i = 0; i < DataHandler.P1Deck.size(); i++)
 	{
 		if (DataHandler.P1Deck.at(i)->DoesCardHavePreCombatAbility == true)
 		{
 			DataHandler.P1Deck.at(i)->PreCombatAbility(DataHandler, "P1");
-			CheckIfHealthIsLessThanZero(DataHandler);
+			CheckIfHealthIsLessThanZero(DataHandler, BroadcasterObj);
 		}
 	}
 
@@ -42,16 +42,16 @@ void CombatLoopUsingVector::PreCombatAbilityLoop(CombatDataHandler& DataHandler)
 		if (DataHandler.P2Deck.at(j)->DoesCardHavePreCombatAbility == true)
 		{
 			DataHandler.P2Deck.at(j)->PreCombatAbility(DataHandler, "P2");
-			CheckIfHealthIsLessThanZero(DataHandler);
+			CheckIfHealthIsLessThanZero(DataHandler, BroadcasterObj);
 		}
 	}
 
-	CheckIfEntireBoardHealthIsLessThanZero(DataHandler);
+	CheckIfEntireBoardHealthIsLessThanZero(DataHandler, BroadcasterObj);
 
-	BasicLoop(DataHandler); 
+	BasicLoop(DataHandler, BroadcasterObj);
 }
 
-void CombatLoopUsingVector::CheckIfHealthIsLessThanZero(CombatDataHandler& DataHandler)
+void CombatLoopUsingVector::CheckIfHealthIsLessThanZero(CombatDataHandler& DataHandler, Broadcaster* BroadcasterObj)
 {
 	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health < 0)
 	{
@@ -64,7 +64,7 @@ void CombatLoopUsingVector::CheckIfHealthIsLessThanZero(CombatDataHandler& DataH
 	}
 }
 
-void CombatLoopUsingVector::CheckForWinCondition(CombatDataHandler& DataHandler)
+void CombatLoopUsingVector::CheckForWinCondition(CombatDataHandler& DataHandler, Broadcaster* BroadcasterObj)
 {
 	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health <= 0 && DataHandler.TargetingP1VecLocation == 0 
 		&& DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health <= 0 && DataHandler.TargetingP2VecLocation == 3)
@@ -80,11 +80,14 @@ void CombatLoopUsingVector::CheckForWinCondition(CombatDataHandler& DataHandler)
 	else if (DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health <= 0 && DataHandler.TargetingP2VecLocation == 3)
 	{
 		DataHandler.Player1WinsCombat();
+
+		BroadcasterObj->IncrementWinGameAmt();
+
 		return;
 	}
 }
 
-void CombatLoopUsingVector::CheckIfEntireBoardHealthIsLessThanZero(CombatDataHandler DataHandler)
+void CombatLoopUsingVector::CheckIfEntireBoardHealthIsLessThanZero(CombatDataHandler DataHandler, Broadcaster* BroadcasterObj)
 {
 	for (size_t i = 0; i < DataHandler.P1Deck.size(); i++)
 	{
@@ -95,19 +98,22 @@ void CombatLoopUsingVector::CheckIfEntireBoardHealthIsLessThanZero(CombatDataHan
 		if (DataHandler.P2Deck.at(i)->Health < 0)
 		{
 			DataHandler.P2Deck.at(i)->RoundHealthtoZero();
+			//Need to add broadcaster increment here but need to fix the loop first
 		}
 	}
 }
 
-void CombatLoopUsingVector::BasicLoop(CombatDataHandler &DataHandler)
+void CombatLoopUsingVector::BasicLoop(CombatDataHandler &DataHandler, Broadcaster* BroadcasterObj)
 {
 	DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->ReduceHP(DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Attack);
 	DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->ReduceHP(DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Attack);
 
-	//If new cards are added, this can be turned off to check if values are subtracting correctly
-	CheckIfHealthIsLessThanZero(DataHandler);
+	BroadcasterObj->IncrementDamageDeltAmt(DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Attack);
 
-	CheckForWinCondition(DataHandler);
+	//If new cards are added, this can be turned off to check if values are subtracting correctly
+	CheckIfHealthIsLessThanZero(DataHandler, BroadcasterObj);
+
+	CheckForWinCondition(DataHandler, BroadcasterObj);
 
 	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health <= 0)
 	{
@@ -117,6 +123,8 @@ void CombatLoopUsingVector::BasicLoop(CombatDataHandler &DataHandler)
 	if (DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health <= 0)
 	{
 		DataHandler.AdvanceP2TargetVecLocation();
+
+		BroadcasterObj->IncrementCardsDefeatedAmt();
 	}
 
 }

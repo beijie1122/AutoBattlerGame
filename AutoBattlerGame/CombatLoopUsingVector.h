@@ -2,6 +2,7 @@
 #include "CombatDataHandler.h"
 #include "VanillaCards.h"
 #include <vector>
+#include "Broadcaster.h"
 
 class CombatLoopUsingVector
 {
@@ -9,17 +10,17 @@ public:
 
 	CombatLoopUsingVector();
 
-	void BasicLoop(CombatDataHandler &DataHandler);
+	void BasicLoop(CombatDataHandler &DataHandler, Broadcaster* BroadcasterObj);
 
-	void BasicCombatSetup(CombatDataHandler &DataHandler);
+	void BasicCombatSetup(CombatDataHandler &DataHandler, Broadcaster* BroadcasterObj);
 
-	void PreCombatAbilityLoop(CombatDataHandler& DataHandler);
+	void PreCombatAbilityLoop(CombatDataHandler& DataHandler, Broadcaster* BroadcasterObj);
 
-	void CheckIfHealthIsLessThanZero(CombatDataHandler& DataHandler);
+	void CheckIfHealthIsLessThanZero(CombatDataHandler& DataHandler, Broadcaster* BroadcasterObj);
 
-	void CheckForWinCondition(CombatDataHandler& DataHandler);
+	void CheckForWinCondition(CombatDataHandler& DataHandler, Broadcaster* BroadcasterObj);
 
-	void CheckIfEntireBoardHealthIsLessThanZero(CombatDataHandler DataHandler);
+	void CheckIfEntireBoardHealthIsLessThanZero(CombatDataHandler DataHandler, Broadcaster* BroadcasterObj);
 
 	~CombatLoopUsingVector();
 

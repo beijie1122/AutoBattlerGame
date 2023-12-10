@@ -35,12 +35,18 @@ void BaseGameMode::MainMenuMode()
 
 	DataHandler.P1Deck = P1Deck.Holder;
 
+	Broadcaster* BroadcastObj = new Broadcaster();
+
+	Listener* ListenerObj = new Listener();
+
 	while (true)
 	{
 		//Will be deleted
 		Renderer* RenderingObjects = new Renderer();
 
 		MenuStack.top()->PrintMenu(DataHandler);
+
+		ListenerObj->QuestsStorageVector.at(0)->PrintQuestInfo(RenderingObjects, 75, 10);
 
 		if (IsVirtualKeyPressed(0x57))
 		{
@@ -70,7 +76,8 @@ void BaseGameMode::MainMenuMode()
 				DataHandler.EstablishStoredDecks();
 
 				MenuStack.push(PreCombatTest);
-				StartCombatMenu(DataHandler);
+
+				StartCombatMenu(DataHandler, BroadcastObj, ListenerObj);
 			}
 			else if (DataHandler.SelectionToBePassed == 1)
 			{
@@ -87,7 +94,7 @@ void BaseGameMode::MainMenuMode()
 	}
 }
 
-void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler)
+void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler, Broadcaster* BroadcasterObj, Listener* ListenerObj)
 {
 	InitiateCombatMenu* TestingThisCombatMenu = new InitiateCombatMenu();
 	while (true)
@@ -105,7 +112,7 @@ void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler)
 
 				MenuStack.push(TestingThisCombatMenu);
 
-				InitiateCombatMenu1(DataHandler);
+				InitiateCombatMenu1(DataHandler, BroadcasterObj, ListenerObj);
 			}
 		}
 		else
@@ -115,15 +122,16 @@ void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler)
 			if (!MenuStack.empty())
 			{
 				MenuStack.pop();
+				ListenerObj->UpdateForDefeatCardsQuests(BroadcasterObj);
+				BroadcasterObj->ResetAllValues();
 				delete TestingThisCombatMenu;
-				
 			}
 			return;
 		}
 	}
 }
 
-void BaseGameMode::InitiateCombatMenu1(CombatDataHandler& DataHandler)
+void BaseGameMode::InitiateCombatMenu1(CombatDataHandler& DataHandler, Broadcaster* BroadcasterObj, Listener* ListenerObj)
 {
 
 	while (true)
@@ -139,7 +147,7 @@ void BaseGameMode::InitiateCombatMenu1(CombatDataHandler& DataHandler)
 			if (IsVirtualKeyPressed(0x34)) //4 Key
 			{
 				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
-				NewCombatLoop.BasicCombatSetup(DataHandler);
+				NewCombatLoop.BasicCombatSetup(DataHandler, BroadcasterObj);
 			}
 		}
 		else

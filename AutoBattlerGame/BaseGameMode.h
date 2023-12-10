@@ -1,6 +1,5 @@
 #pragma once
 #include <Windows.h>
-#include "Node.h"
 #include "Menus.h"
 #include "Renderer.h"
 #include "FStreamExtractor.h"
@@ -16,6 +15,10 @@
 #include "Player2WinsMenu.h"
 #include "SniperCard.h"
 #include "CombatDrawMenu.h"
+#include "Broadcaster.h"
+#include "Listener.h"
+#include "QuestsBaseClass.h"
+#include "DefeatCardsQuest.h"
 
 class BaseGameMode
 {
@@ -82,9 +85,9 @@ public:
 
 	void MainMenuMode();
 
-	void StartCombatMenu(CombatDataHandler &DataHandler);
+	void StartCombatMenu(CombatDataHandler &DataHandler, Broadcaster* BroadcasterObj, Listener* ListenerObj);
 
-	void InitiateCombatMenu1(CombatDataHandler& DataHandler);
+	void InitiateCombatMenu1(CombatDataHandler& DataHandler, Broadcaster* BroadcasterObj, Listener* ListenerObj);
 
 	void BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary, Renderer BestiaryRender);
 
