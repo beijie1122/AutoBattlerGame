@@ -83,9 +83,7 @@ void BaseGameMode::MainMenuMode()
 			}
 			else if (DataHandler.SelectionToBePassed == 1)
 			{
-				DeckBuilderMenu* DeckBuilderMenuTest = new DeckBuilderMenu();
 
-				MenuStack.push(DeckBuilderMenuTest);
 				PlayerCatalogAndDeckBuilderMenu(DataHandler);
 			}
 			else if (DataHandler.SelectionToBePassed == 2)
@@ -204,19 +202,26 @@ void BaseGameMode::BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary
 
 void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(CombatDataHandler& CombatHandler)
 {
+	DeckBuilderMenu* DeckBuilderMenuTest = new DeckBuilderMenu();
+
+	MenuStack.push(DeckBuilderMenuTest);
 
 	while (true)
 	{
 		Renderer CatalogRenderer;
 		MenuStack.top()->PrintMenu(CombatHandler);
 
-		if (IsVirtualKeyPressed(0x31))
+		if (IsVirtualKeyPressed(0x32))
 		{
-			CombatHandler.DeckBuilderIncreaseTarget();
+			CombatHandler.IncreaseTargetValue();
 		}
-		else if (IsVirtualKeyPressed(0x32))
+		else if (IsVirtualKeyPressed(0x31))
 		{
-			CombatHandler.DeckBuilderDecreaseTarget();
+			CombatHandler.DecreaseTargetValue();
+		}
+		else if (IsVirtualKeyPressed(0x34))
+		{
+			CombatHandler.ChangeEdit();
 		}
 
 		if (IsVirtualKeyPressed(0x33)) // 3 key

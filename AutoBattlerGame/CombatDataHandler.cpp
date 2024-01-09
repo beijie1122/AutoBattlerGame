@@ -41,8 +41,6 @@ void CombatDataHandler::EstablishStoredDecks()
 
 	for (size_t i = 0; i < P2Deck.size(); i++)
 	{
-		//VanillaCards* NewCard2 = new VanillaCards(P2Deck.at(i)->Health, P2Deck.at(i)->Attack, P2Deck.at(i)->Name);
-
 		if (P2Deck.at(i)->CardType == "Vanilla")
 		{
 			VanillaCards* NewCard = new VanillaCards(P2Deck.at(i)->Health, P2Deck.at(i)->Attack, P2Deck.at(i)->Name, P2Deck.at(i)->CardType);
@@ -162,27 +160,55 @@ void CombatDataHandler::CombatAlreadySetup()
 	this->IsCombatSetup = true;
 }
 
-void CombatDataHandler::DeckBuilderIncreaseTarget()
+void CombatDataHandler::IncreaseTargetValue()
 {
-	if (this->DeckBuilderXCoordTarget < 4)
+	if (IsDeckSelectedToEdit == false)
 	{
-		this->DeckBuilderXCoordTarget++;
-	}
-	else
-	{
-		this->DeckBuilderXCoordTarget = 0;
+		DeckBuilderIncreaseTarget(DeckBuilderXCoordTarget, DeckBuilderXCoordMax);
 	}
 }
 
-void CombatDataHandler::DeckBuilderDecreaseTarget()
+void CombatDataHandler::DecreaseTargetValue()
 {
-	if (this->DeckBuilderXCoordTarget != 0)
+	if (IsDeckSelectedToEdit == false)
 	{
-		this->DeckBuilderXCoordTarget--;
+		DeckBuilderDecreaseTarget(DeckBuilderXCoordTarget);
+	}
+}
+
+void CombatDataHandler::DeckBuilderIncreaseTarget(int &VecToIncrease, int IncreaseVecMaxValue)
+{
+	if (VecToIncrease < IncreaseVecMaxValue)
+	{
+		VecToIncrease++;
 	}
 	else
 	{
-		this->DeckBuilderXCoordTarget = 4;
+		VecToIncrease = 0;
+	}
+}
+
+void CombatDataHandler::DeckBuilderDecreaseTarget(int &VectoDecrease)
+{
+	if (VectoDecrease != 0)
+	{
+		VectoDecrease--;
+	}
+	else
+	{
+		VectoDecrease = 4;
+	}
+}
+
+void CombatDataHandler::ChangeEdit()
+{
+	if (this->IsDeckSelectedToEdit == false)
+	{
+		this->IsDeckSelectedToEdit = true;
+	}
+	else
+	{
+		this->IsDeckSelectedToEdit = false;
 	}
 }
 

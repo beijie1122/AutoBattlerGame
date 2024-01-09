@@ -24,9 +24,19 @@ public:
 
 	std::vector<int> DeckBuilderTargetXCoordVec{ 4, 13, 22, 30, 38 };
 
+	std::vector<int> DeckBuilderP1DeckXCoordVec{ 52, 61, 70, 79 };
+
 	int DeckBuilderTargetYCoord = 6;
 
-	int DeckBuilderXCoordTarget = 1;
+	int DeckBuilderXCoordTarget = 0;
+
+	int DeckBuilderXCoordMax = 4;
+
+	int P1DeckSelectedXCordTarget = 0;
+
+	int P1DeckSelectedXCordMax = 3;
+
+	bool IsDeckSelectedToEdit = false;
 
 	std::vector<VanillaCards*> P1Deck;
 
@@ -84,9 +94,17 @@ public:
 
 	void CombatAlreadySetup();
 
-	void DeckBuilderIncreaseTarget();
+	//Deck Builder Functions -- Should be moved to another handler but just prototyping now
 
-	void DeckBuilderDecreaseTarget();
+	void IncreaseTargetValue();
+
+	void DecreaseTargetValue();
+
+	void DeckBuilderIncreaseTarget(int &VecToIncrase, int IncreaseVecMaxValue);
+
+	void DeckBuilderDecreaseTarget(int &VectoDecrease);
+
+	void ChangeEdit();
 
 	~CombatDataHandler();
 
