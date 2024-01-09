@@ -8,6 +8,7 @@ DeckBuilderMenu::DeckBuilderMenu()
 void DeckBuilderMenu::PrintMenu(CombatDataHandler& DataHandler)
 {
 	DataHandler.RenderObject.DrawStringValue("Deck Builder", { 1, 1 });
+	DataHandler.RenderObject.DrawCardVector(CardChoiceOutlineLayout, { DataHandler.DeckBuilderTargetXCoordVec.at(DataHandler.DeckBuilderXCoordTarget), DataHandler.DeckBuilderTargetYCoord }, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
 
 	for (size_t i = 0; i < DataHandler.P1DeckBuilderDeck.size(); i++)
 	{

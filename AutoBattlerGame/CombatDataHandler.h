@@ -22,6 +22,12 @@ public:
 
 	std::vector<int> DeckBuilderXCoordVec{ 5, 14, 23, 31, 39 };
 
+	std::vector<int> DeckBuilderTargetXCoordVec{ 4, 13, 22, 30, 38 };
+
+	int DeckBuilderTargetYCoord = 6;
+
+	int DeckBuilderXCoordTarget = 1;
+
 	std::vector<VanillaCards*> P1Deck;
 
 	std::vector<VanillaCards*> P2Deck;
@@ -77,6 +83,10 @@ public:
 	void AdvanceP2TargetVecLocation();
 
 	void CombatAlreadySetup();
+
+	void DeckBuilderIncreaseTarget();
+
+	void DeckBuilderDecreaseTarget();
 
 	~CombatDataHandler();
 

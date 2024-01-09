@@ -162,6 +162,30 @@ void CombatDataHandler::CombatAlreadySetup()
 	this->IsCombatSetup = true;
 }
 
+void CombatDataHandler::DeckBuilderIncreaseTarget()
+{
+	if (this->DeckBuilderXCoordTarget < 4)
+	{
+		this->DeckBuilderXCoordTarget++;
+	}
+	else
+	{
+		this->DeckBuilderXCoordTarget = 0;
+	}
+}
+
+void CombatDataHandler::DeckBuilderDecreaseTarget()
+{
+	if (this->DeckBuilderXCoordTarget != 0)
+	{
+		this->DeckBuilderXCoordTarget--;
+	}
+	else
+	{
+		this->DeckBuilderXCoordTarget = 4;
+	}
+}
+
 
 CombatDataHandler::~CombatDataHandler()
 {

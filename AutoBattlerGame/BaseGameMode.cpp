@@ -212,20 +212,11 @@ void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(CombatDataHandler& CombatHand
 
 		if (IsVirtualKeyPressed(0x31))
 		{
-			if (CardCatalogXCOORDTarget == 4)
-			{
-				CardCatalogYCoordTarget = 1;
-				CardCatalogXCOORDTarget = 0;
-			}
-			else
-			{
-				CardCatalogXCOORDTarget++;
-			}
-
+			CombatHandler.DeckBuilderIncreaseTarget();
 		}
 		else if (IsVirtualKeyPressed(0x32))
 		{
-			CardCatalogXCOORDTarget--;
+			CombatHandler.DeckBuilderDecreaseTarget();
 		}
 
 		if (IsVirtualKeyPressed(0x33)) // 3 key
