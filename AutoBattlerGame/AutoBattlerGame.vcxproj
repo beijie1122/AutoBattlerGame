@@ -147,6 +147,7 @@
     <ClCompile Include="CombatDrawMenu.cpp" />
     <ClCompile Include="CombatLoop.cpp" />
     <ClCompile Include="CombatLoopUsingVector.cpp" />
+    <ClCompile Include="DeckBuilderMenu.cpp" />
     <ClCompile Include="DefeatCardsQuest.cpp" />
     <ClCompile Include="FStreamExtractor.cpp" />
     <ClCompile Include="InitiateCombatMenu.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="CombatDrawMenu.h" />
     <ClInclude Include="CombatLoop.h" />
     <ClInclude Include="CombatLoopUsingVector.h" />
+    <ClInclude Include="DeckBuilderMenu.h" />
     <ClInclude Include="DefeatCardsQuest.h" />
     <ClInclude Include="FStreamExtractor.h" />
     <ClInclude Include="InitiateCombatMenu.h" />

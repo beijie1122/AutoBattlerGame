@@ -103,6 +103,18 @@ void CombatDataHandler::ResetDecksAssistingFunctinon(std::vector<VanillaCards*>&
 	StorageVec[j] = CardToBeStored;
 }
 
+void CombatDataHandler::PopulateStartGameP1Deck(CardHolder AllCards)
+{
+	for (size_t i = 0; i < 4; i++)
+	{
+		VanillaCards* NewCard = new VanillaCards(AllCards.Holder.at(i)->Health, AllCards.Holder.at(i)->Attack, AllCards.Holder.at(i)->Name, AllCards.Holder.at(i)->CardType);
+		this->P1DeckBuilderDeck.push_back(NewCard);
+	}
+
+	SniperCard* NewSniper = new SniperCard();
+	this->P1DeckBuilderDeck.push_back(NewSniper);
+}
+
 void CombatDataHandler::PostCombatValueReset()
 {
 	ResetDecks();

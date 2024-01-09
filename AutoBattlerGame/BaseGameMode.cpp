@@ -39,6 +39,8 @@ void BaseGameMode::MainMenuMode()
 
 	Listener* ListenerObj = new Listener();
 
+	DataHandler.PopulateStartGameP1Deck(AllCardsContainer);
+
 	while (true)
 	{
 		//Will be deleted
@@ -81,7 +83,10 @@ void BaseGameMode::MainMenuMode()
 			}
 			else if (DataHandler.SelectionToBePassed == 1)
 			{
-				//PlayerCatalogAndDeckBuilderMenu(PlayerOwnedCards, Player1CardCatalog, PerformOperationsObject);
+				DeckBuilderMenu* DeckBuilderMenuTest = new DeckBuilderMenu();
+
+				MenuStack.push(DeckBuilderMenuTest);
+				PlayerCatalogAndDeckBuilderMenu(DataHandler);
 			}
 			else if (DataHandler.SelectionToBePassed == 2)
 			{
@@ -197,54 +202,36 @@ void BaseGameMode::BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary
 	
 }
 
-void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(Node* PlayerCatalog, Node* PlayerDeck, LLNodeOperations CatalogHandler)
+void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(CombatDataHandler& CombatHandler)
 {
 
 	while (true)
 	{
-		Menus CatalogMenuItem;
 		Renderer CatalogRenderer;
+		MenuStack.top()->PrintMenu(CombatHandler);
 
-		if (IsPlayerViewingCatalog == true)
+		if (IsVirtualKeyPressed(0x31))
 		{
-			//code for viewing catalog
-			CatalogMenuItem.PlayerIsViewingCardCatalogMenu(CatalogRenderer, CatalogHandler.BestiaryXCOORD, CatalogHandler.BestiaryYCOORD, CardCatalogXCOORDTargetVec.at(CardCatalogXCOORDTarget), CardCatalogYCOORDTargetVec.at(CardCatalogYCoordTarget));
-			CatalogMenuItem.CardCatalogAndDeckBuilderMenu(CatalogRenderer);
-			CatalogHandler.PrintPlayerCatalog(PlayerCatalog, PlayerDeck, CatalogRenderer);
-
-			if (IsVirtualKeyPressed(0x31))
+			if (CardCatalogXCOORDTarget == 4)
 			{
-				if (CardCatalogXCOORDTarget == 4)
-				{
-					CardCatalogYCoordTarget = 1;
-					CardCatalogXCOORDTarget = 0;
-				}
-				else
-				{
-					CardCatalogXCOORDTarget++;
-				}
-
+				CardCatalogYCoordTarget = 1;
+				CardCatalogXCOORDTarget = 0;
 			}
-			else if (IsVirtualKeyPressed(0x32))
+			else
 			{
-				CardCatalogXCOORDTarget--;
+				CardCatalogXCOORDTarget++;
 			}
 
 		}
-		else if (IsPlayerViewingDeck == true)
+		else if (IsVirtualKeyPressed(0x32))
 		{
-			//code for Viewing Deck
+			CardCatalogXCOORDTarget--;
 		}
-		else if (IsPlayerReplacingACard == true)
-		{
-			//replace Card Logic
-		}
-
-
 
 		if (IsVirtualKeyPressed(0x33)) // 3 key
 		{
 			PlaySound(TEXT("ExitNoise.wav"), NULL, SND_ASYNC);
+			MenuStack.pop();
 			break;
 		}
 

@@ -19,6 +19,7 @@
 #include "Listener.h"
 #include "QuestsBaseClass.h"
 #include "DefeatCardsQuest.h"
+#include "DeckBuilderMenu.h"
 
 class BaseGameMode
 {
@@ -91,7 +92,7 @@ public:
 
 	void BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary, Renderer BestiaryRender);
 
-	void PlayerCatalogAndDeckBuilderMenu(Node* PlayerCatalog, Node* PlayerDeck, LLNodeOperations CatalogHandler);
+	void PlayerCatalogAndDeckBuilderMenu(CombatDataHandler & CombatHandler);
 
 	void DisplayPlayer1WinsMenu(CombatDataHandler& DataHandler);
 

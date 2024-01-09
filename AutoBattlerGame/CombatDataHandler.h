@@ -20,6 +20,8 @@ public:
 
 	std::vector<int> P2XCoordVec{ 50, 59, 68, 77 };
 
+	std::vector<int> DeckBuilderXCoordVec{ 5, 14, 23, 31, 39 };
+
 	std::vector<VanillaCards*> P1Deck;
 
 	std::vector<VanillaCards*> P2Deck;
@@ -27,6 +29,8 @@ public:
 	std::vector<VanillaCards*> P1StoredDeck;
 
 	std::vector<VanillaCards*> P2StoredDeck;
+
+	std::vector<VanillaCards*> P1DeckBuilderDeck;
 
 	int YCoord = 7;
 
@@ -53,6 +57,8 @@ public:
 	void PushbackCardsforStoredDecks(std::vector<VanillaCards*> &StorageVec, VanillaCards* CardToBeStored, int i);
 
 	void ResetDecksAssistingFunctinon(std::vector<VanillaCards*>& StorageVec, VanillaCards* CardToBeStored, int j);
+
+	void PopulateStartGameP1Deck(CardHolder AllCards);
 
 	void EstablishStoredDecks();
 

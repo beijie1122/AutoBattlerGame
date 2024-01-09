@@ -25,6 +25,24 @@
     <Filter Include="Source Files\SingleUse">
       <UniqueIdentifier>{9fe22e6a-d726-4d80-b4ee-0aa32d4113cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Archived">
+      <UniqueIdentifier>{cf6ea3df-4ba9-432d-9d6e-592a2d258cf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Cards">
+      <UniqueIdentifier>{f5217ed8-668b-4b9b-81bd-92e2d945da50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menus">
+      <UniqueIdentifier>{fd73634c-299f-4258-befa-cec26e9047a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SingleUse">
+      <UniqueIdentifier>{927b8615-5c2e-4f63-9174-f26d1600bc48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Quests">
+      <UniqueIdentifier>{b7504f2b-61c5-4552-9e54-56072c308afc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Quests">
+      <UniqueIdentifier>{6400f46a-8caa-48de-94d4-87c2a0f73465}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseGameMode.cpp">
@@ -87,42 +105,21 @@
     <ClCompile Include="FStreamExtractor.cpp">
       <Filter>Source Files\SingleUse</Filter>
     </ClCompile>
-    <ClCompile Include="QuestsBaseClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DefeatCardsQuest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Listener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QuestsBaseClass.cpp">
+      <Filter>Source Files\Quests</Filter>
+    </ClCompile>
+    <ClCompile Include="DefeatCardsQuest.cpp">
+      <Filter>Source Files\Quests</Filter>
+    </ClCompile>
+    <ClCompile Include="DeckBuilderMenu.cpp">
+      <Filter>Source Files\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Node.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LLNodeOperations.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CombatLoop.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Menus.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BaseGameMode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FStreamExtractor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PreCombatMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
@@ -131,41 +128,68 @@
     <ClInclude Include="CombatDataHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InitiateCombatMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VanillaCards.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CardHolder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CombatLoopUsingVector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player1WinsMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player2WinsMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SniperCard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CombatDrawMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Broadcaster.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="QuestsBaseClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DefeatCardsQuest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Listener.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatDrawMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="FStreamExtractor.h">
+      <Filter>Header Files\SingleUse</Filter>
+    </ClInclude>
+    <ClInclude Include="InitiateCombatMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="LLNodeOperations.h">
+      <Filter>Header Files\Archived</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Menus.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Header Files\Archived</Filter>
+    </ClInclude>
+    <ClInclude Include="Player1WinsMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Player2WinsMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="PreCombatMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Header Files\SingleUse</Filter>
+    </ClInclude>
+    <ClInclude Include="SniperCard.h">
+      <Filter>Header Files\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="VanillaCards.h">
+      <Filter>Header Files\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatLoop.h">
+      <Filter>Header Files\Archived</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestsBaseClass.h">
+      <Filter>Header Files\Quests</Filter>
+    </ClInclude>
+    <ClInclude Include="DefeatCardsQuest.h">
+      <Filter>Header Files\Quests</Filter>
+    </ClInclude>
+    <ClInclude Include="DeckBuilderMenu.h">
+      <Filter>Header Files\Menus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

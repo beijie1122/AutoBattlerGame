@@ -24,6 +24,8 @@ public:
 
 	void PopulatePlayer1BaseDeck(CardHolder AllCards);
 
+	void PopulateP1DeckBuilderBaseDeck(CardHolder AllCards);
+
 	int RandomNumberGenerator(int Min, int Max);
 
 	~CardHolder();

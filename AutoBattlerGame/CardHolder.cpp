@@ -62,6 +62,18 @@ void CardHolder::PopulatePlayer1BaseDeck(CardHolder AllCards)
 	this->Holder[0] = NewSniper;
 }
 
+void CardHolder::PopulateP1DeckBuilderBaseDeck(CardHolder AllCards)
+{
+	for (size_t i = 0; i < 4; i++)
+	{
+		VanillaCards* NewCard = new VanillaCards(AllCards.Holder.at(i)->Health, AllCards.Holder.at(i)->Attack, AllCards.Holder.at(i)->Name, AllCards.Holder.at(i)->CardType);
+		this->Holder.push_back(NewCard);
+	}
+
+	SniperCard* NewSniper = new SniperCard();
+	this->Holder[4] = NewSniper;
+}
+
 int CardHolder::RandomNumberGenerator(int Min, int Max)
 {
 	int RandomVariable;
