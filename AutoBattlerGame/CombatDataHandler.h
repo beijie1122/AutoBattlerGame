@@ -25,12 +25,18 @@ public:
 	std::vector<int> DeckBuilderTargetXCoordVec{ 4, 13, 22, 30, 38 };
 
 	std::vector<int> DeckBuilderP1DeckXCoordVec{ 52, 61, 70, 79 };
+	
+	std::vector<int> DeckBuilderP1DeckTargetXCoordVec{ 51, 60, 69, 78 };
 
 	int DeckBuilderTargetYCoord = 6;
 
 	int DeckBuilderXCoordTarget = 0;
 
+	int DeckBuilderP1DeckXCoordTarget = 0;
+
 	int DeckBuilderXCoordMax = 4;
+
+	int DeckBuilderP1DeckXCoordMax = 3;
 
 	int P1DeckSelectedXCordTarget = 0;
 
@@ -102,7 +108,7 @@ public:
 
 	void DeckBuilderIncreaseTarget(int &VecToIncrase, int IncreaseVecMaxValue);
 
-	void DeckBuilderDecreaseTarget(int &VectoDecrease);
+	void DeckBuilderDecreaseTarget(int &VectoDecrease, int DecreaseVecMaxValue);
 
 	void ChangeEdit();
 

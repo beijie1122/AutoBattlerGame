@@ -166,13 +166,21 @@ void CombatDataHandler::IncreaseTargetValue()
 	{
 		DeckBuilderIncreaseTarget(DeckBuilderXCoordTarget, DeckBuilderXCoordMax);
 	}
+	else
+	{
+		DeckBuilderIncreaseTarget(DeckBuilderP1DeckXCoordTarget, DeckBuilderP1DeckXCoordMax);
+	}
 }
 
 void CombatDataHandler::DecreaseTargetValue()
 {
 	if (IsDeckSelectedToEdit == false)
 	{
-		DeckBuilderDecreaseTarget(DeckBuilderXCoordTarget);
+		DeckBuilderDecreaseTarget(DeckBuilderXCoordTarget, DeckBuilderXCoordMax);
+	}
+	else
+	{
+		DeckBuilderDecreaseTarget(DeckBuilderP1DeckXCoordTarget, DeckBuilderP1DeckXCoordMax);
 	}
 }
 
@@ -188,7 +196,7 @@ void CombatDataHandler::DeckBuilderIncreaseTarget(int &VecToIncrease, int Increa
 	}
 }
 
-void CombatDataHandler::DeckBuilderDecreaseTarget(int &VectoDecrease)
+void CombatDataHandler::DeckBuilderDecreaseTarget(int &VectoDecrease, int DecreaseVecMaxValue)
 {
 	if (VectoDecrease != 0)
 	{
@@ -196,7 +204,7 @@ void CombatDataHandler::DeckBuilderDecreaseTarget(int &VectoDecrease)
 	}
 	else
 	{
-		VectoDecrease = 4;
+		VectoDecrease = DecreaseVecMaxValue;
 	}
 }
 

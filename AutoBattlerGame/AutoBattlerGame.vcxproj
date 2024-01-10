@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClCompile Include="BaseGameMode.cpp" />
     <ClCompile Include="Broadcaster.cpp" />
+    <ClCompile Include="CardFactory.cpp" />
     <ClCompile Include="CardHolder.cpp" />
     <ClCompile Include="CombatDataHandler.cpp" />
     <ClCompile Include="CombatDrawMenu.cpp" />
@@ -168,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="BaseGameMode.h" />
     <ClInclude Include="Broadcaster.h" />
+    <ClInclude Include="CardFactory.h" />
     <ClInclude Include="CardHolder.h" />
     <ClInclude Include="CombatDataHandler.h" />
     <ClInclude Include="CombatDrawMenu.h" />

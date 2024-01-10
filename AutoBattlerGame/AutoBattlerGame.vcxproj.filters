@@ -43,12 +43,15 @@
     <Filter Include="Header Files\Quests">
       <UniqueIdentifier>{6400f46a-8caa-48de-94d4-87c2a0f73465}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{f75f2d55-b7dc-4c6a-97f5-39ade3d3c2a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utility">
+      <UniqueIdentifier>{035392e1-5cf1-452a-9051-bb961067f178}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseGameMode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CombatDataHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CardHolder.cpp">
@@ -117,15 +120,18 @@
     <ClCompile Include="DeckBuilderMenu.cpp">
       <Filter>Source Files\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="CombatDataHandler.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="CardFactory.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseGameMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CombatDataHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CardHolder.h">
@@ -190,6 +196,12 @@
     </ClInclude>
     <ClInclude Include="DeckBuilderMenu.h">
       <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatDataHandler.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="CardFactory.h">
+      <Filter>Header Files\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

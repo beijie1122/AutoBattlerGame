@@ -13,7 +13,13 @@ void DeckBuilderMenu::PrintMenu(CombatDataHandler& DataHandler)
 
 	if (DataHandler.IsDeckSelectedToEdit == false)
 	{
-		DataHandler.RenderObject.DrawCardVector(CardChoiceOutlineLayout, { DataHandler.DeckBuilderTargetXCoordVec.at(DataHandler.DeckBuilderXCoordTarget), DataHandler.DeckBuilderTargetYCoord }, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
+		DataHandler.RenderObject.DrawCardVector(CardChoiceOutlineLayout, { DataHandler.DeckBuilderTargetXCoordVec.at(DataHandler.DeckBuilderXCoordTarget), DataHandler.DeckBuilderTargetYCoord }
+		, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
+	}
+	else
+	{
+		DataHandler.RenderObject.DrawCardVector(CardChoiceOutlineLayout, { DataHandler.DeckBuilderP1DeckTargetXCoordVec.at(DataHandler.DeckBuilderP1DeckXCoordTarget), DataHandler.DeckBuilderTargetYCoord}
+		, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
 	}
 	
 
