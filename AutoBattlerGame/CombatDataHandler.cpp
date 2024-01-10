@@ -162,7 +162,7 @@ void CombatDataHandler::CombatAlreadySetup()
 
 void CombatDataHandler::IncreaseTargetValue()
 {
-	if (IsDeckSelectedToEdit == false)
+	if (IsDeckSelectedToEdit == false || IsSwapingEnabled == true)
 	{
 		DeckBuilderIncreaseTarget(DeckBuilderXCoordTarget, DeckBuilderXCoordMax);
 	}
@@ -174,7 +174,7 @@ void CombatDataHandler::IncreaseTargetValue()
 
 void CombatDataHandler::DecreaseTargetValue()
 {
-	if (IsDeckSelectedToEdit == false)
+	if (IsDeckSelectedToEdit == false || IsSwapingEnabled == true)
 	{
 		DeckBuilderDecreaseTarget(DeckBuilderXCoordTarget, DeckBuilderXCoordMax);
 	}
@@ -218,6 +218,29 @@ void CombatDataHandler::ChangeEdit()
 	{
 		this->IsDeckSelectedToEdit = false;
 	}
+}
+
+void CombatDataHandler::SelectCardAndSwapState()
+{
+	if (IsDeckSelectedToEdit == true)
+	{
+		IsSwapingEnabled = true;
+	}
+
+	//DeckBuilderXCoordTarget = 0;
+
+}
+
+void CombatDataHandler::ConfirmSwap()
+{
+	CardFactory Factory;
+
+	Factory.CreateNewCard(P1DeckBuilderDeck.at(DeckBuilderXCoordTarget), P1Deck, DeckBuilderP1DeckXCoordTarget);
+
+	//reset values 
+	IsDeckSelectedToEdit = false;
+	IsSwapingEnabled = false;
+
 }
 
 

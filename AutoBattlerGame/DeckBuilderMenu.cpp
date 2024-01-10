@@ -13,11 +13,19 @@ void DeckBuilderMenu::PrintMenu(CombatDataHandler& DataHandler)
 
 	if (DataHandler.IsDeckSelectedToEdit == false)
 	{
+		//Insert UI showing Deck Selected Menu
+		DataHandler.RenderObject.DrawCardVector(CardChoiceOutlineLayout, { DataHandler.DeckBuilderTargetXCoordVec.at(DataHandler.DeckBuilderXCoordTarget), DataHandler.DeckBuilderTargetYCoord }
+		, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
+	}
+	else if (DataHandler.IsSwapingEnabled == true)
+	{
+		//Insert UI Showing we are Swapping
 		DataHandler.RenderObject.DrawCardVector(CardChoiceOutlineLayout, { DataHandler.DeckBuilderTargetXCoordVec.at(DataHandler.DeckBuilderXCoordTarget), DataHandler.DeckBuilderTargetYCoord }
 		, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
 	}
 	else
 	{
+		//Insert UI showing We are Viewing P1 Deck
 		DataHandler.RenderObject.DrawCardVector(CardChoiceOutlineLayout, { DataHandler.DeckBuilderP1DeckTargetXCoordVec.at(DataHandler.DeckBuilderP1DeckXCoordTarget), DataHandler.DeckBuilderTargetYCoord}
 		, CardChoiceOutlineVerticleMeasure, CardChoiceOutlineHorizontalMeasure);
 	}

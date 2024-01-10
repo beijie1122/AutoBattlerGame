@@ -3,12 +3,15 @@
 #include "CardHolder.h"
 #include "VanillaCards.h"
 #include "SniperCard.h"
+#include "CardFactory.h"
 
 class CardHolder;
 
 class VanillaCards;
 
 class SniperCard;
+
+class CardFactory;
 
 class CombatDataHandler
 {
@@ -43,6 +46,8 @@ public:
 	int P1DeckSelectedXCordMax = 3;
 
 	bool IsDeckSelectedToEdit = false;
+	
+	bool IsSwapingEnabled = false;
 
 	std::vector<VanillaCards*> P1Deck;
 
@@ -111,6 +116,10 @@ public:
 	void DeckBuilderDecreaseTarget(int &VectoDecrease, int DecreaseVecMaxValue);
 
 	void ChangeEdit();
+
+	void SelectCardAndSwapState();
+
+	void ConfirmSwap();
 
 	~CombatDataHandler();
 

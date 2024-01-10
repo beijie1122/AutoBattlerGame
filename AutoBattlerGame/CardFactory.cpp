@@ -5,22 +5,25 @@ CardFactory::CardFactory()
 
 }
 
-void CardFactory::CreateNewCard(VanillaCards* InputCard, CombatDataHandler& DataHandler, int DeckSpot)
+void CardFactory::CreateNewCard(VanillaCards* InputCard, std::vector<VanillaCards*>& Deck, int& DeckSpot)
 {
-	DeckSpot--;
+	//DeckSpot--;
 
 	if (InputCard->CardType == "Vanilla")
 	{
 		VanillaCards* NewCard = new VanillaCards(InputCard->Health, InputCard->Attack, InputCard->Name, InputCard->CardType);
-		DataHandler.P1Deck.erase(DataHandler.P1Deck.begin() + DeckSpot);
-		DataHandler.P1Deck.at(DeckSpot) = NewCard;
+		Deck.push_back(NewCard);
+		std::iter_swap(Deck.begin() + DeckSpot, Deck.end() - 1);
+		Deck.erase(Deck.end() - 1);
+		//Check HERE
 	}
 
 	else if (InputCard->CardType == "Sniper")
 	{
 		SniperCard* NewCard = new SniperCard(InputCard->Health, InputCard->Attack, InputCard->Name, InputCard->CardType);
-		DataHandler.P1Deck.erase(DataHandler.P1Deck.begin() + DeckSpot);
-		DataHandler.P1Deck.at(DeckSpot) = NewCard;
+		Deck.push_back(NewCard);
+		std::iter_swap(Deck.begin() + DeckSpot, Deck.end() - 1);
+		Deck.erase(Deck.end() - 1);
 	}
 
 }

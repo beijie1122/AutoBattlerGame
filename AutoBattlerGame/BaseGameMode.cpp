@@ -211,19 +211,33 @@ void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(CombatDataHandler& CombatHand
 		Renderer CatalogRenderer;
 		MenuStack.top()->PrintMenu(CombatHandler);
 
+		//Move Right
 		if (IsVirtualKeyPressed(0x32))
 		{
 			CombatHandler.IncreaseTargetValue();
 		}
+		//Move Left
 		else if (IsVirtualKeyPressed(0x31))
 		{
 			CombatHandler.DecreaseTargetValue();
 		}
+		//Change to EditDeckMode
 		else if (IsVirtualKeyPressed(0x34))
 		{
 			CombatHandler.ChangeEdit();
 		}
+		//Select a card to swap 
+		else if (IsVirtualKeyPressed(0x35))
+		{
+			CombatHandler.SelectCardAndSwapState();
+		}
+		//Confirm Swap
+		else if (IsVirtualKeyPressed(0x36))
+		{
+			CombatHandler.ConfirmSwap();
+		}
 
+		//Exit
 		if (IsVirtualKeyPressed(0x33)) // 3 key
 		{
 			PlaySound(TEXT("ExitNoise.wav"), NULL, SND_ASYNC);
