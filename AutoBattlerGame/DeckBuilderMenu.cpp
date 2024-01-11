@@ -41,6 +41,11 @@ void DeckBuilderMenu::PrintMenu(CombatDataHandler& DataHandler)
 		DataHandler.P1Deck.at(i)->RenderNode(DataHandler.RenderObject, DataHandler.DeckBuilderP1DeckXCoordVec.at(i), DataHandler.YCoord);
 	}
 
+	for (size_t i = 0; i < MenuButtonDescription.size(); i++)
+	{
+		DataHandler.RenderObject.DrawStringValue(MenuButtonDescription.at(i), { XCoord, YCoordVector.at(i) });
+	}
+
 }
 
 DeckBuilderMenu::~DeckBuilderMenu()
