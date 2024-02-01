@@ -88,10 +88,14 @@ void BaseGameMode::MainMenuMode()
 			PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 			if (DataHandler.SelectionToBePassed == 0)
 			{
-				//Make into it's own function 
 				//MAKE INTO CARD FACTORY FUNCTION
-				CardHolder P2Deck("Player2Deck", AllCardsContainer);
-				DataHandler.P2Deck = P2Deck.Holder;
+				//CardHolder P2Deck("Player2Deck", AllCardsContainer);
+				//DataHandler.P2Deck = P2Deck.Holder;
+
+				//FACTORY FUNCTIONS - SUCCESS
+				CardHolder Player2Deck;
+				Factory.CreateDummyP2Deck(Player2Deck, AllCardsContainer);
+				DataHandler.P2Deck = Player2Deck.Holder;
 
 				//MAKE CARD FACTORY FUNCTION
 				DataHandler.EstablishStoredDecks();

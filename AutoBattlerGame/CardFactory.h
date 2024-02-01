@@ -5,11 +5,15 @@
 #include "CardHolder.h"
 #include <vector>
 #include <algorithm>
+#include <random>
 
 class CardHolder;
 
 class CardFactory
 {
+
+	int MinValueForNumGen = 0;
+
 public:
 
 	CardFactory();
@@ -20,6 +24,8 @@ public:
 
 	void CreateDummyDeckBuilderDeck(std::vector<VanillaCards*>& DeckBuilderDeck, CardHolder AllCards);
 
+	void CreateDummyP2Deck(CardHolder& P2Deck, CardHolder AllCards);
+
 	void CreateAllCardsHolder(CardHolder& AllCardsHolder, std::vector<int> HPVec, std::vector<int> ATTVec, std::vector<std::string> NameVec,
 		std::vector<std::string> TypeVec);
 
@@ -27,7 +33,11 @@ public:
 
 	void CreateP1StartingDeck(CardHolder& P1Deck, CardHolder CardContainer);
 
+	void CreateP2Deck(CardHolder& P2Deck, CardHolder AllCards);
+
 	void CreateNewCard(VanillaCards* InputCard, std::vector<VanillaCards*>& Deck, int DeckSpot);
+
+	int RandomNumberGenerator(int Min, int Max);
 
 	~CardFactory();
 };

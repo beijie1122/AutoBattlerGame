@@ -44,6 +44,16 @@ void CardFactory::CreateDummyDeckBuilderDeck(std::vector<VanillaCards*>& DeckBui
 
 }
 
+void CardFactory::CreateDummyP2Deck(CardHolder& P2Deck, CardHolder AllCards)
+{
+	for (size_t i = 0; i < 4; i++)
+	{
+		VanillaCards* NewCard = new VanillaCards(0, 0, "BLANK", "BLANK");
+		P2Deck.Holder.push_back(NewCard);
+	}
+	CreateP2Deck(P2Deck, AllCards);
+}
+
 void CardFactory::CreateDeckBuilderDeck(std::vector<VanillaCards*>& DeckBuilderDeck, CardHolder AllCards)
 {
 	for (size_t i = 0; i < 5; i++)
@@ -64,6 +74,19 @@ void CardFactory::CreateP1StartingDeck(CardHolder& P1Deck, CardHolder CardContai
 	//Making Sniper in P1 Base Deck
 	CreateNewCard(CardContainer.Holder.at(10), P1Deck.Holder, 0);
 
+}
+
+void CardFactory::CreateP2Deck(CardHolder& P2Deck, CardHolder AllCards)
+{
+	int RandomNumber;
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		RandomNumber = RandomNumberGenerator(MinValueForNumGen, AllCards.Holder.size() - 1);
+		VanillaCards* NewCard = new VanillaCards(AllCards.Holder.at(RandomNumber)->Health, AllCards.Holder.at(RandomNumber)->Attack,
+			AllCards.Holder.at(RandomNumber)->Name, AllCards.Holder.at(RandomNumber)->CardType);
+		CreateNewCard(NewCard, P2Deck.Holder, i);
+	}
 }
 
 
@@ -88,6 +111,19 @@ void CardFactory::CreateNewCard(VanillaCards* InputCard, std::vector<VanillaCard
 		Deck.erase(Deck.end() - 1);
 	}
 
+}
+
+int CardFactory::RandomNumberGenerator(int Min, int Max)
+{
+	int RandomVariable;
+
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> distrib(Min, Max);
+
+	RandomVariable = distrib(gen);
+
+	return RandomVariable;
 }
 
 CardFactory::~CardFactory()
