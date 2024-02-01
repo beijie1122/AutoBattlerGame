@@ -20,6 +20,7 @@
 #include "QuestsBaseClass.h"
 #include "DefeatCardsQuest.h"
 #include "DeckBuilderMenu.h"
+#include "CardFactory.h"
 
 class BaseGameMode
 {

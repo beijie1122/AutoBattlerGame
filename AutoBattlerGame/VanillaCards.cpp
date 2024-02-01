@@ -16,7 +16,6 @@ VanillaCards::VanillaCards(int HP, int ATT, std::string NM, std::string Type)
 	this->NameAbrSecondLetter = NM[1];
 	this->NameAbrThirdLetter = NM[2];
 	this->NameAbrFourthLetter = NM[3];
-	this->CardType = VanillaType;
 	SetupCardLayout();
 }
 

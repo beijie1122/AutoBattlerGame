@@ -29,9 +29,21 @@ void BaseGameMode::MainMenuMode()
 
 	CardHolder P1Deck;
 
-	AllCardsContainer.PopulateAllCardsVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec, FStreamCardTypeVec);
+	CardFactory Factory;
 
-	P1Deck.PopulatePlayer1BaseDeck(AllCardsContainer);
+	//MAKE CARD FACTORY FUNCTION
+	//AllCardsContainer.PopulateAllCardsVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec, FStreamCardTypeVec);
+
+	//NEW CARD FACTORY FUNCTIONS
+	Factory.CreateDummyAllCardsHolder(AllCardsContainer, FStreamCardHPVec);
+	Factory.CreateAllCardsHolder(AllCardsContainer, FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec, FStreamCardTypeVec);
+
+	//MAKE CARD FACTORY FUNCTION -- CAN BE DELETED
+	//P1Deck.PopulatePlayer1BaseDeck(AllCardsContainer);
+
+	//NEW CARD FACTORY FUNCTIONS -- SUCCESSFUL INTEGRATION
+	Factory.CreateDummyDeck(P1Deck);
+	Factory.CreateP1StartingDeck(P1Deck, AllCardsContainer);
 
 	DataHandler.P1Deck = P1Deck.Holder;
 
@@ -39,7 +51,11 @@ void BaseGameMode::MainMenuMode()
 
 	Listener* ListenerObj = new Listener();
 
-	DataHandler.PopulateStartGameP1Deck(AllCardsContainer);
+	//MAKE CARD FACTORY FUNCTION -- POPULATE DECK BUILDER
+	//DataHandler.PopulateStartGameP1Deck(AllCardsContainer);
+
+	//NEW CARD FACTORY FUNCTION
+	Factory.CreateDummyDeckBuilderDeck(DataHandler.P1DeckBuilderDeck, AllCardsContainer);
 
 	while (true)
 	{
@@ -73,8 +89,11 @@ void BaseGameMode::MainMenuMode()
 			if (DataHandler.SelectionToBePassed == 0)
 			{
 				//Make into it's own function 
+				//MAKE INTO CARD FACTORY FUNCTION
 				CardHolder P2Deck("Player2Deck", AllCardsContainer);
 				DataHandler.P2Deck = P2Deck.Holder;
+
+				//MAKE CARD FACTORY FUNCTION
 				DataHandler.EstablishStoredDecks();
 
 				MenuStack.push(PreCombatTest);
@@ -83,7 +102,6 @@ void BaseGameMode::MainMenuMode()
 			}
 			else if (DataHandler.SelectionToBePassed == 1)
 			{
-
 				PlayerCatalogAndDeckBuilderMenu(DataHandler);
 			}
 			else if (DataHandler.SelectionToBePassed == 2)
