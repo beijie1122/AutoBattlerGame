@@ -113,6 +113,37 @@ void CardFactory::CreateNewCard(VanillaCards* InputCard, std::vector<VanillaCard
 
 }
 
+void CardFactory::CreateStoredDummyDecks(CombatDataHandler& DataHandler)
+{
+	if (DataHandler.P1StoredDeck.size() == 0)
+	{
+		for (size_t i = 0; i < 4; i++)
+		{
+			VanillaCards* NewCard = new VanillaCards(0, 0, "BLANK", "BLANK");
+			DataHandler.P1StoredDeck.push_back(NewCard);
+			DataHandler.P2StoredDeck.push_back(NewCard);
+		}
+	}
+}
+
+void CardFactory::CopyDecksToStoredDecks(CardHolder P1Deck, CardHolder P2Deck, CombatDataHandler& DataHandler)
+{
+	for (size_t i = 0; i < 4; i++)
+	{
+		CreateNewCard(DataHandler.P1Deck.at(i), DataHandler.P1StoredDeck, i);
+		CreateNewCard(DataHandler.P2Deck.at(i), DataHandler.P2StoredDeck, i);
+	}
+}
+
+void CardFactory::ResetDecksForDataHandler(CombatDataHandler& DataHandler)
+{
+	for (size_t i = 0; i < 4; i++)
+	{
+		CreateNewCard(DataHandler.P1StoredDeck.at(i), DataHandler.P1Deck, i);
+		CreateNewCard(DataHandler.P2StoredDeck.at(i), DataHandler.P2Deck, i);
+	}
+}
+
 int CardFactory::RandomNumberGenerator(int Min, int Max)
 {
 	int RandomVariable;

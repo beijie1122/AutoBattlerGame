@@ -27,6 +27,7 @@ void BaseGameMode::MainMenuMode()
 
 	CardHolder AllCardsContainer;
 
+	//Consider taking out this function and just making the P1 Deck in Data Handler Directly
 	CardHolder P1Deck;
 
 	CardFactory Factory;
@@ -45,7 +46,10 @@ void BaseGameMode::MainMenuMode()
 	Factory.CreateDummyDeck(P1Deck);
 	Factory.CreateP1StartingDeck(P1Deck, AllCardsContainer);
 
+	//DANGEROUS!!! DELETE THIS ONCE MIGRATION TO DATA HANDLER IS DONE 
 	DataHandler.P1Deck = P1Deck.Holder;
+
+	Factory.CreateStoredDummyDecks(DataHandler);
 
 	Broadcaster* BroadcastObj = new Broadcaster();
 
@@ -98,7 +102,11 @@ void BaseGameMode::MainMenuMode()
 				DataHandler.P2Deck = Player2Deck.Holder;
 
 				//MAKE CARD FACTORY FUNCTION
-				DataHandler.EstablishStoredDecks();
+				//DataHandler.EstablishStoredDecks();
+
+				//FACTORY FUNCTION -- SUCCESSFUL INTEGRATION
+				
+				Factory.CopyDecksToStoredDecks(P1Deck, Player2Deck, DataHandler);
 
 				MenuStack.push(PreCombatTest);
 
@@ -142,8 +150,11 @@ void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler, Broadcaster* 
 		}
 		else
 		{
-
 			DataHandler.PostCombatValueReset();
+
+			CardFactory Factory;
+			Factory.ResetDecksForDataHandler(DataHandler);
+
 			if (!MenuStack.empty())
 			{
 				MenuStack.pop();

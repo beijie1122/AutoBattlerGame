@@ -115,7 +115,8 @@ void CombatDataHandler::PopulateStartGameP1Deck(CardHolder AllCards)
 
 void CombatDataHandler::PostCombatValueReset()
 {
-	ResetDecks();
+	//TO BE REPLACED BY FACTORY FUNCTION
+	//ResetDecks();
 	this->TargetingP1VecLocation = 3;
 	this->TargetingP2VecLocation = 0;
 	this->IsCombatFinished = false;

@@ -37,6 +37,12 @@ public:
 
 	void CreateNewCard(VanillaCards* InputCard, std::vector<VanillaCards*>& Deck, int DeckSpot);
 
+	void CreateStoredDummyDecks(CombatDataHandler& DataHandler);
+
+	void CopyDecksToStoredDecks(CardHolder P1Deck, CardHolder P2Deck, CombatDataHandler& DataHandler);
+
+	void ResetDecksForDataHandler(CombatDataHandler& DataHandler);
+
 	int RandomNumberGenerator(int Min, int Max);
 
 	~CardFactory();
