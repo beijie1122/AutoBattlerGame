@@ -32,15 +32,9 @@ void BaseGameMode::MainMenuMode()
 
 	CardFactory Factory;
 
-	//MAKE CARD FACTORY FUNCTION
-	//AllCardsContainer.PopulateAllCardsVector(FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec, FStreamCardTypeVec);
-
 	//NEW CARD FACTORY FUNCTIONS
 	Factory.CreateDummyAllCardsHolder(AllCardsContainer, FStreamCardHPVec);
 	Factory.CreateAllCardsHolder(AllCardsContainer, FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec, FStreamCardTypeVec);
-
-	//MAKE CARD FACTORY FUNCTION -- CAN BE DELETED
-	//P1Deck.PopulatePlayer1BaseDeck(AllCardsContainer);
 
 	//NEW CARD FACTORY FUNCTIONS -- SUCCESSFUL INTEGRATION
 	Factory.CreateDummyDeck(P1Deck);

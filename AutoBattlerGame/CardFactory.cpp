@@ -89,7 +89,6 @@ void CardFactory::CreateP2Deck(CardHolder& P2Deck, CardHolder AllCards)
 	}
 }
 
-
 void CardFactory::CreateNewCard(VanillaCards* InputCard, std::vector<VanillaCards*>& Deck, int DeckSpot)
 {
 	//DeckSpot--;
