@@ -11,7 +11,7 @@ void Broadcaster::ResetAllValues()
 {
 	this->CardsDefeatedAmt = 0;
 	this->DamageDealtAmt = 0;
-	this->WinGameAmt = 0;
+	//this->WinGameAmt = 0;
 }
 
 void Broadcaster::IncrementCardsDefeatedAmt()

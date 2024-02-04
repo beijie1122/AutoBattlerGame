@@ -54,12 +54,6 @@
     <ClCompile Include="BaseGameMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CardHolder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CombatLoopUsingVector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Broadcaster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -129,15 +123,18 @@
     <ClCompile Include="OnDeathCards.cpp">
       <Filter>Source Files\Cards</Filter>
     </ClCompile>
+    <ClCompile Include="CombatLoopUsingVector.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="CardHolder.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseGameMode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CardHolder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Broadcaster.h">
@@ -207,6 +204,9 @@
       <Filter>Header Files\Cards</Filter>
     </ClInclude>
     <ClInclude Include="CombatLoopUsingVector.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="CardHolder.h">
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
   </ItemGroup>

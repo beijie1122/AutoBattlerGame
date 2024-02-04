@@ -88,7 +88,6 @@ void CardFactory::CreateP2Deck(CardHolder& P2Deck, CardHolder AllCards)
 			AllCards.Holder.at(RandomNumber)->Name, AllCards.Holder.at(RandomNumber)->CardType);
 		CreateNewCard(NewCard, P2Deck.Holder, i);
 	}
-	CreateNewCard(AllCards.Holder.at(10), P2Deck.Holder, 0);
 }
 
 void CardFactory::CreateNewCard(VanillaCards* InputCard, std::vector<VanillaCards*>& Deck, int DeckSpot)
@@ -103,7 +102,6 @@ void CardFactory::CreateNewCard(VanillaCards* InputCard, std::vector<VanillaCard
 		Deck.erase(Deck.end() - 1);
 		//Check HERE
 	}
-
 	else if (InputCard->CardType == "Sniper")
 	{
 		SniperCard* NewCard = new SniperCard(InputCard->Health, InputCard->Attack, InputCard->Name, InputCard->CardType);
