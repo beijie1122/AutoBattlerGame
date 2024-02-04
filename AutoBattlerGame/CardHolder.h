@@ -4,6 +4,7 @@
 #include"VanillaCards.h"
 #include <random>
 #include "SniperCard.h"
+#include "OnDeathCards.h"
 
 class CardHolder
 {

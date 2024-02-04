@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <random>
+#include "OnDeathCards.h"
 
 class CardHolder;
 

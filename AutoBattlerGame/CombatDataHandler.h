@@ -19,6 +19,8 @@ public:
 
 	Renderer RenderObject;
 
+	CardFactory* Factory;
+
 	std::vector<int> XCoordVec{ 5, 14, 23, 31 };
 
 	std::vector<int> P2XCoordVec{ 50, 59, 68, 77 };

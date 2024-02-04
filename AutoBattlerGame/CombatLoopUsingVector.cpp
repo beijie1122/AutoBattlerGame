@@ -56,6 +56,7 @@ void CombatLoopUsingVector::CheckIfHealthIsLessThanZero(CombatDataHandler& DataH
 	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health < 0)
 	{
 		DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->RoundHealthtoZero();
+
 	}
 
 	if (DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health < 0)
@@ -103,6 +104,37 @@ void CombatLoopUsingVector::CheckIfEntireBoardHealthIsLessThanZero(CombatDataHan
 	}
 }
 
+void CombatLoopUsingVector::CheckIfCardHasOnDeathEffect(CombatDataHandler& DataHandler, Broadcaster* BroadcasterObj, std::string Deck)
+{
+	if (Deck == "P1")
+	{
+		if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->CardType == "OnDeath")
+		{
+			DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->OnDeathEffect(DataHandler, "P1");
+		}
+		else
+		{
+			DataHandler.AdvanceP1TargetVecLocation();
+		}
+	}
+	else if (Deck == "P2")
+	{
+		if (DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->CardType == "OnDeath" && Deck == "P2")
+		{
+			DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->OnDeathEffect(DataHandler, "P2");
+			BroadcasterObj->IncrementCardsDefeatedAmt();
+		}
+		else
+		{
+			DataHandler.AdvanceP2TargetVecLocation();
+			BroadcasterObj->IncrementCardsDefeatedAmt();
+		}
+	}
+
+	
+
+}
+
 void CombatLoopUsingVector::BasicLoop(CombatDataHandler &DataHandler, Broadcaster* BroadcasterObj)
 {
 	DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->ReduceHP(DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Attack);
@@ -117,14 +149,17 @@ void CombatLoopUsingVector::BasicLoop(CombatDataHandler &DataHandler, Broadcaste
 
 	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health <= 0)
 	{
-		DataHandler.AdvanceP1TargetVecLocation();
+		CheckIfCardHasOnDeathEffect(DataHandler, BroadcasterObj, "P1");
+		//DataHandler.AdvanceP1TargetVecLocation();
+
 	}
 
 	if (DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health <= 0)
 	{
-		DataHandler.AdvanceP2TargetVecLocation();
+		CheckIfCardHasOnDeathEffect(DataHandler, BroadcasterObj, "P2");
+		//DataHandler.AdvanceP2TargetVecLocation();
 
-		BroadcasterObj->IncrementCardsDefeatedAmt();
+		//BroadcasterObj->IncrementCardsDefeatedAmt();
 	}
 
 }

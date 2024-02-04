@@ -57,6 +57,8 @@ public:
 
 	virtual void PreCombatAbility(CombatDataHandler& DataHandler, std::string Owner);
 
+	virtual void OnDeathEffect(CombatDataHandler& DataHandler, std::string Owner);
+
 	~VanillaCards();
 };
 

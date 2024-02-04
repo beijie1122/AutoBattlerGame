@@ -8,4 +8,5 @@ Martyr 1 4 Vanilla
 Cannoneer 2 3 Vanilla 
 Brigand 2 2 Vanilla
 Head-Bandit 4 3 Vanilla 
+Shroom 1 1 OnDeath
 Sniper 2 2 Sniper

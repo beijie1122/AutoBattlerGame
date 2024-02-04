@@ -82,6 +82,10 @@ void VanillaCards::PreCombatAbility(CombatDataHandler& DataHandler, std::string 
 
 }
 
+void VanillaCards::OnDeathEffect(CombatDataHandler& DataHandler, std::string Owner)
+{
+}
+
 VanillaCards::~VanillaCards()
 {
 }

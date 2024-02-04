@@ -22,6 +22,8 @@ public:
 
 	void CheckIfEntireBoardHealthIsLessThanZero(CombatDataHandler DataHandler, Broadcaster* BroadcasterObj);
 
+	void CheckIfCardHasOnDeathEffect(CombatDataHandler& DataHandler, Broadcaster* BroadcasterObj, std::string Deck);
+
 	~CombatLoopUsingVector();
 
 };

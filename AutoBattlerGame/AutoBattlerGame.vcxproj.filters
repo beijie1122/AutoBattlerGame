@@ -126,6 +126,9 @@
     <ClCompile Include="CardFactory.cpp">
       <Filter>Source Files\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="OnDeathCards.cpp">
+      <Filter>Source Files\Cards</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseGameMode.h">
@@ -135,9 +138,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CardHolder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CombatLoopUsingVector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Broadcaster.h">
@@ -201,6 +201,12 @@
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
     <ClInclude Include="CardFactory.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="OnDeathCards.h">
+      <Filter>Header Files\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatLoopUsingVector.h">
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
   </ItemGroup>

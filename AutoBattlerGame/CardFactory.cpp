@@ -30,6 +30,7 @@ void CardFactory::CreateAllCardsHolder(CardHolder& AllCardsHolder, std::vector<i
 		VanillaCards* NewCard = new VanillaCards(HPVec.at(i), ATTVec.at(i), NameVec.at(i), TypeVec.at(i));
 		CreateNewCard(NewCard, AllCardsHolder.Holder, i);
 	}
+
 }
 
 void CardFactory::CreateDummyDeckBuilderDeck(std::vector<VanillaCards*>& DeckBuilderDeck, CardHolder AllCards)
@@ -72,7 +73,7 @@ void CardFactory::CreateP1StartingDeck(CardHolder& P1Deck, CardHolder CardContai
 	}
 
 	//Making Sniper in P1 Base Deck
-	CreateNewCard(CardContainer.Holder.at(10), P1Deck.Holder, 0);
+	CreateNewCard(CardContainer.Holder.at(10), P1Deck.Holder, 3);
 
 }
 
@@ -87,6 +88,7 @@ void CardFactory::CreateP2Deck(CardHolder& P2Deck, CardHolder AllCards)
 			AllCards.Holder.at(RandomNumber)->Name, AllCards.Holder.at(RandomNumber)->CardType);
 		CreateNewCard(NewCard, P2Deck.Holder, i);
 	}
+	CreateNewCard(AllCards.Holder.at(10), P2Deck.Holder, 0);
 }
 
 void CardFactory::CreateNewCard(VanillaCards* InputCard, std::vector<VanillaCards*>& Deck, int DeckSpot)
@@ -105,6 +107,13 @@ void CardFactory::CreateNewCard(VanillaCards* InputCard, std::vector<VanillaCard
 	else if (InputCard->CardType == "Sniper")
 	{
 		SniperCard* NewCard = new SniperCard(InputCard->Health, InputCard->Attack, InputCard->Name, InputCard->CardType);
+		Deck.push_back(NewCard);
+		std::iter_swap(Deck.begin() + DeckSpot, Deck.end() - 1);
+		Deck.erase(Deck.end() - 1);
+	}
+	else if (InputCard->CardType == "OnDeath")
+	{
+		OnDeathCards* NewCard = new OnDeathCards(InputCard->Health, InputCard->Attack, InputCard->Name, InputCard->CardType);
 		Deck.push_back(NewCard);
 		std::iter_swap(Deck.begin() + DeckSpot, Deck.end() - 1);
 		Deck.erase(Deck.end() - 1);
