@@ -1,6 +1,5 @@
 #include "BaseGameMode.h"
 #include <Windows.h>
-#include <mmsystem.h>
 
 BaseGameMode::BaseGameMode()
 {
@@ -59,7 +58,8 @@ void BaseGameMode::MainMenuMode()
 			{
 				DataHandler.SelectionToBePassed--;
 			}
-			PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+			DataHandler.AudioPlayer.NavigateMenuSoundAudio();
+			
 
 		}
 		else if (IsVirtualKeyPressed(0x53))
@@ -68,11 +68,11 @@ void BaseGameMode::MainMenuMode()
 			{
 				DataHandler.SelectionToBePassed++;
 			}
-			PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+			DataHandler.AudioPlayer.NavigateMenuSoundAudio();
 		}
 		else if (IsVirtualKeyPressed(0x32)) //2 Key
 		{
-			PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+			DataHandler.AudioPlayer.NavigateMenuSoundAudio();
 			if (DataHandler.SelectionToBePassed == 0)
 			{
 				Factory.CreateDummyP2Deck(DataHandler.P2Deck, AllCardsContainer);
@@ -93,7 +93,6 @@ void BaseGameMode::MainMenuMode()
 				//BestiaryMenu(PerformOperationsObject, Bestiary, *RenderingObjects);
 			}
 		}
-
 		delete RenderingObjects;
 	}
 }
@@ -112,7 +111,8 @@ void BaseGameMode::StartCombatMenu(CombatDataHandler& DataHandler, Broadcaster* 
 
 			if (IsVirtualKeyPressed(0x33)) //3 key
 			{
-				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+				DataHandler.AudioPlayer.NavigateMenuSoundAudio();
+				//PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 
 				MenuStack.push(TestingThisCombatMenu);
 
@@ -153,7 +153,7 @@ void BaseGameMode::InitiateCombatMenu1(CombatDataHandler& DataHandler, Broadcast
 
 			if (IsVirtualKeyPressed(0x34)) //4 Key
 			{
-				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+				DataHandler.AudioPlayer.NavigateMenuSoundAudio();
 				NewCombatLoop.BasicCombatSetup(DataHandler, BroadcasterObj);
 			}
 		}
@@ -242,7 +242,7 @@ void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(CombatDataHandler& CombatHand
 		//Exit
 		if (IsVirtualKeyPressed(0x33)) // 3 key
 		{
-			PlaySound(TEXT("ExitNoise.wav"), NULL, SND_ASYNC);
+			CombatHandler.AudioPlayer.ExitNoiseAudio();
 			MenuStack.pop();
 			break;
 		}
@@ -253,7 +253,8 @@ void BaseGameMode::PlayerCatalogAndDeckBuilderMenu(CombatDataHandler& CombatHand
 
 void BaseGameMode::DisplayPlayer1WinsMenu(CombatDataHandler& DataHandler)
 {
-	PlaySound(TEXT("Victory_Fanfare.wav"), NULL, SND_ASYNC);
+	//PlaySound(TEXT("Victory_Fanfare.wav"), NULL, SND_ASYNC);
+	DataHandler.AudioPlayer.FictoryFanfareAudio();
 	Renderer NewRender;
 	Player1WinsMenu* Player1WinMenu = new Player1WinsMenu();
 	MenuStack.push(Player1WinMenu);
@@ -263,10 +264,10 @@ void BaseGameMode::DisplayPlayer1WinsMenu(CombatDataHandler& DataHandler)
 		if (IsVirtualKeyPressed(0x35))
 		{
 			//Stops playing the victory fanfare
-			PlaySound(NULL, NULL, 0);
+			DataHandler.AudioPlayer.ExitNoiseAudio();
 			if (!MenuStack.empty())
 			{
-				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+				DataHandler.AudioPlayer.ExitNoiseAudio();
 				MenuStack.pop();
 				delete Player1WinMenu;
 				return;
@@ -288,7 +289,8 @@ void BaseGameMode::DisplayPlayer2WinsMenu(CombatDataHandler& DataHandler)
 			PlaySound(NULL, NULL, 0);
 			if (!MenuStack.empty())
 			{
-				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+				DataHandler.AudioPlayer.ExitNoiseAudio();
+				//PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 				MenuStack.pop();
 				delete Player2WinMenu;
 				return;
@@ -311,7 +313,8 @@ void BaseGameMode::DisplayCombatDrawMenu(CombatDataHandler& DataHandler)
 			PlaySound(NULL, NULL, 0);
 			if (!MenuStack.empty())
 			{
-				PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
+				DataHandler.AudioPlayer.ExitNoiseAudio();
+				//PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 				MenuStack.pop();
 				delete DrawMenuObject;
 				return;

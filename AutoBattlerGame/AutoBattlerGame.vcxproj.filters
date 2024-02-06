@@ -129,6 +129,9 @@
     <ClCompile Include="CardHolder.cpp">
       <Filter>Source Files\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="AudioHandler.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseGameMode.h">
@@ -207,6 +210,9 @@
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
     <ClInclude Include="CardHolder.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioHandler.h">
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
   </ItemGroup>

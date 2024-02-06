@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AudioHandler.cpp" />
     <ClCompile Include="BaseGameMode.cpp" />
     <ClCompile Include="Broadcaster.cpp" />
     <ClCompile Include="CardFactory.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="VanillaCards.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioHandler.h" />
     <ClInclude Include="BaseGameMode.h" />
     <ClInclude Include="Broadcaster.h" />
     <ClInclude Include="CardFactory.h" />

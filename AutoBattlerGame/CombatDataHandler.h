@@ -4,6 +4,7 @@
 #include "VanillaCards.h"
 #include "SniperCard.h"
 #include "CardFactory.h"
+#include "AudioHandler.h"
 
 class CardHolder;
 
@@ -20,6 +21,8 @@ public:
 	Renderer RenderObject;
 
 	CardFactory* Factory;
+
+	AudioHandler AudioPlayer;
 
 	std::vector<int> XCoordVec{ 5, 14, 23, 31 };
 
