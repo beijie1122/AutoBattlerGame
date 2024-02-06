@@ -49,15 +49,11 @@ void BaseGameMode::MainMenuMode()
 
 	Listener* ListenerObj = new Listener();
 
-	//MAKE CARD FACTORY FUNCTION -- POPULATE DECK BUILDER
-	//DataHandler.PopulateStartGameP1Deck(AllCardsContainer);
-
 	//NEW CARD FACTORY FUNCTION
 	Factory.CreateDummyDeckBuilderDeck(DataHandler.P1DeckBuilderDeck, AllCardsContainer);
 
 	while (true)
 	{
-		//Will be deleted
 		Renderer* RenderingObjects = new Renderer();
 
 		MenuStack.top()->PrintMenu(DataHandler);
@@ -86,19 +82,9 @@ void BaseGameMode::MainMenuMode()
 			PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 			if (DataHandler.SelectionToBePassed == 0)
 			{
-				//MAKE INTO CARD FACTORY FUNCTION
-				//CardHolder P2Deck("Player2Deck", AllCardsContainer);
-				//DataHandler.P2Deck = P2Deck.Holder;
-
-				//FACTORY FUNCTIONS - SUCCESS
 				CardHolder Player2Deck;
 				Factory.CreateDummyP2Deck(Player2Deck, AllCardsContainer);
 				DataHandler.P2Deck = Player2Deck.Holder;
-
-				//MAKE CARD FACTORY FUNCTION
-				//DataHandler.EstablishStoredDecks();
-
-				//FACTORY FUNCTION -- SUCCESSFUL INTEGRATION
 				
 				Factory.CopyDecksToStoredDecks(P1Deck, Player2Deck, DataHandler);
 
@@ -112,7 +98,7 @@ void BaseGameMode::MainMenuMode()
 			}
 			else if (DataHandler.SelectionToBePassed == 2)
 			{
-				//Bestiary
+				//Bestiary UNDER CONSTRUCTION
 				//BestiaryMenu(PerformOperationsObject, Bestiary, *RenderingObjects);
 			}
 		}
@@ -211,8 +197,6 @@ void BaseGameMode::BestiaryMenu(LLNodeOperations BestiaryHandler, Node* Bestiary
 		Renderer BestiaryRender2;
 
 		Menus BestiaryMenuItem;
-		BestiaryMenuItem.InitiateBestiaryMenu(BestiaryRender2);
-		BestiaryMenuItem.PrintBestiarySelection(BestiaryRender2);
 
 		BestiaryHandler.PrintBestiary(Bestiary, BestiaryRender2);
 

@@ -11,6 +11,18 @@ class PreCombatMenu :
 
 public:
 
+    std::string CombatMenuFrontText = "Front";
+
+    std::string CombatMenuBackText = "Back";
+
+    std::string CombatMenuTargetText = "Target";
+
+    std::string PreCombatMenuText = "Combat Setup";
+
+    std::string CombatInitializedText = "Combat Started";
+
+    std::string CombatSelectionText = "Press 3 to start combat";
+
     PreCombatMenu();
 
     void PrintMenu(CombatDataHandler& DataHandler);

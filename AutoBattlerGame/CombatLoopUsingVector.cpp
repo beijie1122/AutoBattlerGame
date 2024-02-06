@@ -150,16 +150,11 @@ void CombatLoopUsingVector::BasicLoop(CombatDataHandler &DataHandler, Broadcaste
 	if (DataHandler.P1Deck.at(DataHandler.TargetingP1VecLocation)->Health <= 0)
 	{
 		CheckIfCardHasOnDeathEffect(DataHandler, BroadcasterObj, "P1");
-		//DataHandler.AdvanceP1TargetVecLocation();
-
 	}
 
 	if (DataHandler.P2Deck.at(DataHandler.TargetingP2VecLocation)->Health <= 0)
 	{
 		CheckIfCardHasOnDeathEffect(DataHandler, BroadcasterObj, "P2");
-		//DataHandler.AdvanceP2TargetVecLocation();
-
-		//BroadcasterObj->IncrementCardsDefeatedAmt();
 	}
 
 }

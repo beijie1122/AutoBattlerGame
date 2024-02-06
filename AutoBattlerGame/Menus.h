@@ -30,36 +30,13 @@ public:
 
 	std::vector < std::vector<char>> CardChoiceOutlineLayout{ CardChoiceOutlineVerticleMeasure, std::vector<char>(CardChoiceOutlineHorizontalMeasure) };
 
-	std::vector<std::string> MenuButtonText = { "Battle", "Owned Cards & Build Deck", "Bestiary" };
-
-	std::vector<int> BestiaryXCOORDSVec{};
-
-	std::vector<int> BestiaryYCOORDSVec{};
+	std::vector<std::string> MenuButtonText = { "Battle", "Deck Builder", "Bestiary NOT AVAILABLE" };
 	
-
 	//Put into a vector to read out of in the futures
 
 	std::string FunctionalText = "Press W to move up, Press S to move down";
 
 	std::string SelectionText = "Press 2 to make a selection";
-
-	std::string CombatSelectionText = "Press 3 to start combat";
-
-	std::string InitiateCombatText = "Press 4 to move along combat";
-
-	std::string InitiateBestiaryText = "Bestiary";
-
-	std::string CombatMenuFrontText = "Front";
-
-	std::string CombatMenuBackText = "Back";
-
-	std::string CombatMenuTargetText = "Target";
-
-	std::string PreCombatMenuText = "Combat Setup";
-
-	std::string CombatInitializedText = "Combat Started";
-
-	std::vector<std::string> CatalogMenuTextVec{ "Your Card Collection", "Your Current Deck" };
 
 	std::vector<int> MenuRenderYCoords{ 5, 11, 17 };
 
@@ -69,44 +46,14 @@ public:
 
 	//Setup for Printing Different Menus with the PrintMenu Function
 
-	bool IsMainMenu = false;
-
-	bool IsCombatMenu = false;
-
 
 	Menus();
-
-	void MainGameMenu(Renderer MenuRender, int SelectionVariable);
 
 	void PopulateBigButton();
 
 	void PopulateChoiceOutlineBox();
 
 	void PopulateCardChoiceOutlineBox();
-
-	void Player1WinsMenu();
-
-	void Player2WinsMenu();
-
-	void StartCombatMenu(Renderer CombatMenuRender);
-
-	void InitiateCombatMenu(Renderer InitiateCombatMenuRenderer);
-
-	void InitiateBestiaryMenu(Renderer InitiateRendererMenu);
-
-	void PrintBestiarySelection(Renderer PrintBestiarySelection);
-
-	void GenerateVectorForBestiaryCoords(std::vector<int> XCOORDS, std::vector<int> YCOORDS);
-
-	void CombatMenuFirstAndLastPreview(Renderer MenuRender, std::vector<int> XCOORDS, int YCOORDS);
-
-	void CombatInitiatedMenu(Renderer MenuRender, std::vector<int> P1XCOORDS, std::vector<int> P2XCOORDS, int YCOORDS, int P1TargetVecLocation, int P2TargetVecLocation);
-
-	void CardCatalogAndDeckBuilderMenu(Renderer CatalogRender);
-
-	void PlayerIsViewingCardCatalogMenu(Renderer CatalogRender, std::vector<int> CatalogXCOORDS, std::vector<int> CatalogYCOORDS, int TargetXCOORDVecLocation, int TARGETYCOORDVecLocation);
-
-	virtual void PrintMenu(Renderer MenuRender, int SelectionVariable);
 
 	virtual void PrintMenu(CombatDataHandler &DataHandler);
 

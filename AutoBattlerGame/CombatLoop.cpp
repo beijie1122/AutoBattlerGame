@@ -90,25 +90,8 @@ void CombatLoop::BasicLoop(Node* Player1, Node* Player2, Renderer RenderAttack, 
 		P2TargetVar++;
 		
 	}
-
-
-	
 }
 
-void CombatLoop::WinOrLoseState()
-{
-	Menus WinOrLoseMenu;
-
-	if (Player1Wins == true)
-	{
-		WinOrLoseMenu.Player1WinsMenu();
-	}
-	else
-	{
-
-	}
-
-}
 
 CombatLoop::~CombatLoop()
 {
