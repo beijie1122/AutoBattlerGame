@@ -27,21 +27,14 @@ void BaseGameMode::MainMenuMode()
 
 	CardHolder AllCardsContainer;
 
-	//Consider taking out this function and just making the P1 Deck in Data Handler Directly
-	CardHolder P1Deck;
-
 	CardFactory Factory;
 
 	//NEW CARD FACTORY FUNCTIONS
 	Factory.CreateDummyAllCardsHolder(AllCardsContainer, FStreamCardHPVec);
 	Factory.CreateAllCardsHolder(AllCardsContainer, FStreamCardHPVec, FStreamCardATTVec, FStreamCardNameVec, FStreamCardTypeVec);
 
-	//NEW CARD FACTORY FUNCTIONS -- SUCCESSFUL INTEGRATION
-	Factory.CreateDummyDeck(P1Deck);
-	Factory.CreateP1StartingDeck(P1Deck, AllCardsContainer);
-
-	//DANGEROUS!!! DELETE THIS ONCE MIGRATION TO DATA HANDLER IS DONE 
-	DataHandler.P1Deck = P1Deck.Holder;
+	Factory.CreateDummyDeck(DataHandler.P1Deck);
+	Factory.CreateP1StartingDeck(DataHandler.P1Deck, AllCardsContainer);
 
 	Factory.CreateStoredDummyDecks(DataHandler);
 
@@ -82,11 +75,9 @@ void BaseGameMode::MainMenuMode()
 			PlaySound(TEXT("NavigateMenuSound.wav"), NULL, SND_ASYNC);
 			if (DataHandler.SelectionToBePassed == 0)
 			{
-				CardHolder Player2Deck;
-				Factory.CreateDummyP2Deck(Player2Deck, AllCardsContainer);
-				DataHandler.P2Deck = Player2Deck.Holder;
+				Factory.CreateDummyP2Deck(DataHandler.P2Deck, AllCardsContainer);
 				
-				Factory.CopyDecksToStoredDecks(P1Deck, Player2Deck, DataHandler);
+				Factory.CopyDecksToStoredDecks(DataHandler.P1Deck, DataHandler.P2Deck, DataHandler);
 
 				MenuStack.push(PreCombatTest);
 

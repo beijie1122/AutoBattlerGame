@@ -5,12 +5,12 @@ CardFactory::CardFactory()
 
 }
 
-void CardFactory::CreateDummyDeck(CardHolder& P1Deck)
+void CardFactory::CreateDummyDeck(std::vector<VanillaCards*>& P1Deck)
 {
 	for (size_t i = 0; i < 4; i++)
 	{
 		VanillaCards* NewCard = new VanillaCards(0, 0, "BLANK", "BLANK");
-		P1Deck.Holder.push_back(NewCard);
+		P1Deck.push_back(NewCard);
 	}
 }
 
@@ -45,12 +45,12 @@ void CardFactory::CreateDummyDeckBuilderDeck(std::vector<VanillaCards*>& DeckBui
 
 }
 
-void CardFactory::CreateDummyP2Deck(CardHolder& P2Deck, CardHolder AllCards)
+void CardFactory::CreateDummyP2Deck(std::vector<VanillaCards*>& P2Deck, CardHolder AllCards)
 {
 	for (size_t i = 0; i < 4; i++)
 	{
 		VanillaCards* NewCard = new VanillaCards(0, 0, "BLANK", "BLANK");
-		P2Deck.Holder.push_back(NewCard);
+		P2Deck.push_back(NewCard);
 	}
 	CreateP2Deck(P2Deck, AllCards);
 }
@@ -65,19 +65,19 @@ void CardFactory::CreateDeckBuilderDeck(std::vector<VanillaCards*>& DeckBuilderD
 	CreateNewCard(AllCards.Holder.at(10), DeckBuilderDeck, 0);
 }
 
-void CardFactory::CreateP1StartingDeck(CardHolder& P1Deck, CardHolder CardContainer)
+void CardFactory::CreateP1StartingDeck(std::vector<VanillaCards*>& P1Deck, CardHolder CardContainer)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		CreateNewCard(CardContainer.Holder.at(i), P1Deck.Holder, i);
+		CreateNewCard(CardContainer.Holder.at(i), P1Deck, i);
 	}
 
 	//Making Sniper in P1 Base Deck
-	CreateNewCard(CardContainer.Holder.at(10), P1Deck.Holder, 3);
+	CreateNewCard(CardContainer.Holder.at(10), P1Deck, 3);
 
 }
 
-void CardFactory::CreateP2Deck(CardHolder& P2Deck, CardHolder AllCards)
+void CardFactory::CreateP2Deck(std::vector<VanillaCards*>& P2Deck, CardHolder AllCards)
 {
 	int RandomNumber;
 
@@ -86,7 +86,7 @@ void CardFactory::CreateP2Deck(CardHolder& P2Deck, CardHolder AllCards)
 		RandomNumber = RandomNumberGenerator(MinValueForNumGen, AllCards.Holder.size() - 1);
 		VanillaCards* NewCard = new VanillaCards(AllCards.Holder.at(RandomNumber)->Health, AllCards.Holder.at(RandomNumber)->Attack,
 			AllCards.Holder.at(RandomNumber)->Name, AllCards.Holder.at(RandomNumber)->CardType);
-		CreateNewCard(NewCard, P2Deck.Holder, i);
+		CreateNewCard(NewCard, P2Deck, i);
 	}
 }
 
@@ -132,7 +132,7 @@ void CardFactory::CreateStoredDummyDecks(CombatDataHandler& DataHandler)
 	}
 }
 
-void CardFactory::CopyDecksToStoredDecks(CardHolder P1Deck, CardHolder P2Deck, CombatDataHandler& DataHandler)
+void CardFactory::CopyDecksToStoredDecks(std::vector<VanillaCards*> P1Deck, std::vector<VanillaCards*> P2Deck, CombatDataHandler& DataHandler)
 {
 	for (size_t i = 0; i < 4; i++)
 	{
